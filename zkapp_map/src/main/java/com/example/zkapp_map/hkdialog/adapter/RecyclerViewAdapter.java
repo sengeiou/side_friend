@@ -41,6 +41,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter{
     private List<List<TypesNameBean>> listList;
     private ArrayList<ItemRecyclerViewAdapter> adapterList = new ArrayList<>();
     private RecyclerView mParentRv;
+
     public class VH extends RecyclerView.ViewHolder {
         private final TextView tvItem;
         private final RecyclerView itemRecyclerView;
@@ -107,17 +108,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter{
         vh.itemRecyclerView.setAdapter(itemRecyclerViewAdapter);
 
     }
-
-    public void change(ItemRecyclerViewAdapter.ItemVH holder,int i1,int position,int index){
+    private View mView;
+    public void setOldView(View view){
+        mView = view;
+    }
+    public View getOldView(){
+        return mView;
+    }
+    public void clearOldView(){
+        mView = null;
+    }
+    public void change(ItemRecyclerViewAdapter.ItemVH holder,View view,int i1,int position,int index){
 
         for (int i = 0; i < adapterList.size(); i++) {
             if(i == index){
-                adapterList.get(i).openedItemVH = adapterList.get(i).keepOne.toggle(holder,i1,position);
+                adapterList.get(i).openedItemVH = adapterList.get(i).keepOne.toggle(holder,view,i1,position,this);
             }else{
-                adapterList.get(i).openedItemVH = adapterList.get(i).keepOne.hide(adapterList.get(i).openedItemVH);
+                adapterList.get(i).openedItemVH = adapterList.get(i).keepOne.hide(adapterList.get(i).openedItemVH,mView,this);
             }
         }
     }
+
 
 
     @Override

@@ -55,6 +55,8 @@ public class FragmentSort extends BaseFragment{
     @Override
     public void onBindData() {
         FragmentSortAdapter listAdapter = new FragmentSortAdapter(list, getActivity());
+        listAdapter.setSeclection(listPosition);
+        listAdapter.notifyDataSetChanged();
         listView.setAdapter(listAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

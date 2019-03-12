@@ -35,15 +35,13 @@ import java.util.List;
 public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerViewAdapter.ItemVH>{
 
     private Context context;
-    private int isVisibility = 1;
     private List<List<TypesNameBean>>list;
-    private SharedPreferences sp;
-    private int openIndex = -1;
     private RecyclerViewAdapter mParentAdapter;
     private int mIndex;
     private RecyclerViewAdapter.VH mParentVH;
-    public List<ItemRecyclerViewAdapter.ItemVH> mItemVHList;
     public ItemVH openedItemVH;
+    private int lastPosition = 0;
+
     /**
      * 判断是否是历史记录打开
      */
@@ -71,36 +69,6 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
         return new ItemVH(view);
     }
 
-    private Handler handler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.obj != null){
-                showOld(msg);
-            }
-        }
-    };
-
-    /**
-     * 显示点击的历史item
-     * @param msg
-     */
-    private void showOld(Message msg) {
-        isOld = true;
-        ItemVH itemVH = (ItemVH) msg.obj;
-        String typeName = type.getString("typeName", null);
-        if (typeName != null){
-            int mIndex = type.getInt("mIndex",-1);
-            oldGv1Position = type.getInt("gv1Position",-1);
-            if (oldGv1Position != -1){
-                itemVH.gv2.setAdapter(new GVAdapter2(list.get(listPosition),context, oldGv1Position));
-                mParentAdapter.change(itemVH,listPosition, oldGv1Position,mIndex);
-            }
-        }else {
-            Log.e("sp","null");
-        }
-    }
-
     @Override
     public void onBindViewHolder(@NonNull ItemVH itemVH, int i) {
         itemVH.bind(i);
@@ -122,7 +90,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
 //                keepOne.toggle(itemVH,i,position);
                 //Log.e("position",""+mParentVH.getAdapterPosition());
                 mIndex = mParentVH.getAdapterPosition();
-                mParentAdapter.change(itemVH,i,position,mIndex);
+                mParentAdapter.change(itemVH,view,i,position,mIndex);
             }
         });
 
@@ -131,7 +99,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 click(i,view, position);
                 mIndex = mParentVH.getAdapterPosition();
-                mParentAdapter.change(itemVH,i,gv1Position,mIndex);
+                mParentAdapter.change(itemVH,view,i,gv1Position,mIndex);
             }
         });
 

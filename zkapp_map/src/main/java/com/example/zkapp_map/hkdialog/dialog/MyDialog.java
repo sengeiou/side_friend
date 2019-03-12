@@ -103,6 +103,7 @@ public class MyDialog extends DialogFragment implements View.OnClickListener{
 
         FragmentSort f2 = FragmentSort.getInstance();
         FragmentSieve f3 = FragmentSieve.getInstance();
+
         fragments.add(f1);
         fragments.add(f2);
         fragments.add(f3);

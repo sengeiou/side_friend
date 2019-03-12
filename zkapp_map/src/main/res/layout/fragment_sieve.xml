@@ -5,10 +5,78 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <android.support.v7.widget.RecyclerView
+        <!--<android.support.v7.widget.RecyclerView
             android:id="@+id/rv_sieve"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </android.support.v7.widget.RecyclerView>
+        </android.support.v7.widget.RecyclerView>-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:padding="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="2dp"
+                    android:background="@android:color/holo_blue_light"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:textColor="#171718"
+                    android:text="价格区间（元）"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <com.example.zkapp_map.hkdialog.viwe.MyGridView
+                android:id="@+id/gv_fragment_sieve_price"
+                android:numColumns="3"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:padding="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="2dp"
+                    android:background="@android:color/holo_blue_light"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:textColor="#171718"
+                    android:text="距离区间（km）"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <com.example.zkapp_map.hkdialog.viwe.MyGridView
+                android:id="@+id/gv_fragment_sieve_distance"
+                android:numColumns="3"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:padding="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="2dp"
+                    android:background="@android:color/holo_blue_light"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:textColor="#171718"
+                    android:text="信用等级（分）"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <com.example.zkapp_map.hkdialog.viwe.MyGridView
+                android:id="@+id/gv_fragment_sieve_credit"
+                android:numColumns="3"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>
