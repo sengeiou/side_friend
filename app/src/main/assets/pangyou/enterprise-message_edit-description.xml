@@ -1,0 +1,26 @@
+<listView>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">企业介绍</cp>
+            <rp font="42,#ffffff" margin="0,0,42,0" click="document.open('pangyou/enterprise-message_edit-description-operation.xml',{isAdd:true})">添加</rp>
+        </text>
+    </header>
+    <body background="#e5effb" load="ServerAgent.invoke('user-docs',{uid:localStorage.get('uid',0),type:'enterpriseDescription',page:document.current+=1}).then(res=>{
+                document.adapter().load(res.data);
+                document.stop();
+            });">
+        <item>
+            <enterpriseDescription click="document.open('pangyou/enterprise-message_edit-description-operation.xml',document.adapter().getItem())"/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.currentPage = 0;
+            ServerAgent.invoke('user-docs',{uid:localStorage.get('uid',0),type:'enterpriseDescription',page:0}).then(res=>{
+                document.adapter().refresh(res.data);
+            });
+        </script>
+    </footer>
+</listView>

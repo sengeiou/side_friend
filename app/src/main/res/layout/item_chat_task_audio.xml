@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/splash"
+        android:scaleType="centerCrop"
+        android:id="@+id/img"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mychat_002"
+        android:padding="5dp"
+        android:id="@+id/frame"
+        android:layout_alignTop="@id/img"
+        android:layout_marginEnd="60dp"
+        android:layout_marginStart="60dp">
+        <com.zankong.tool.zkapp.views.ZKPView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/audio"
+            android:textColor="#ffffff"/>
+    </RelativeLayout>
+
+</RelativeLayout>

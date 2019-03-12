@@ -1,0 +1,57 @@
+<listview>
+    <header background="#F2F2F2">
+        <text>
+            <lp margin="13,0,0,0">返回</lp>
+            <cp>选择地址</cp>
+            <rp margin="0,0,13,0" click="document.open('pangyou/address-manage.xml')">地址管理</rp>
+        </text>
+    </header>
+    <body background="#f2f2f2">
+        <text margin="23,10,23,5" radius="40" background="#FFFFFF">
+            <lp click="">上海</lp>
+            <limg src="img/normal/left_w_arrow.png"/>
+            <input click="document.open('');">
+            </input>
+        </text>
+        <text background="#ffffff">
+            <lp margin="13,0,0,0">当前地址</lp>
+        </text>
+        <text>
+            <lp margin="13,0,0,0">黄浦区斜土路500号</lp>
+            <rimg src="img.add.png"/>
+            <rp margin="5,0,13,0">重新定位</rp>
+        </text>
+
+        <text background="#ffffff">
+            <lp margin="13,0,0,0">常用位置</lp>
+        </text>
+        <text background="#ffffff" height="20"/>
+
+        <item>
+            <oftenAddress/>
+        </item>
+
+        <text height="40" background="#ffffff"/>
+        <text>
+            <lp margin="13,0,0,0" fond="#4A8AF4" click="document.open('pangyou/address-modify.xml')">新增地址</lp>
+        </text>
+    </body>
+    <footer>
+        <script>
+            let isBoolean = 0;
+            let b = {address:'上海市建设工程质量检测中心卢湾分中心',latitude:31.20879251100562,longitude:121.48257918148133,name:'上海市建设工程质量检测中心卢湾分中心'}
+            let a = {address:'中国银行(蒙自路支行)',latitude:31.208004927846048,longitude:121.48590291186825,name:'中国银行(蒙自路支行)'};
+            let t = [];
+            t.push(a);
+            t.push(b);
+            document.adapter().refresh(t);
+            document.onClickCity= function(){
+            if(isBoolean === 0){
+            isBoolean = 1;
+            }else{
+            isBoolean = 0;
+            }
+            }
+        </script>
+    </footer>
+</listview>

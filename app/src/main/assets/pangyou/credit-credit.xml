@@ -1,0 +1,53 @@
+<plain>
+    <body background="#e5effb">
+        <text id="creditGrade" height="144">
+            <lp font="42,#6f7072" margin="39,0,0,0">信用评分:</lp>
+            <lp font="42,#6f7072" margin="39,0,0,0">9.1</lp>
+        </text>
+        <ratingbar id="ratingbar" type="信用等级:" />
+        <text id="taskNum" background="#ffffff" height="144" click="document.toEvaluate('all')">
+            <lp font="42,#6f7072" margin="39,0,0,0">完成任务数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" margin="0,0,42,0" src="img/normal/right_arrow.png" />
+        </text>
+        <text id="timeoutNum" background="#ffffff" height="144" margin="0,3,0,0" click="document.toEvaluate('isTimeout')">
+            <lp font="42,#6f7072" margin="39,0,0,0">超时次数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" margin="0,0,42,0" src="img/normal/right_arrow.png" />
+        </text>
+        <text id="violateNum" background="#ffffff" height="144" margin="0,3,0,0" click="document.toEvaluate('violate')">
+            <lp font="42,#6f7072" margin="39,0,0,0">爽约次数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" margin="0,0,42,0" src="img/normal/right_arrow.png" />
+        </text>
+        <text id="notMessageMatchNum" background="#ffffff" height="144" margin="0,3,0,0" click="document.toEvaluate('isMessageMatch')">
+            <lp font="42,#6f7072" margin="39,0,0,0">信息不匹配次数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" margin="0,0,42,0" src="img/normal/right_arrow.png" />
+        </text>
+        <text id="notTaskMatchNum" background="#ffffff" height="144" margin="0,3,0,0" click="document.toEvaluate('isTaskMatch')">
+            <lp font="42,#6f7072" margin="39,0,0,0">任务信息不匹配次数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" margin="0,0,42,0" src="img/normal/right_arrow.png" />
+        </text>
+        <script>
+            document.onResume = ()=>{
+                ServerAgent.invoke('credit-collect',{type:document.data.type,uid:document.data.uid}).then(res=>{
+                    document.$('creditGrade').get('lp',2).set(res.creditGrade+'分');
+                    document.$('ratingbar').set({totalnumber:'5',selectednumber:parseInt(res.creditGrade/20)+''});
+                    document.$('taskNum').get('rp').set(res.taskNum+'次');
+                    document.$('timeoutNum').get('rp').set(res.timeoutNum+'次');
+                    document.$('violateNum').get('rp').set(res.violateNum+'次');
+                    document.$('notMessageMatchNum').get('rp').set(res.notMessageMatchNum+'次');
+                    document.$('notTaskMatchNum').get('rp').set(res.notTaskMatchNum+'次');
+                });
+            };
+            document.toEvaluate = (screen)=>{
+                document.open('pangyou/credit-evaluate-list.xml',{screen,uid:document.data.uid});
+            };
+        </script>
+
+    </body>
+
+
+</plain>

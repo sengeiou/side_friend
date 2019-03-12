@@ -1,0 +1,55 @@
+<listView>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg src="img/normal/left_w_arrow.png" attr="60" margin="42,0,12,0" click="document.finish()"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">找旁友</cp>
+        </text>
+    </header>
+    <body refresh="
+            document.currentPage = 0;
+            ServerAgent.invoke('address-findSideFriends',{longitude:localStorage.get('longitude',0),latitude:localStorage.get('latitude',0),page:document.currentPage}).then(res=>{
+                document.adapter().refresh(res);
+                document.stop();
+            });"
+        load="
+            ServerAgent.invoke('address-findSideFriends',{longitude:localStorage.get('longitude',0),latitude:localStorage.get('latitude',0),page:document.currentPage+=1}).then(res=>{
+                document.adapter().load(res);
+                document.stop();
+            });
+">
+        <item>
+            <findFriend click="document.open('pangyou/user-message.xml',{uid:document.adapter().getItem().uid})"
+                release="
+                document.open('pangyou/home-task_type.xml').then(res=>{
+                    ServerAgent.invoke('Task-editXml',{typeId:res.typeId}).then(res=>{
+                        document.open('pangyou/release-edit.xml',Object.assign(res,{receiverId:document.adapter().getItem().uid}));
+                    });
+                })"
+                chat="ServerAgent.invoke('findFriend-chat',{uid:document.adapter().getItem().uid}).then(res=>{
+                        ServerAgent.invoke('chat-openHouse',{houseId:res.houseId}).then(res=>{
+                            document.open(res.openUrl,res);
+                        });
+                    })"
+            />
+        </item>
+    </body>
+    <float bottom="200" right="200">
+        <card width="-2" height="100">
+            <img attr="100" radius="50" src="img/release.png" click="
+                document.open('pangyou/home-task_type.xml').then(res=>{
+                    ServerAgent.invoke('Task-editXml',{typeId:res.typeId}).then(res=>{
+                        document.open('pangyou/release-edit.xml',res);
+                    })
+                });"/>
+        </card>
+    </float>
+    <footer>
+        <script>
+            document.currentPage = 0;
+            ServerAgent.invoke('address-findSideFriends',{longitude:localStorage.get('longitude',0),latitude:localStorage.get('latitude',0),page:document.currentPage}).then(res=>{
+                document.adapter().load(res);
+            });
+        </script>
+    </footer>
+</listView>

@@ -1,0 +1,177 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144" id="header">
+            <limg src="img/normal/left_w_arrow.png" attr="60" margin="42,0,12,0" click="document.finish()"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">名称</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <user_message style="recruit" id="recruitMessage" click="document.open('pangyou/enterprise-center.xml',{uid:document.senderId})"/>
+        <text id="workTime" height="144" margin="39,12,39,0" background="#ffffff" radius="5">
+            <lp margin="30,0,0,0" font="42,#171718">工作时长</lp>
+            <rp font="33,#6f7072" margin="0,0,30,0" >3小时</rp>
+        </text>
+        <text id="receiverTime" height="144" margin="39,12,39,0" background="#ffffff" radius="5">
+            <lp margin="30,0,0,0" font="42,#171718">报名截止时间</lp>
+            <rp font="33,#6f7072" margin="0,0,30,0" />
+        </text>
+        <text id="recruitNum" height="144" margin="39,12,39,0" background="#ffffff" radius="5">
+            <lp margin="30,0,0,0" font="42,#171718">招募人数</lp>
+            <rp font="33,#6f7072" margin="0,0,30,0" >10</rp>
+        </text>
+        <text id="serviceType" height="144" margin="39,12,39,0" background="#ffffff" radius="5">
+            <lp margin="30,0,0,0" font="42,#171718">服务方式</lp>
+            <rp margin="0,0,30,0" >线下</rp>
+        </text>
+        <card width="-1" background="#ffffff" radius="5dp" margin="39,12,39,0" z="0">
+            <text margin="30,30,0,42">
+                <lp font="45,#171718">职位详情</lp>
+            </text>
+            <text id="description" margin="30,0,30,60">
+                <lp font="42,#8c8c8e" gravity="left">阿斯兰的顾客</lp>
+            </text>
+            <recycle id="editAdd" margin="39,0,39,60" orientation="horizontal">
+                <editAdd click="alert('你好')" />
+            </recycle>
+        </card>
+        <card width="-1" background="#ffffff" radius="5dp" margin="39,12,39,0" z="0">
+            <text height="50" margin="30,48,30,0">
+                <limg attr="24,33" margin="30,0,9,0" src="img/home/address2.png"/>
+                <lp font="36,#6f7072">工作地点</lp>
+            </text>
+            <text id="workAddress" margin="72,48,0,48">
+                <lp font="42,#171718">黄浦区..........</lp>
+                <rimg attr="24,33" margin="0,0,12,0" src="img/home/address2.png"/>
+                <rp font="33,#6f7072" margin="0,0,36,0">距您约1.7km</rp>
+            </text>
+        </card>
+        <text margin="39,45,39,30">
+            <lp font="45,#171718">预约要求:</lp>
+        </text>
+        <text id="credit" height="144" margin="39,0,39,0" background="#ffffff" radius="5">
+            <lp margin="30,0,0,0" font="42,#171718">信用等级</lp>
+            <rp font="33,#6f7072" margin="0,0,30,0"/>
+        </text>
+        <text id="bargaining" height="144" margin="39,2,39,0" background="#ffffff" radius="5">
+            <lp margin="30,0,0,0" font="42,#171718">可否议价</lp>
+            <rp font="33,#6f7072" margin="0,0,30,0"/>
+        </text>
+        <text id="sex" height="144" margin="39,2,39,0" background="#ffffff" radius="5">
+            <lp margin="30,0,0,0" font="42,#171718">性别要求</lp>
+            <rp font="33,#6f7072" margin="0,0,30,0"/>
+        </text>
+        <card width="-1" background="#ffffff" radius="5dp" margin="39,30,39,0" z="0">
+            <text id="recruitRealNum" height="144" margin="30,0,30,0" click="document.open('pangyou/recruit-apply-success-list.xml',{recruitId:document.recruitId})">
+                <lp font="42,#171718">成功报名</lp>
+                <rp margin="0,0,12,0" font="33,#6f7072">2人</rp>
+                <rimg src="img/normal/right_arrow.png" attr="30"/>
+            </text>
+            <hr height="2" background="#e5effb"/>
+            <recycle full="true" id="recruitApply">
+                <recruitApply/>
+            </recycle>
+        </card>
+        <text background="#ffffff" radius="5" height="144" margin="39,12,39,0" click="document.open('pangyou/credit.xml',{uid:document.senderId})">
+            <lp font="42,#171718" margin="30,0,0,0">信用评价</lp>
+            <rp font="42,#8c8c8e">查看更多</rp>
+            <rimg attr="30" src="img/normal/right_arrow.png" margin="21,0,30,0"/>
+        </text>
+        <group button-margin="20,15,20,15" button-padding="0,20,0,20" padding="0,30,0,30" background="#ffffff" radius="5" margin="39,2,39,0" num="3" button-radius="50" button-background="#e5effb" p-font="#5c9afd,42">
+            <button>
+                <p>服务信用4.5</p>
+            </button>
+            <button>
+                <p>消费信用4.5</p>
+            </button>
+            <button>
+                <p>打赏次数(10)</p>
+            </button>
+            <button>
+                <p>爽约次数(100)</p>
+            </button>
+            <button>
+                <p>信息不匹配(10)</p>
+            </button>
+            <button>
+                <p>不满意次数(10)</p>
+            </button>
+            <button>
+                <p>超时次数(100)</p>
+            </button>
+        </group>
+        <text margin="39,42,39,36" height="50">
+            <limg attr="42" src="img/task/light.png" margin="0,0,10,0"/>
+            <lp font="42,#5c9afd">交易须知</lp>
+        </text>
+        <text margin="39,0,39,0">
+            <lp font="42,#171718" gravity="left">凡收取费用或工作内容不符的,请你提高警惕并第一时间向我们举报。
+服务的时间地点如有变换,双方需要及时通知对方。
+服务期间出现任何问题请及时联系客服小助手。</lp>
+        </text>
+        <text margin="39,0,39,0" height="144" id="protocol">
+            <limg attr="42" margin="0,0,12,0" src="img/task/release_nor.png" click="document.isChecked = !document.isChecked;
+    document.$('protocol').get('limg').set({src:document.isChecked?'img/task/release_press.png':'img/task/release_nor.png'});"/>
+            <lp font="42,#8c8c8e">接单前请阅读</lp>
+            <lp font="42,#e67417">《服务协议》</lp>
+        </text>
+    </body>
+    <footer>
+        <text height="144" id="handleBtn">
+            <lp click="
+            ServerAgent.invoke('enterprise-chat',{recruitId:document.recruitId}).then(res=>{
+                ServerAgent.invoke('chat-openHouse',{houseId:res.houseId}).then(res=>{
+                    document.open(res.openUrl,res);
+                })
+            });
+
+            " height="150" font="48,#171718" width="0.5">咨询</lp>
+            <rp click="
+            if(document.isChecked){
+              document.dialog('pangyou/task-robbing_second_sure.xml').then(res=>{
+                ServerAgent.invoke('Task-apply',{taskId:document.taskId,bargainingPrice:-1}).then(res=>{
+                    if(!res)return;
+                    document.open('pangyou/task-robbing-success.xml').then(res=>{
+                        document.next(res);
+                    });
+                });
+            });
+            }else{
+                alert('阅读协议并同意');
+            }
+          " height="150" font="48,#f9fbff" width="0.5" background="#5c9afd" >抢单</rp>
+        </text>
+        <script>
+            document.isChecked = false;
+            ServerAgent.invoke('enterprise-recruit-detail',{recruitId:document.arguments().recruitId}).then(res=>{
+                document.$('header').get('cp').set({p:res.occupation+''});
+                document.$('workTime').get('rp').set({p:res.workTime+res.workTimeCompany});
+                document.$('receiverTime').get('rp').set({p:res.receiverTime_set+''});
+                document.$('recruitNum').get('rp').set({p:res.recruitNum+''});
+                document.$('serviceType').get('rp').set({p:res.serviceType+''});
+                document.$('workAddress').get('lp').set({p:res.workAddress+''});
+                document.$('credit').get('rp').set({p:res.credit+'分以上'});
+                document.$('bargaining').get('rp').set({p:res.bargaining?'可议价':'不可议价'});
+                document.$('sex').get('rp').set({p:res.sex==='all'?'皆可':res.sex});
+                document.$('description').get('lp').set({p:res.additionalMessage.text});
+                let list = [];
+                for(let image of res.additionalMessage.image){
+                    list.push({type:'image',url:image});
+                }
+                document.$('editAdd').adapter().refresh(list);
+                document.$('recruitMessage').setData({
+                    img:res.img,
+                    nickname:res.nickname,
+                    userCharmGrade:res.userCharm,
+                    reward:res.reward,
+                });
+                document.senderId = res.senderId;
+                document.recruitId = res.recruitId;
+            });
+            ServerAgent.invoke('enterprise-establish-list',{recruitId:document.arguments().recruitId,limit:3}).then(res=>{
+                document.$('recruitRealNum').get('rp').set({p:res.count+'人'});
+                document.$('recruitApply').adapter().refresh(res.list);
+            });
+        </script>
+    </footer>
+</plain>

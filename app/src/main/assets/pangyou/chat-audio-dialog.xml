@@ -1,0 +1,6 @@
+<dialog height="-2" width="0.6" background="#f0f0f0">
+    <img id="audioImg" attr="300" src="img/audio/yuyin_voice_1.png"/>
+    <text id="audioText">
+        <cp>手指上划,取消发送</cp>
+    </text>
+</dialog>

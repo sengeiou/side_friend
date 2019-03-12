@@ -1,0 +1,7 @@
+<popup>
+    <text click="document.next({name:'nhao'})"><cp>popup1</cp></text>
+    <text><cp>popup2</cp></text>
+    <text><cp>popup3</cp></text>
+    <text><cp>popup4</cp></text>
+    <text><cp>popup5</cp></text>
+</popup>

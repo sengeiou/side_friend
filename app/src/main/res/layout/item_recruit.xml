@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:paddingLeft="14dp"
+    android:paddingRight="14dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/line"
+        android:background="#ececec" />
+
+    <LinearLayout
+        android:id="@+id/userMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/line"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/splash"
+            app:riv_oval="true" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上海科技有限公司"
+                android:textColor="#171718"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/userCreditGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nickname"
+                android:text="信用等级6.5分"
+                android:textColor="#ef7318"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/userCharmGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/nickname"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/nickname"
+                android:background="@drawable/recruit_charm"
+                android:layout_marginBottom="2dp"
+                android:paddingBottom="2dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:paddingTop="2dp"
+                android:text="下单评分8.5分"
+                android:textColor="#5c9afd"
+                android:textSize="9dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="招募"
+                    android:textColor="#171718"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/recruitNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="#ff0000"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="人"
+                    android:textColor="#171718"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userMessage"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="职位:"
+            android:textColor="#171718"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/styleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跑腿"
+            android:textColor="#171718"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textColor="#171718"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/typeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="帮我买"
+            android:textColor="#171718"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/workAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/type"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/recruit_circle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:textSize="13sp"
+            android:textColor="#171718"
+            android:text="工作地点: " />
+
+        <TextView
+            android:id="@+id/workAddressName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="13sp"
+            android:textColor="#171718"
+            android:text="黄浦区精度路人才大厦" />
+
+        <ImageView
+            android:layout_width="11dp"
+            android:layout_height="11dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="3dp"
+            android:src="@drawable/recruit_address" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="距您约"
+            android:textColor="#68696a"
+            android:textSize="11dp" />
+
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.7km"
+            android:textColor="#68696a"
+            android:textSize="11dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/handleBtn"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_below="@id/workAddress"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="服务费:  "
+            android:textColor="#8c8c8e"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/reward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$200/人"
+            android:textColor="#ff0000"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/bargaining"
+            android:layout_width="50dp"
+            android:layout_height="26dp"
+            android:background="@drawable/recruit_handle_bargaining"
+            android:gravity="center"
+            android:textColor="#5c9afd"
+            android:text="议价" />
+
+        <TextView
+            android:id="@+id/apply"
+            android:layout_width="50dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/recruit_handle_robbing"
+            android:gravity="center"
+            android:textColor="#e5effb"
+            android:text="报名" />
+    </LinearLayout>
+</RelativeLayout>

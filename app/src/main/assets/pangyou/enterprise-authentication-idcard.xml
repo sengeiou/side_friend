@@ -1,0 +1,59 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">营业执照</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text id="idCardPositive" margin="0,90,0,0" click="
+            document.album({select:1,clear:true}).then(res=>{
+                let files = [];
+                for(let one of res){
+                    let file2 = one.split('\.');
+                    let random = Math.random()+'';
+                    let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+                    files.push({key,file:one});
+                }
+                Aliput.putFiles(files).then(urls=>{
+                    document.idCardPositive = urls[0];
+                    document.$('idCardPositive').get('cimg').set({src:urls[0]});
+                });
+            });">
+            <cimg attr="600,390" src="img/enterprise/idcard_positive.png"/>
+        </text>
+        <text id="idCardNegative" margin="0,80,0,0" click="
+            document.album({select:1,clear:true}).then(res=>{
+                let files = [];
+                for(let one of res){
+                    let file2 = one.split('\.');
+                    let random = Math.random()+'';
+                    let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+                    files.push({key,file:one});
+                }
+                Aliput.putFiles(files).then(urls=>{
+                    document.idCardNegative = urls[0];
+                    document.$('idCardNegative').get('cimg').set({src:urls[0]});
+                });
+            });">
+            <cimg attr="600,390" src="img/enterprise/idcard_negative.png"/>
+        </text>
+        <text height="120" margin="120,177,120,120" radius="60" background="#5c9afd" click="document.next({
+            idCardPositive : document.idCardPositive,
+            idCardNegative : document.idCardNegative,
+        })">
+            <cp font="51,#ffffff">确定</cp>
+        </text>
+        <script>
+            document.idCardPositive = document.arguments().idCardPositive;
+            document.idCardNegative = document.arguments().idCardNegative;
+            if(document.idCardPositive!==''){
+                document.$('idCardPositive').get('cimg').set({src:document.idCardPositive});
+            }
+            if(document.idCardNegative!==''){
+                document.$('idCardNegative').get('cimg').set({src:document.idCardNegative});
+            }
+        </script>
+    </body>
+</plain>

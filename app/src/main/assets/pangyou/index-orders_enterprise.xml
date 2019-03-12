@@ -1,0 +1,14 @@
+<viewPage clip="#5c9afd,2" padding="0,bar,0,0">
+    <header>
+        <text height="144" background="#5c9afd">
+            <cp font="48,#ffffff">订单</cp>
+            <rp font="#ffffff,42" margin="0,0,42,0" click="document.open('pangyou/recruit-order-finish-list.xml')">招募记录</rp>
+        </text>
+    </header>
+    <body>
+        <page src="pangyou/recruit-order-release-list.xml">已发布</page>
+        <page src="pangyou/task-release-universal.xml" data="{status:'running'}">进行中</page>
+        <page src="pangyou/task-release-universal.xml" data="{status:'serviced'}">确认完成</page>
+        <page src="pangyou/task-release-universal.xml" data="{status:'finish'}">已完成</page>
+    </body>
+</viewPage>

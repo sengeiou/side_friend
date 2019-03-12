@@ -1,0 +1,27 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="48,#ffffff">返回</lp>
+            <cp font="48,#ffffff">自我描述</cp>
+        </text>
+    </header>
+    <body>
+        <text style="input" id="describes">
+            <input hint="自我描述展现您的魅力\n
+            (1)您的独特经历\n
+            (2)您的行业见解\n
+            (3)您的能力展示(研发大牛、资深顾问、沟通达人、团队领袖)\n
+            (4)您的兴趣爱好\n
+            (5)其他"/>
+        </text>
+    </body>
+    <footer>
+        <text height="144" click="document.next({describes:document.$('describes').val()});" background="#5c9afd" radius="72" margin="120,20,120,20">
+            <cp font="48,#ffffff">保存</cp>
+        </text>
+        <script>
+            document.$('describes').get('input').set({p:localStorage.get('describes','')});
+        </script>
+    </footer>
+</plain>

@@ -1,0 +1,32 @@
+<linearlayout>
+    <header>
+        <text background="#5c9afd" height="150" id="title">
+            <limg attr="60" margin="13,0,0,0" src="img/normal/left_w_arrow.png" click="document.finish();"/>
+            <lp font="40,#ffffff" click="document.finish()">返回</lp>
+            <cp font="40,#ffffff">提出群成员</cp>
+            <rp font="40,#ffffff" margin="0,0,43,0" click="
+            let uids = [];
+            for(let user of document.$('mail').val()){
+                uids.push(user.uid);
+            }
+            ServerAgent.invoke('chat-group-removeMember',{uids,houseId:document.arguments().houseId}).then(res=>{
+                document.finish();
+            });
+">确定</rp>
+        </text>
+    </header>
+    <body>
+        <maillist id="mail" style="2"/>
+        <script>
+            let members = [];
+            let self = localStorage.get('uid',0);
+            console.log(document.arguments().members);
+            for(let member of document.arguments().members){
+                if(member.uid &amp;&amp; member.uid != self){
+                    members.push(member);
+                }
+            }
+            document.$('mail').set(members);
+        </script>
+    </body>
+</linearlayout>

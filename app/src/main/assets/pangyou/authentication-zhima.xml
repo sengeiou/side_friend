@@ -1,0 +1,29 @@
+<listview>
+    <header>
+        <text>
+            <limg click="document.finish()" attr="50" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()">返回</lp>
+            <cp>芝麻信用</cp>
+        </text>
+    </header>
+    <body>
+        <text>
+            <cp>芝麻认证</cp>
+        </text>
+        <text>
+            <cp>暂未申请芝麻信用认证</cp>
+        </text>
+        <text>
+            <cp>通过芝麻信用认证即可享受更多共享权益</cp>
+        </text>
+        <text margin="20,60,20,0" background="#39B4FF" click="
+            ServerAgent.invoke('identity-initialize').then(res=>{
+                if(res)Identity.startIdentity(res.aliAppUrl);
+            });">
+            <cp margin="13,0,0,0" fond="#4A8AF4" >确认申请认证</cp>
+        </text>
+        <text click="Identity.open()">
+            <lp>测试</lp>
+        </text>
+    </body>
+</listview>

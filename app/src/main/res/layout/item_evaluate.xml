@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="16dp"
+        android:id="@+id/header">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/img"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:elevation="58dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cat"
+            app:riv_oval="true" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/img">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
+                android:id="@+id/nickname"
+                android:text="二次元视界"
+                android:textColor="#ed6f36"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:id="@+id/createdAt"
+                android:text="2017-11-12 12:47"
+                android:textColor="#8c8c8c"
+                android:textSize="12sp"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
+    <com.zankong.tool.zkapp.views.ZKPView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="62dp"
+        android:layout_below="@+id/header"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="14dp"
+        android:lineSpacingMultiplier="1.2"
+        android:id="@+id/description"
+        android:text="被求助到这了,被求助到这了,被求助到这了被求助到这了被求助到这了被求助到这了被求助到这了被求助到这了被求助到这了被求助到这了被求助到这了被求助到这了被求助到这了被求助到这了被求助到这了被求助到这了被求助到这了被求助到这了"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/description"
+        android:background="#e5effb"/>
+</RelativeLayout>

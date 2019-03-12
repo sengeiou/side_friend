@@ -1,0 +1,9 @@
+<viewPage>
+    <body>
+        <page src="pangyou/task-receiver-appoint.xml">指定接单</page>
+        <page src="pangyou/task-receiver-universal.xml" data="{status:'released'}">抢单中</page>
+        <page src="pangyou/task-receiver-universal.xml" data="{status:'running'}">进行中</page>
+        <page src="pangyou/task-receiver-universal.xml" data="{status:'serviced'}">待确认</page>
+        <page src="pangyou/task-receiver-universal.xml" data="{status:'finish'}">已完成</page>
+    </body>
+</viewPage>

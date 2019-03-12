@@ -1,0 +1,14 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp font="#ffffff,42" click="document.finish()">返回</lp>
+            <cp font="#ffffff,48" val="document.arguments().title"/>
+        </text>
+    </header>
+    <body>
+        <text>
+            <lp>这里显示历史系统通知记录</lp>
+        </text>
+    </body>
+</plain>

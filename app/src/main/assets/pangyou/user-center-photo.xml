@@ -1,0 +1,15 @@
+<listView>
+    <body>
+        <item type="grid" num="4" padding="8,40,8,0">
+            <photoWall/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            let userId = document.data.uid;
+            ServerAgent.invoke('user-docs',{type:'image',uid:userId,limit:10000}).then(res=>{
+                document.adapter().refresh(res.data);
+            });
+        </script>
+    </footer>
+</listView>

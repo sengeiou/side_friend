@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="120dp"
+    android:gravity="center_horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.zankong.tool.side_friend.diy_view.sos.DiffuseView
+        android:id="@+id/diffuseView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:diffuse_color="@color/colorAccent"
+        app:diffuse_coreColor="@color/colorAccent"
+        app:diffuse_maxWidth="25"
+        app:diffuse_coreRadius="90"
+        app:diffuse_speed="20"
+        app:diffuse_width="20"/>
+</LinearLayout>

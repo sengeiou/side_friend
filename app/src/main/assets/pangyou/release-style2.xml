@@ -1,0 +1,24 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg attr="60" click="document.finish()" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="#ffffff,42">技能服务</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <recycle id="allclassfiy0" type="grid" num="4">
+            <allclassfiy  click="
+               document.onData(document.$('allclassfiy0').adapter().getItem())
+                "/>
+        </recycle>
+        <script>
+            ServerAgent.invoke('Task-taskType').then(res=>{
+            document.$('allclassfiy0').adapter().refresh(res[1].types);
+            });
+            document.onData=(data)=>{
+            document.next({typeId:data.id,typeName:data.name});
+            }
+        </script>
+    </body>
+</plain>

@@ -1,0 +1,24 @@
+<listView>
+    <body >
+        <item>
+            <homeTask click="
+            ServerAgent.invoke('Task-detail',{taskId:document.adapter().getItem().taskId,range:{
+            latitude:localStorage.get('latitude',''),longitude:localStorage.get('longitude',''),r:3000,
+            }}).then(res=>{
+                document.open('pangyou/task-detail.xml',res).then(res=>{});
+            })"
+            img="document.open('pangyou/credit.xml',{uid:document.adapter().getItem().uid})"/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.onResume = ()=>{
+                ServerAgent.invoke('findFriend-receiverList',{range:{
+                latitude:localStorage.get('latitude',''),longitude:localStorage.get('longitude',''),
+            }}).then(res=>{
+                    document.adapter().refresh(res);
+                });
+            };
+        </script>
+    </footer>
+</listView>

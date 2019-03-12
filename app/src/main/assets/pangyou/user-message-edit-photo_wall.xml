@@ -1,0 +1,74 @@
+<listView>
+    <header>
+        <text id="header" background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="48,#ffffff">返回</lp>
+            <cp font="48,#ffffff">相片墙</cp>
+            <rp margin="0,0,42,0" font="42,#e6f7fc" click="
+            document.isEdit = !document.isEdit;
+            document.toggleEdit();
+">编辑</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <item type="grid" num="4" padding="8,40,8,0">
+            <photoWall
+                look="alert('点击查看大图')"
+                add="document.album({clear:true}).then(res=>{
+                    let files = [];
+                    for(let one of res){
+                        let file2 = one.split('\.');
+                        let random = Math.random()+'';
+                        let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+                        files.push({key,file:one});
+                    }
+                    Aliput.putFiles(files).then(urls=>{
+                        let createSrcList = [];
+                        for(let url of urls){
+                            createSrcList.push(url);
+                        }
+                        ServerAgent.invoke('user-changeDocs',{type:'image',operation:'add',createSrcList}).then(res=>{
+                            alert('上传成功');
+                            document.adapter().upload(res);
+                        });
+                    });
+                })"
+            />
+        </item>
+    </body>
+    <footer background="#e5effb">
+        <text id="deleteBtn" margin="240,0,240,60" radius="60" height="120" background="#5c9afd" click="
+        ServerAgent.invoke('user-changeDocs',{type:'image',operation:'delete',deleteIds:document.adapter().getDeleteList()}).then(res=>{
+                    alert('删除成功');
+                    ServerAgent.invoke('user-docs',{type:'image',uid:localStorage.get('uid',0),limit:10000}).then(res=>{
+                        res.data.push({type:'add'});
+                        document.adapter().refresh(res.data);
+                        document.isEdit = false;
+                        document.toggleEdit();
+                    });
+                })">
+            <cp font="#e6f7fc,51">删除</cp>
+        </text>
+        <script>
+            document.isEdit = false;
+            ServerAgent.invoke('user-docs',{type:'image',uid:localStorage.get('uid',0),limit:10000}).then(res=>{
+                res.data.push({type:'add'});
+                document.adapter().refresh(res.data);
+            });
+            let header = document.$('header');
+            let deleteBtn = document.$('deleteBtn');
+            document.toggleEdit = ()=>{
+                if(document.isEdit){
+                    deleteBtn.show(true);
+                    header.get('rp').set({p:'取消'});
+                    document.adapter().edit(true);
+                }else{
+                    deleteBtn.show(false);
+                    header.get('rp').set({p:'编辑'});
+                    document.adapter().edit(false);
+                }
+            };
+            document.toggleEdit();
+        </script>
+    </footer>
+</listView>

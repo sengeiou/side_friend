@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zk.tool.zkapp_call">
+    <application>
+        <activity
+            android:name=".demo.CreateActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".ZKCallActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity android:name=".demo.RoomActivity" android:screenOrientation="portrait" />
+    </application>
+</manifest>

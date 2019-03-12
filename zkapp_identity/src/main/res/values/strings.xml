@@ -1,0 +1,19 @@
+<resources>
+    <string name="splash_text" translatable="false">Face Recognition</string>
+    <string name="main_item_face_register" translatable="false">人脸注册</string>
+    <string name="main_item_face_recognition" translatable="false">人脸识别 1v1</string>
+    <string name="main_item_face_recognition_n" translatable="false">人脸识别 1vN</string>
+    <string name="main_item_face_recognition_id" translatable="false">人脸识别 公安验证</string>
+    <string name="main_item_face_live" translatable="false">活体检测</string>
+    <string name="main_item_face_detect" translatable="false">人脸图像采集</string>
+    <string name="main_item_face_lite" translatable="false">人脸图像验证</string>
+    <string name="main_item_face_bank_cards" translatable="false">银行卡</string>
+    <string name="main_item_face_id_cards" translatable="false">身份证</string>
+    <string name="main_item_face_delete" translatable="false">删除功能</string>
+    <string name="play" translatable="false">play</string>
+    <string name="stop_playback" translatable="false">stop playback</string>
+    <string name="stop" translatable="false">stop</string>
+    <string name="record" translatable="false">record</string>
+    <string name="stop_recording" translatable="false">stop recording</string>
+    <string name="zero" translatable="false">0</string>
+</resources>

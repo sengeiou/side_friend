@@ -1,0 +1,76 @@
+<plain>
+    <header>
+        <text id="header" height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,48">返回</lp>
+            <cp font="48,#ffffff">工作信息</cp>
+            <rp font="42,#ffffff" margin="0,0,42,0" click="
+            if(document.arguments().isAdd){
+                ServerAgent.invoke('user-changeDocs',{
+                    type:'workMessage',operation:'add',createSrcList:[JSON.stringify(document.getExperience())]
+                }).then(res=>{
+                    alert('添加成功');
+                    document.finish();
+                });
+            }else{
+                ServerAgent.invoke('user-changeDocs',{
+                    type:'workMessage',operation:'delete',deleteIds:[document.arguments().docId]
+                }).then(res=>{
+                    alert('删除成功');
+                    document.finish();
+                });
+            }
+            ">添加</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text id="compant_name" height="144" background="#ffffff">
+            <lp font="#171718,45" margin="39,0,0,0">公司名称</lp>
+            <input font="#8c8c8e" hint="请输入完整的公司名称" margin="20,0,0,0"/>
+        </text>
+        <text id="time" height="144" background="#ffffff" margin="0,2,0,0">
+            <lp font="#171718,45" margin="39,0,0,0">工作时间</lp>
+            <input font="#8c8c8e" hint="2015.06-2016.05" margin="20,0,0,0"/>
+        </text>
+        <text id="job" height="144" background="#ffffff" margin="0,2,0,0">
+            <lp font="#171718,45" margin="39,0,0,0">部门/职位</lp>
+            <input font="#8c8c8e" hint="请输入你所在的部门或职位" margin="20,0,0,0"/>
+        </text>  
+        <text id="context" height="144" background="#ffffff" margin="0,2,0,0">
+            <lp font="#171718,45" margin="39,0,0,0">工作介绍</lp>
+            <input font="#8c8c8e" hint="简要描述工作内容或项目内容" margin="20,0,0,0"/>
+        </text>
+        <text id="save" height="144" background="#5c9afd" margin="120,120,120,120" radius="72" click="ServerAgent.invoke('user-changeDocs',{
+            type:'workMessage',operation:'change',changeId:document.arguments().docId,changeSrc:JSON.stringify(document.getExperience())
+        }).then(res=>{
+            alert('修改成功');
+            document.finish();
+        })">
+            <cp font="48,#ffffff">修改</cp>
+        </text>
+    </body>
+    <footer>
+        <script>
+            let isAdd = document.arguments().isAdd;
+            if(isAdd){
+                document.$('save').show(false);
+            }else{
+                document.$('header').get('rp').set({p:'删除',color:'#ff0000'});
+                document.$('save').show(true);
+                let experienceMessage = JSON.parse(document.arguments().src);
+                document.$('compant_name').get('input').set(experienceMessage.compant_name);
+                document.$('time').get('input').set(experienceMessage.time);
+                document.$('job').get('input').set(experienceMessage.job);
+                document.$('context').get('input').set(experienceMessage.context);
+            };
+            document.getExperience = ()=>{
+                return {
+                    compant_name:document.$('compant_name').val(),
+                    time:document.$('time').val(),
+                    job:document.$('job').val(),
+                    context:document.$('context').val(),
+                };
+            };
+        </script>
+    </footer>
+</plain>

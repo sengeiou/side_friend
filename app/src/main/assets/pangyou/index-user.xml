@@ -1,0 +1,119 @@
+<plain clip="#5c9afd,2" padding="0,bar,0,0">
+    <header>
+        <text height="144" background="#5c9afd">
+            <cp font="#e5effb,48">个人中心</cp>
+        </text>
+    </header>
+    <body background="#f2f2f2">
+        <user_message id="headerImage" style="header" click="
+            ServerAgent.invoke('user-requireLogin').then(res=>{
+                document.open(res.role==='enterprise'?'pangyou/enterprise-center.xml':'pangyou/user-message.xml',{uid:res.uid});
+            });"/>
+        <text id="nickname" padding="0,30,0,0" background="#ffffff">
+            <cp font="48,#171718">上海科技有限公司</cp>
+        </text>
+        <text id="role" padding="0,18,0,30" background="#ffffff">
+            <cp font="42,#8c8c8c">(企业)</cp>
+        </text>
+        <text id="moneyShow" height="144" background="#ffffff">
+            <limg attr="42" margin="114,0,18,0" src="img/user/余额.png"/>
+            <lp font="42,#8c8c8e">余额:¥</lp>
+            <lp font="42,#8c8c8e">0.00</lp>
+            <rimg attr="42" margin="0,0,18,0" src="img/user/收益.png"/>
+            <rp font="42,#8c8c8e">收益:¥</rp>
+            <rp font="42,#8c8c8e" margin="0,0,114,0">0.00</rp>
+        </text>
+        <group id="userBtns" margin="0,30,0,0" padding="0,60,0,60" background="#ffffff" num="3" img-attr="84" bp-margin="0,56,0,0" bp-font="#171718,36">
+            <button click="
+            ServerAgent.invoke('user-requireLogin').then(res=>{
+                document.open('pangyou/wallet.xml');
+            });">
+                <img src="img/user/钱包.png"/>
+                <bp>我的钱包</bp>
+            </button>
+            <button click="
+            let uid = localStorage.get('uid',0);
+            if(uid===0){
+                alert('请登录');
+                return;
+            }
+            document.open('pangyou/credit.xml',{uid})">
+                <img src="img/user/信用.png"/>
+                <bp>信用管理</bp>
+            </button>
+            <button click="alert('暂无')">
+                <img src="img/user/社保通.png"/>
+                <bp>社保通</bp>
+            </button>
+        </group>
+        <text height="144" id="userAuthentication" click="
+        ServerAgent.invoke('user-requireLogin').then(res=>{
+            document.open('pangyou/user-message-edit.xml')
+        });" margin="0,30,0,0" background="#ffffff">
+            <limg src="img/smile.png" attr="42" margin="42,0,24,0"/>
+            <lp  font="48,#171718">信息认证</lp>
+            <rimg attr="54" src="img/normal/right_w_arrow.png" margin="0,0,39,0"/>
+        </text>
+        <text height="144" id="insurance" click="alert('暂无')" margin="0,3,0,0" background="#ffffff">
+            <limg src="img/user/认证.png" attr="42" margin="42,0,24,0"/>
+            <lp  font="48,#171718">我的保险</lp>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="0,0,42,0"/>
+        </text>
+        <!--<text id="studio" click="alert('暂无')" height="144" margin="0,3,0,0"  background="#ffffff">-->
+            <!--<limg src="img/user/个人工作室注册.png" attr="42" margin="42,0,24,0"/>-->
+            <!--<lp  font="48,#171718">个人工作室待注册</lp>-->
+            <!--<rimg attr="54" src="img/user/address.png" margin="0,0,39,0"/>-->
+        <!--</text>-->
+        <text height="144" id="enterpriseAuthentication" click="document.open('pangyou/enterprise-message.xml')" margin="0,30,0,0" background="#ffffff">
+            <limg src="img/user/认证.png" attr="42" margin="42,0,24,0"/>
+            <lp  font="48,#171718">企业认证</lp>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="0,0,42,0"/>
+        </text>
+        <!--<text click="document.open('pangyou/address-manage.xml')" height="144" margin="0,3,0,0"  background="#ffffff">-->
+            <!--<limg src="img/user/地址.png" attr="42" margin="42,0,24,0"/>-->
+            <!--<lp  font="48,#171718">常用地址</lp>-->
+            <!--<rimg attr="54" src="img/user/address.png" margin="0,0,39,0"/>-->
+        <!--</text>-->
+        <text margin="0,30,0,0" height="144" background="#ffffff" click="document.open('pangyou/user-share.xml')" >
+            <limg src="img/user/分享.png" attr="42" margin="42,0,24,0"/>
+            <lp  font="48,#171718">分享·推广</lp>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="0,0,39,0"/>
+        </text>
+        <text margin="0,3,0,0" height="144" background="#ffffff" click="document.open('pangyou/authentication-question.xml')">
+            <limg src="img/user/帮助.png" attr="42" margin="42,0,24,0"/>
+            <lp  font="48,#171718">帮助中心</lp>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="0,0,39,0"/>
+        </text>
+        <text click="document.open('pangyou/set.xml')" height="144" margin="0,3,0,0" background="#ffffff">
+            <limg src="img/user/设置.png" attr="42" margin="42,0,24,0"/>
+            <lp  font="48,#171718">设置</lp>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="0,0,39,0"/>
+        </text>
+    </body>
+    <footer>
+        <script>
+            document.onResume = ()=>{
+                let role = localStorage.get('role','');
+                document.$('userAuthentication').show(role!=='enterprise');
+                document.$('enterpriseAuthentication').show(role==='enterprise');
+                document.$('userBtns').show(role!=='enterprise');
+                document.$('insurance').show(role!=='enterprise');
+                document.$('moneyShow').get('rp').set({p:role==='enterprise'?'垫付':'收益'});
+                if(role === ''){
+                    document.$('moneyShow').get('rp',2).set({p:0.00+''});
+                    document.$('moneyShow').get('lp',2).set({p:0.00+''});
+                    document.$('nickname').get('cp').set({p:'未登录'});
+                    document.$('role').get('cp').set({p:'点击登录'});
+                }else{
+                    ServerAgent.invoke('bill-balance').then(res=>{
+                        document.$('moneyShow').get('rp',2).set({p:res.balance+''});
+                        document.$('moneyShow').get('lp',2).set({p:res.advancePay+''});
+                    });
+                    document.$('headerImage').setData({img:localStorage.get('img','')});
+                    document.$('nickname').get('cp').set({p:localStorage.get('nickname','')});
+                    document.$('role').get('cp').set({p:localStorage.get('role','')==='enterprise'?'(企业)':'(普通用户)'});
+                }
+            };
+        </script>
+    </footer>
+</plain>

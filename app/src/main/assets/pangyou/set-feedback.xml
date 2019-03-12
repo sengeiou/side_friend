@@ -1,0 +1,69 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg src="img/normal/left_w_arrow.png" attr="60" margin="42,0,12,0" click="document.finish()"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="51,#ffffff">意见反馈</cp>
+            <rp font="#ffffff,42" margin="0,0,42,0" click="
+    document.additionalMessage.text = document.$('description').val();
+    ServerAgent.invoke('set-feedback',{additionalMessage:document.additionalMessage}).then(res=>{
+        alert('反馈成功');
+        document.finish();
+    });
+">提交</rp>
+        </text>
+    </header>
+    <body background="#f2f2f2">
+        <text style="input" background="#ffffff" height="370" id="description" padding="39">
+            <input hint="详细描述你所提供的共享品特征及可共享的时间，方便预约者清楚了解。至少输入20个字" watch="(text)=>{
+                let length = text.length;
+                if(length > 200){
+                    alert('最多200字');
+                    document.$('description').get('input').set({p:text.slice(0,200)});
+                    return;
+                }else{
+                    document.$('textNum').get('rp').set(length+'/200');
+                }
+            }" />
+        </text>
+        <text background="#ffffff" id="textNum">
+            <limg attr="48" click="
+    document.album({select:4}).then(res=>{
+        let files = [];
+        let data = [];
+        for(let one of res){
+            let file2 = one.split('\.');
+            let random = Math.random()+'';
+            let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+            files.push({key,file:one});
+            data.push({type:'image',url:one});
+        }
+        document.$('editAdd').adapter().refresh(data);
+        Aliput.putFiles(files).then(urls=>{
+            document.additionalMessage.image = [];
+            for(let url of urls){
+                document.additionalMessage.image.push(url);
+            }
+        });
+    });
+" margin="42,30,0,30" src="img/task/add_img.png" />
+            <limg attr="48" margin="36,30,0,30" src="img/task/add_video.png" />
+            <limg attr="48" margin="36,30,0,30" src="img/task/add_audio.png" />
+            <rp font="36,#171718" margin="0,0,60,0">0/200</rp>
+        </text>
+        <recycle id="editAdd" margin="39,0,39,0" orientation="horizontal">
+            <editAdd click="alert('你好')" />
+        </recycle>
+    </body>
+    <footer>
+        <script>
+
+            document.additionalMessage = {
+                text : '',
+                image : [],
+                audio:[],
+                video:[],
+            };
+        </script>
+    </footer>
+</plain>

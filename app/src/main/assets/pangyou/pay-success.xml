@@ -1,0 +1,16 @@
+<plain>
+    <header>
+        <text click="document.next({back:'finish'})">
+            <lp>返回</lp>
+            <cp>支付成功</cp>
+        </text>
+    </header>
+    <body>
+        <script>
+            document.onBack = ()=>{
+                document.next({back:'finish'});
+                return false;
+            };
+        </script>
+    </body>
+</plain>

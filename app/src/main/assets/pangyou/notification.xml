@@ -1,0 +1,28 @@
+<listview>
+    <header>
+        <text>
+            <limg src="img/normal/left_w_arrow.png" attr="40" margin="10,0,10,0" click="document.finish()"/>
+            <lp click="document.finish()">返回</lp>
+            <cp>消息通知</cp>
+        </text>
+    </header>
+    <body>
+        <item>
+            <notification></notification>
+        </item>
+    </body>
+    <footer>
+        <script>
+            let b = {time:'2018-10=18 16:45',notification:'陷阵之志，有死无生'}
+            let a = {time:'2018-10=28 16:45',notification:'我在杀戮中绽放，亦如黎明前花朵'};
+            let c = {time:'2018-10=15 16:45',notification:'德玛西亚万岁'};
+            let d = {time:'2018-10=16 16:45',notification:'游走于刀尖之上，刀下生，刀下死'};
+            let t = [];
+            t.push(a);
+            t.push(b);
+            t.push(c);
+            t.push(d);
+            document.adapter().refresh(t);
+        </script>
+    </footer>
+</listview>

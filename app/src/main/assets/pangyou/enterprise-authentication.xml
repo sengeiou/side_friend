@@ -1,0 +1,117 @@
+<plain>
+    <header>
+        <text id="header" height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">企业认证</cp>
+            <rp font="42,#ffffff" click="
+            ServerAgent.invoke('enterprise-authentication',Object.assign(document.getDoc(),{isSubmit:false})).then(res=>{
+                alert('保存成功');
+            })" margin="0,0,42,0">保存</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text id="logo" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">企业logo</lp>
+            <rimg attr="60" val="document.arguments().logo"/>
+            <rimg attr="60" src="img/normal/right_arrow.png" margin="45,0,45,0"/>
+        </text>
+        <text id="name" rw="0" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">企业名称</lp>
+            <input hint="请输入企业名称" padding="0,0,45,0" val="document.arguments().name" gravity="right|center"/>
+        </text>
+        <text id="unifiedCreditCode" rw="0" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">企业统一信用码</lp>
+            <input val="document.arguments().unifiedCreditCode" hint="请输入统一信用码" padding="0,0,45,0" gravity="right|center"/>
+        </text>
+        <text rw="0" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">企业注册地址:</lp>
+        </text>
+        <text lw="0" id="address" rw="0" background="#ffffff" height="144" margin="0,2,0,0">
+            <input val="document.arguments().address" hint="请输入企业注册地址" padding="45,0,45,0" />
+        </text>
+        <text id="corporation" rw="0" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">联系人</lp>
+            <input val="document.arguments().corporation" hint="请输入法人姓名" padding="0,0,45,0" gravity="right|center"/>
+        </text>
+        <text id="corporationPhone" rw="0" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">联系方式</lp>
+            <input val="document.arguments().corporationPhone" hint="(选填)" padding="0,0,45,0" gravity="right|center"/>
+        </text>
+        <text id="idCard" background="#ffffff" height="144" margin="0,2,0,0" click="document.open('pangyou/enterprise-authentication-idcard.xml',{
+                idCardPositive:document.enterpriseDoc.idCardPositive,
+                idCardNegative:document.enterpriseDoc.idCardNegative,
+        }).then(res=>{
+            document.enterpriseDoc.idCardPositive = res.idCardPositive;
+            document.enterpriseDoc.idCardNegative = res.idCardNegative;
+            console.log('身份证',res);
+        })">
+            <lp margin="42,0,0,0" font="#000000,42">法人身份证</lp>
+            <rp>上传</rp>
+            <rimg attr="60" margin="20,0,45,0" src="img/normal/right_arrow.png"/>
+        </text>
+        <text id="enterprisePhone" rw="0" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">公司固话</lp>
+            <input val="document.arguments().enterprisePhone" hint="请输入公司固话" padding="0,0,45,0" gravity="right|center"/>
+        </text>
+        <text background="#ffffff" height="144" margin="0,20,0,2" click="document.open('pangyou/enterprise-authentication-business_license.xml',{businessLicense:document.enterpriseDoc.businessLicense}).then(res=>{
+            document.enterpriseDoc.businessLicense = res.businessLicense;
+        })">
+            <lp margin="42,0,0,0" font="#000000,42">营业执照</lp>
+            <rp>上传</rp>
+            <rimg attr="60" margin="20,0,45,0" src="img/normal/right_arrow.png"/>
+        </text>
+        <text id="save" click="
+        ServerAgent.invoke('enterprise-authentication',Object.assign(document.getDoc(),{isSubmit:true})).then(res=>{
+            alert('提交成功,请耐心等待');
+            document.finish();
+        })" height="144" margin="120" radius="72" background="#5c9afd">
+            <cp font="48,#ffffff">提交审核</cp>
+        </text>
+    </body>
+    <footer>
+        <script>
+            document.enterpriseDoc = {
+                logo:document.arguments().logo,
+                name:document.arguments().name,
+                unifiedCreditCode:document.arguments().unifiedCreditCode,
+                corporation:document.arguments().corporation,
+                corporationPhone:document.arguments().corporationPhone,
+                idCardPositive:document.arguments().idCardPositive,
+                idCardNegative:document.arguments().idCardNegative,
+                enterprisePhone:document.arguments().enterprisePhone,
+                businessLicense:document.arguments().businessLicense,
+                address:document.arguments().address,
+            };
+            let saveBtn = document.$('save');
+            let headerBtn = document.$('header');
+            switch(document.arguments().isExamine){
+                case -1:
+                    break;
+                case 0:
+                    headerBtn.get('rp').set({p:''});
+                    saveBtn.get('cp').set({p:'请耐心等待审核结果'});
+                    break;
+                case 1:
+                    headerBtn.get('rp').set({p:''});
+                    saveBtn.get('cp').set({p:'审核已经通过'});
+                    break;
+            }
+            document.getDoc = ()=>{
+                let name = document.$('name').val();
+                let unifiedCreditCode = document.$('unifiedCreditCode').val();
+                let corporation = document.$('corporation').val();
+                let corporationPhone = document.$('corporationPhone').val();
+                let enterprisePhone = document.$('enterprisePhone').val();
+                let address = document.$('address').val();
+                document.enterpriseDoc.name = name;
+                document.enterpriseDoc.unifiedCreditCode = unifiedCreditCode;
+                document.enterpriseDoc.corporation = corporation;
+                document.enterpriseDoc.corporationPhone = corporationPhone;
+                document.enterpriseDoc.enterprisePhone = enterprisePhone;
+                document.enterpriseDoc.address = address;
+                return document.enterpriseDoc;
+            };
+        </script>
+    </footer>
+</plain>

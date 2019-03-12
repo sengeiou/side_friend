@@ -1,0 +1,14 @@
+<listView>
+    <header>
+        <text>
+            <lp click="document.finish()">返回</lp>
+            <cp>添加朋友</cp>
+        </text>
+    </header>
+    <body>
+        <text id="searchUser">
+            <input hint="按名字搜索"/>
+            <rp click="alert('搜索功能暂无')">搜索</rp>
+        </text>
+    </body>
+</listView>

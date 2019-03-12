@@ -1,0 +1,142 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg attr="40" click="document.finish()" margin="10,0,10,0"
+                src="img/normal/left_w_arrow.png" />
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="#ffffff,42">评价</cp>
+            <rp click="
+               console.log(document.receiverEvaluate.additionalMessage);
+               ServerAgent.invoke('Task-serviced',{
+                    taskId:document.arguments().taskId,
+                    isMessageMatch:!document.receiverEvaluate.isMessageMatch,
+                    content:document.$('input').val(),
+                    isSatisfyAttitude:!document.receiverEvaluate.isSatisfyAttitude,
+                    isTaskMatch:document.receiverEvaluate.isTaskMatch,
+                    additionalMessage:document.receiverEvaluate.additionalMessage,
+                    advancePay:Number(document.$('advancePay').val()),
+                }).then(res=>{
+                    alert('等待对方确认');
+                    ServerAgent.invoke('chat-isApplyFriend',{otherId:document.arguments().otherUid}).then(res=>{
+                       if(!res.isFriend){
+                            document.dialog('pangyou/chat-add_friend_dialog.xml',res).then(res=>{
+                                document.finish();
+                            });
+                       }else document.finish();
+                    });
+                });" font="42,#ffffff" margin="0,0,39,0">提交</rp>
+        </text>
+    </header>
+
+    <body background="#e5effb">
+        <text background="#ffffff" height="144">
+            <cp font="42,#6f7072">服务等级评价</cp>
+        </text>
+        <ratingbar style="2" id="ratingbar" />
+        <text height="36" background="#ffffff"/>
+
+        <text id="isMessageMatch" margin="0,3,0,0" height="144" background="#ffffff">
+            <lp font="42,#171718" margin="36,0,0,0">服务者信息是否真实有效</lp>
+            <rimg attr="48" click="document.changeStatus('isMessageMatch')"
+                src="img/task/choice_off.png" />
+            <rp click="document.changeStatus('isMessageMatch')" font="39,#171718"
+                gravity="left|center" padding="12,0,0,0" width="240">不匹配</rp>
+        </text>
+        <text id="isTaskMatch" height="144" background="#ffffff">
+            <lp font="42,#171718" margin="36,0,0,0">任务信息是否匹配</lp>
+            <rimg attr="48" click="document.changeStatus('isTaskMatch')"
+                src="img/task/choice_off.png" />
+            <rp click="document.changeStatus('isTaskMatch')" font="39,#171718" gravity="left|center"
+                padding="12,0,0,0" width="240">否</rp>
+        </text>
+        <text id="isSatisfyAttitude" height="144" background="#ffffff">
+            <lp font="42,#171718" margin="36,0,0,0">雇主态度</lp>
+            <rimg attr="48" click="document.changeStatus('isSatisfyAttitude')"
+                src="img/task/choice_off.png" />
+            <rp click="document.changeStatus('isSatisfyAttitude')" font="39,#171718"
+                gravity="left|center" padding="12,0,0,0" width="240">不好</rp>
+        </text>
+        <text id="advancePay" height="144">
+            <input hint="请输入垫付金额"/>
+        </text>
+
+        <text style="input" background="#e5effb" height="470" id="input" padding="39">
+            <input hint="为了维护您的利益及他人的安全，请您简要描述信息不符的地方
+
+简述一下整个服务的感受吧" watch="(text)=>{
+                let length = text.length;
+                if(length > 200){
+                    alert('最多200字');
+                    document.$('description').get('input').set({p:text.slice(0,200)});
+                    return;
+                }else{
+                    document.$('textNum').get('rp').set(length+'/200');
+                }
+            }" />
+        </text>
+
+
+        <text background="#e5effb" id="textNum">
+            <limg attr="48" click="
+        document.album({select:4}).then(res=>{
+            let files = [];
+            let data = [];
+            for(let one of res){
+                let file2 = one.split('\.');
+                let random = Math.random()+'';
+                let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+                files.push({key,file:one});
+                data.push({type:'image',url:one});
+            }
+            document.$('editAdd').adapter().refresh(data);
+            Aliput.putFiles(files).then(urls=>{
+                document.receiverEvaluate.additionalMessage.image = [];
+                for(let url of urls){
+                    document.receiverEvaluate.additionalMessage.image.push(url);
+                }
+            });
+    });
+" margin="42,30,0,30" src="img/task/add_img.png" />
+            <limg attr="48" margin="36,30,0,30" src="img/task/add_video.png" />
+            <limg attr="48" margin="36,30,0,30" src="img/task/add_audio.png" />
+            <rp font="36,#171718" margin="0,0,60,0">0/200</rp>
+        </text>
+        <recycle id="editAdd" orientation="horizontal">
+            <editAdd click="alert('你好')" />
+        </recycle>
+        <script>
+            document.receiverEvaluate = {
+            isMessageMatch:false,
+            content:'',
+            isTaskMatch:false,
+            advancePay:0,
+            isSatisfyAttitude:false,
+            additionalMessage:{
+            text:'',
+            image:[],
+            audio:[],
+            video:[],
+            },
+            };
+
+            document.changeStatus = (id)=>{
+            document.receiverEvaluate[id] = !document.receiverEvaluate[id];
+            document.$(id).get('rimg').set({src:document.receiverEvaluate[id]?'img/task/choice_on.png':'img/task/choice_off.png'});
+            if(document.receiverEvaluate[id]){
+            if(id === 'isSatisfyAttitude'){
+            document.$('ratingbar').minus({number:1,nums:document.$('ratingbar').val()+''});
+            }else{
+            document.$('ratingbar').minus({number:2,nums:document.$('ratingbar').val()+''});
+            }
+            }else{
+            if(id === 'isSatisfyAttitude'){
+            document.$('ratingbar').add({number:1,nums:document.$('ratingbar').val()+''});
+            }else{
+            document.$('ratingbar').add({number:2,nums:document.$('ratingbar').val()+''});
+            }
+            }
+            };
+            document.$('advancePay').show(document.arguments().isNeedAdvancePay);
+        </script>
+    </body>
+</plain>

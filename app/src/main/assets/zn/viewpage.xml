@@ -1,0 +1,26 @@
+<viewPage>
+    <header>
+        <text click="document.dialog('zn.dialog.xml',{jjj:'fefefe'}).then(res=>{
+            console.log('dialog result',res);
+        })"><lp>viewpage</lp></text>
+        <text click="document.addPage({src:'zn.listview.xml',title:'fra1',data:{name:'added data 1'}})">
+            <lp>addPage</lp>
+        </text>
+        <text click="document.delete('welcome2');">
+            <lp>deletePage welcome2</lp>
+        </text>
+        <text click="document.delete('fra4');">
+            <lp>deletePage fra4</lp>
+        </text>
+        <text click="document.delete('fra1');">
+            <lp>deletePage fra1</lp>
+        </text>
+    </header>
+    <body change="true" refresh="" load="">
+        <page src="zn.listview.xml" data="{name:'aaa1',title:'1'}">fra1</page>
+        <page src="zn.listview.xml" data="{name:'aaa2',http:'asdf'}">fra2</page>
+        <page src="zn.listview.xml" data="{name:'aaa3'}">fra3</page>
+        <page src="zn.plain.xml">welcome2</page>
+        <page src="zn.listview.xml" data="{name:'aaa5'}">fra4</page>
+    </body>
+</viewPage>

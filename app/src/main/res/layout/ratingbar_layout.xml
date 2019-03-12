@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#e5effb"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="#e5effb"
+        android:orientation="horizontal"
+        android:layout_height="48dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="XXX"
+            android:textSize="14sp"
+            android:textColor="#6f7072"
+            android:id="@+id/wenzi_tv"
+            android:layout_marginLeft="13dp"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content" />
+        <com.zankong.tool.side_friend.diy_view.evaluate.BatingBarView1
+            android:id="@+id/rb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:selectedNumber="0"
+            app:startTotalNumber="5"
+            app:starDistance="2dp"
+            android:clickable="false"
+            android:layout_marginLeft="4dp"
+            app:starEmptyRes="@mipmap/rating"
+            app:starHalfRes="@mipmap/rating1"
+            app:starIsFull="false"
+            app:starSelectedRes="@mipmap/rating1"/>
+    </LinearLayout>
+
+</LinearLayout>

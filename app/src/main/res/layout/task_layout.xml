@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="13dp"
+    android:layout_marginLeft="13dp"
+    android:layout_marginTop="4dp"
+    android:background="#e5effb"
+    android:orientation="vertical">
+    <include layout="@layout/task_layout_info"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_radius"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="接单者预约要求"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#8c8c8e"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/claim_tv"
+            android:layout_marginRight="12dp"
+            android:text=""
+            android:textColor="#171718"
+            android:textSize="14sp" />
+    </LinearLayout>
+  <include layout="@layout/task_service"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"/>
+    <include layout="@layout/task_layout2"/>
+
+    <include layout="@layout/task_other"/>
+</LinearLayout>

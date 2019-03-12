@@ -1,0 +1,22 @@
+<plain clip="1,#ffffff">
+    <header background="#ffffff">
+        <text height="144">
+            <rimg attr="40" margin="0,0,52,0" click="document.finish()" src="img/normal/null.png"/>
+        </text>
+    </header>
+    <body background="#ffffff">
+        <text margin="0,320,0,0">
+            <cimg attr="225" src="img/logo.png"/>
+        </text>
+        <text radius="72" height="144" background="#5c9afd" margin="120,423,120,0" click="
+        document.open('pangyou/login-index.xml');
+        document.finish();">
+            <cp font="#ffffff,50">个人登录</cp>
+        </text>
+        <text radius="72" border="#5c9afd,2" height="144" background="#ffffff" margin="120,72,120,0" click="
+        document.open('pangyou/enterprise-login.xml');
+        document.finish();">
+            <cp font="#5c9afd,50">企业登录</cp>
+        </text>
+    </body>
+</plain>

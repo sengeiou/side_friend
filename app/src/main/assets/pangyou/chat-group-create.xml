@@ -1,0 +1,32 @@
+<linearlayout>
+    <header>
+        <text background="#5c9afd" height="150" id="title">
+            <limg attr="60" margin="13,0,0,0" src="img/normal/left_w_arrow.png" click="document.finish();"/>
+            <lp font="40,#ffffff" click="document.finish()">返回</lp>
+            <cp font="40,#ffffff">发起群聊</cp>
+            <rp font="40,#ffffff" margin="0,0,43,0" click="
+            let list = document.$('mail').val();
+            let uids = [];
+            for(let user of list){
+
+                uids.push(user.uid);
+
+            }
+            ServerAgent.invoke('chat-create-group',{uids}).then(res=>{
+                document.finish();
+                ServerAgent.invoke('chat-openHouse',{houseId:res.id}).then(res=>{
+                    document.open(res.openUrl,res);
+                })
+            });
+">确定</rp>
+        </text>
+    </header>
+    <body>
+        <maillist id="mail" style="2"/>
+        <script>
+            ServerAgent.invoke('chat-contacts').then(res=>{
+                document.$('mail').set(res);
+            });
+        </script>
+    </body>
+</linearlayout>

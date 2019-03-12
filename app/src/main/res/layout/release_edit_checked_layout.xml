@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="议价"
+            android:textColor="#171718"
+            android:layout_marginLeft="13dp"
+            android:id="@+id/type_tv_left"
+            android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:layout_height="wrap_content"
+            />
+        <LinearLayout
+            android:layout_width="160.3dp"
+            android:orientation="horizontal"
+            android:layout_marginRight="20dp"
+            android:id="@+id/radio_group"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:id="@+id/layout_01"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/release_nor"
+                    android:id="@+id/img_01"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="#8c8c8e"
+                    android:text="dddddddd"
+                    android:lines="1"
+                    android:id="@+id/tv_01"
+                    android:layout_marginLeft="2.3dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+          <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+              android:id="@+id/layout_02"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/release_nor"
+                    android:id="@+id/img_02"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="#8c8c8e"
+                    android:text="dddddddd"
+                    android:id="@+id/tv_02"
+                    android:lines="1"
+                    android:layout_marginLeft="2.3dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

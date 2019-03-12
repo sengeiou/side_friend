@@ -1,0 +1,29 @@
+<frame  clip="#5c9afd,2" padding="0,bar,0,0">
+    <header>
+        <text background="#5c9afd" height="144" id="headers">
+            <cp margin="0,0,102,0" font="40,#e6f7fc" click="document.showFragment(0);document.$('headers').get('cp').set({font:'#ffffff,51'});document.$('headers').get('cp',2).set({font:'#e6f7fc,40'})">所有消息</cp>
+            <cp font="40,#e6f7fc" click="document.showFragment(1);document.$('headers').get('cp',2).set({font:'#ffffff,51'});document.$('headers').get('cp').set({font:'#e6f7fc,40'})">通讯录</cp>
+            <rimg click="
+            document.popup('pangyou/contacts-dialog.xml',
+            document.$('headers').get('rimg').getView()).then(res=>{
+                if(res.btn){
+                    switch (res.btn){
+                        case 1:
+                            document.open('pangyou/chat-group-create.xml');
+                            break;
+                        case 2:
+                            document.open('pangyou/contacts-apply_list.xml');
+                            break;
+                    }
+                }
+            });" margin="0,0,42,0" src="img/chat/add.png" attr="54"/>
+        </text>
+        <script>
+            document.$('headers').get('cp').set({font:'#ffffff,51'});
+        </script>
+    </header>
+    <body>
+        <page src="pangyou/contacts-news.xml"/>
+        <page src="pangyou/contacts-mail_list.xml"/>
+    </body>
+</frame>

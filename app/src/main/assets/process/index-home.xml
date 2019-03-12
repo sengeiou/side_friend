@@ -1,0 +1,43 @@
+<listView>
+    <body>
+        <group num="3">
+            <button>
+                <img attr="150,150" radius="6" src="img.cat.jpg"/>
+                <bp>客户总表</bp>
+            </button>
+            <button>
+                <img attr="150,150" radius="6" src="img.cat.jpg"/>
+                <bp>系统报价</bp>
+            </button>
+            <button>
+                <img attr="150,150" radius="6" src="img.cat.jpg"/>
+                <bp>合同列表</bp>
+            </button>
+            <button>
+                <img attr="150,150" radius="6" src="img.cat.jpg"/>
+                <bp>订单列表</bp>
+            </button>
+            <button>
+                <img attr="150,150" radius="6" src="img.cat.jpg"/>
+                <bp>员工管理</bp>
+            </button>
+            <button>
+                <img attr="150,150" radius="6" src="img.cat.jpg"/>
+                <bp>费用监控</bp>
+            </button>
+        </group>
+        <text>
+            <lp>个人中心信息</lp>
+        </text>
+        <verify/>
+        <p id="test">测试文字</p>
+        <p click="document.$('test').set({text:'变色了',color:'#ff0000'})">点击变色</p>
+        <p click="document.$('test').init()">点击复原</p>
+
+        <img id="img" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+        <p click="document.$('img').set('https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg')">点击变图片</p>
+        <p click="document.$('img').init()">点击复原</p>
+        <p click="document.open('process.video1.xml')">点击跳到视频播放页1</p>
+        <p click="document.open('process.video.xml')">点击跳到视频播放页</p>
+    </body>
+</listView>

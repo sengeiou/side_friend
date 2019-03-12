@@ -1,0 +1,17 @@
+<dialog height="-2">
+    <text click="document.next({credit:1})" height="144">
+        <cp>等级1</cp>
+    </text>
+    <text click="document.next({credit:2})" height="144">
+        <cp>等级2</cp>
+    </text>
+    <text click="document.next({credit:3})" height="144">
+        <cp>等级3</cp>
+    </text>
+    <text click="document.next({credit:4})" height="144">
+        <cp>等级4</cp>
+    </text>
+    <text click="document.next({credit:5})" height="144">
+        <cp>等级5</cp>
+    </text>
+</dialog>

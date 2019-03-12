@@ -1,0 +1,40 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">信息认证</cp>
+            <rp font="42,#ffffff" margin="0,0,42,0" click="document.open('pangyou/authentication-question.xml')">常见问题</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text background="#ffffff" padding="42,60,42,60">
+            <cp maxLine="3">  为了保障您的利益不受侵害及您的安全，通过实名认证及芝麻认证后，您可以安心享受旁友给你带来的便利服务。我们提倡信用、安全网络时代，从你我做起。</cp>
+        </text>
+        <text click="document.open('pangyou/authentication-id.xml')" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0">身份认证</lp>
+            <rp font="#ff0000">未认证</rp>
+            <rimg attr="60" src="img/normal/right_w_arrow.png"/>
+        </text>
+        <text id="zhima" background="#ffffff" height="144" margin="0,2,0,0" click="document.open('pangyou/authentication-zhima.xml')">
+            <lp margin="42,0,0,0">芝麻认证</lp>
+            <rp font="#ff0000">已认证</rp>
+            <rimg attr="60" src="img/normal/right_w_arrow.png"/>
+        </text>
+        <text height="144" background="#ffffff" margin="0,2,0,0" click="
+        ServerAgent.invoke('user-requireLogin').then(res=>{
+            document.open('pangyou/skill-list.xml',{lookUid:localStorage.get('uid',0)})
+        });">
+            <lp margin="42,0,0,0">技能认证</lp>
+            <rp font="#ff0000">未认证</rp>
+            <rimg attr="60" src="img/normal/right_w_arrow.png"/>
+        </text>
+    </body>
+    <footer>
+        <script>
+            ServerAgent.invoke('identity-detail').then(res=>{
+                document.$('zhima').get('rp').set({p:res?'已认证':'未认证',color:res?'#000000':'#ff0000'});
+            });
+        </script>
+    </footer>
+</plain>

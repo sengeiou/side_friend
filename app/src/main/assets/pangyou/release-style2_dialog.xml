@@ -1,0 +1,13 @@
+<dialog height="-2" width="-1" gravity="center|bottom" position="0,100">
+    <group height="300" img-attr="180" num="2" img-radius="90" radius="4" margin="0,30,0,0">
+        <button click="document.next({url:'pangyou/release-style1.xml',styleId:1,styleName:'跑腿代办'})">
+            <img src="img/release/runlet_press.png"/>
+            <bp margin="0,18,0,0" font="36,#171718">跑腿代办</bp>
+        </button>
+        <button click="document.next({url:'pangyou/release-style2.xml',styleId:2,styleName:'技能服务'})">
+            <img src="img/release/skill_press.png"/>
+            <bp margin="0,18,0,0" font="36,#171718">技能服务</bp>
+        </button>
+    </group>
+    <text margin="0,20,0,30"/>
+</dialog>

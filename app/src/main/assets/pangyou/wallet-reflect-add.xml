@@ -1,0 +1,22 @@
+<listView>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg attr="60" margin="42,0,12,0" click="document.finish()" src="img/normal/left_w_arrow.png"/>
+            <lp font="42,#ffffff" click="document.finish();">返回</lp>
+            <cp font="#ffffff,42">选择提现方式</cp>
+            <rp font="#ffffff,42" margin="0,0,42,0" click="document.open('pangyou/wallet-reflect-addblank.xml')">添加银行卡</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <item>
+            <bankCard click="document.finish()"/>
+        </item>
+        
+        
+    </body>
+    <footer>
+        <script>
+            document.adapter().refresh([{},{},{},{}]);
+        </script>
+    </footer>
+</listView>

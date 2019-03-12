@@ -1,0 +1,20 @@
+<plain>
+    <header background="#5c9afd">
+        <text height="144" background="#5c9afd">
+            <limg src="img/normal/left_w_arrow.png" click="document.finish()"/>
+            <lp font="#ffffff,42">修改群名</lp>
+        </text>
+    </header>
+    <body>
+        <text id="title" style="input">
+            <input val="document.arguments().title" hint="请输入群名"/>
+        </text>
+        <text height="144" background="#5c9afd" margin="120,360,120,20" click="
+        ServerAgent.invoke('chat-changeGroupTitle',{houseId:document.arguments().houseId,title:document.$('title').val()}).then(res=>{
+                alert('修改成功');
+                document.next({title:res.title});
+            });">
+            <cp font="48,#ffffff">保存</cp>
+        </text>
+    </body>
+</plain>

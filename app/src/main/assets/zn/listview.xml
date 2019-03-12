@@ -1,0 +1,256 @@
+<listView clip="#457859,2">
+    <header>
+        <text click="document.popup('zn.popup.xml').then(res=>{console.log(res)})">
+            <lp>lp</lp>
+            <cp>listvew</cp>
+            <rp>rp</rp>
+            <!--<limg src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>-->
+        </text>
+    </header>
+    <body refresh="" load="">
+        <text click="document.open('zn.clip.xml')">
+            <lp>to clip.xml</lp>
+        </text>
+        <text ripple="#ff00ff" background="#22ffffff">
+            <lp click="document.open('zn.listview.xml')" ripple="#ff0000" background="#88ffffff">open</lp>
+        </text>
+        <input radius="20" border="1,#ff00ff"/>
+        <group>
+            <button>
+                <p>单p</p>
+            </button>
+            <button>
+                <lp>lp</lp>
+            </button>
+            <button>
+                <lp>lp加图片</lp>
+                <img attr="30,30" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+            </button>
+            <button>
+                <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                <bp >bp</bp>
+            </button>
+            <button>
+                <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                <rp >rp</rp>
+            </button>
+            <button>
+                <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                <tp >tp</tp>
+            </button>
+            <button>
+                <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                <lp >lp</lp>
+            </button>
+            <button>
+                <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                <bp >bp</bp>
+            </button>
+            <button>
+                <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                <lp >lp</lp>
+            </button>
+        </group>
+
+        <viewPage height="400">
+            <page>
+                <group num="3">
+                    <button>
+                        <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                        <bp >bp</bp>
+                    </button>
+                    <button>
+                        <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                        <bp >bp</bp>
+                    </button>
+                    <button>
+                        <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                        <bp >bp</bp>
+                    </button>
+                    <button>
+                        <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                        <bp >bp</bp>
+                    </button>
+                    <button>
+                        <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                        <bp >bp</bp>
+                    </button>
+                    <button>
+                        <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                        <bp >bp</bp>
+                    </button>
+                </group>
+            </page>
+            <page>
+                <group num="3">
+                    <button>
+                        <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                        <bp >bp</bp>
+                    </button>
+                    <button>
+                        <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                        <bp >bp</bp>
+                    </button>
+                    <button>
+                        <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                        <bp >bp</bp>
+                    </button>
+                    <button>
+                        <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                        <bp >bp</bp>
+                    </button>
+                    <button>
+                        <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                        <bp >bp</bp>
+                    </button>
+                    <button>
+                        <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                        <bp >bp</bp>
+                    </button>
+                </group>
+            </page>
+        </viewPage>
+        <banner>
+            <img click="alert('1')" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg"/>
+            <img click="alert('2')"  src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+            <img click="alert('3')"  src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520632678&amp;di=a7055b4685f5df74fa2930b0c564525e&amp;imgtype=0&amp;src=http%3A%2F%2Fa3.topitme.com%2F1%2F85%2Fa5%2F11288532140b2a5851o.jpg"/>
+            <img click="alert('4')"  src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520665861&amp;di=6cfdd6d95b0779fc975535b48dca7113&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201407%2F12%2F20140712070327_watmA.thumb.700_0.jpeg"/>
+        </banner>
+        <img style="gif" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532347267109&amp;di=278c05bfdd6768551d9015b8422f8d43&amp;imgtype=0&amp;src=http%3A%2F%2Fwximg.404wx.com%2Fmmbiz.qpic.cn%2Fmmbiz_gif%2FLx9Ur6l8t3bibia1LzmOlAS1PAWibib778P033icWBC6RicibZnpsZZBnjgbMW5TywZicLAMTYWym0Xc2eMU46zhvmicMSA%2F0%3Fwx_fmt%3Dgif"/>
+        <p color="#ff0000">你的手机号是 <p color="#00ff00" val="'123456789'"/></p>
+        <p font="#456789" background="#f0f000" click="alert('外层点击事件')">
+            啊<p background="#0011ff">背景色</p>啊
+            啊<p font="50">字体大小</p>啊
+            啊<p font="#00ff00">字体颜色</p>啊
+            啊<p underline="true">下划线</p>啊
+            啊<p delete="true">中划线</p>啊
+            啊<p superscript="true">上标</p>啊
+            啊<p subscript="true">下标</p>啊
+            啊<p textstyle="bold" color="#124596">粗体|字体颜色</p>啊
+            啊<p textstyle="italic">斜体</p>啊
+            啊<p textstyle="italic|bold">斜体|粗体</p>啊
+        </p>
+        <img attr="250,100" blur="10" scale="centerCrop" click="Notification.notify({img:'img.splash.jpg',url:'zn.plain.xml',src:'src',content:'content'},{});" radius="20"   src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg">
+            <corner position="2" font="20,#ffff00" size="30" background="#00ffff">
+                200
+            </corner>
+        </img>
+        <card width="200" height="200" radius="10" background="#00464646" >
+            <!--<text>sdfasdf</text>-->
+            <!--<img radius="15" attr="250,200" scale="centerInside" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg"/>-->
+            <img radius="10" attr="200,200" scale="centerCrop"  src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg"/>
+        </card>
+        <img radius="15" blur="20" attr="250,200" scale="centerInside" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg"/>
+        <img radius="20" blur="25" attr="-1,-2" scale="centerInside" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg"/>
+        <img radius="25" attr="250,300" scale="fitCenter" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg"/>
+        <img radius="50" attr="250,-2" corner="54"  src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg"/>
+        <img id="corner54" radius="200" click="document.$('corner54').clearCorner()" corner="54" attr="150,150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg"/>
+
+        <input watch="(res)=>{console.log('watch');document.getParent().showFragment(2);console.log(res.text);console.log(document.arguments())}" width="-1">asdfasdfasdfasf</input>
+        <input watch="(res)=>{console.log('22222222');document.getParent().showFragment(1)}" type="null" width="-1">asdfasdfasdfasf</input>
+        <input type="text" width="-1">text</input>
+        <input type="text|null" width="-1">text|null</input>
+        <input font="20,#ff00ff" width="-1" type="text|password">text|password</input>
+        <input type="number" width="-1">number</input>
+        <input font="12,#ff00ff" width="-1" type="number|null">number|null</input>
+        <input font="20,#ff00ff" width="-1" type="password|number">number|password</input>
+        <input font="20,#ff00ff" width="-1" type="password">password</input>
+        <input font="20,#ff00ff" width="-1" type="password|null">null|password</input>
+
+        <img radius="200" attr="-1,-2" scale="centerInside" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg"/>
+        <img height="150" width="150" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg"/>
+
+        <text click="document.album().then(res=>{
+            console.log(res);
+            let data = new FormData();
+            for(let i in res){
+                data.append('image',res[i]);
+            }
+            console.log(data);
+            fetch('http://api.zankong.com.cn:1258/uploadImages/headimg',{
+                method:'post',
+                body:data,
+            }).then(res=>res.json()).then(res=>{
+                console.log(res);
+            })
+
+        })" ripple=""><lp>text0</lp></text>
+        <text ripple="#000000"  border="#00457896"><lp>text1</lp></text>
+        <text ripple="#000000" radius="1" border="#ff457896,10"><lp>text2</lp></text>
+        <text ripple="#000000" background="#ffffffff" radius="10,2,5,89" border="#cc457896,10"> <lp>text3</lp></text>
+        <text ripple="#000000" background="#00000000" radius="20" border="#ee457896,10">text4</text>
+        <text ripple="#000000" background="#00ffffff" radius="30" border="#cc457896,10">text5</text>
+        <text ripple="#000000" background="#ccffffff" radius="40" border="#cc457896,20">text6</text>
+        <text radius="12,8,32,45" border="#df457812,30">text7</text>
+        <text>text</text>
+        <p click="console.log('asdfeffefef')" background="#00ffff" height="200" width="-1">pppppppppppppppppp</p>
+        <text click="fetch('http://html.zankong.com.cn/banner_02.png').then(res=>res.blob()).then(res=>{
+            res.createFile('/zk/test/','/banner_02_text.png');
+        })">downLoad</text>
+        <card width="-1" radius="80" background="#00464646" >
+            <text ripple="" click="console.log(document.page);" id="card1"><cp>card1</cp></text>
+            <text id="card2"><cp>card1</cp></text>
+        </card>
+        <range id="range" margin="50,0,0,20"> </range>
+        <range height="200" width="200" gravity="center" style="circle"> </range>
+        <card width="-1" radius="50" background="#66464646" z="50">
+            <text ripple=""><cp>card2</cp></text>
+        </card>
+        <rating height="220" width="600" count="5" star="0.5">
+            <empty></empty>
+            <half></half>
+            <fill></fill>
+        </rating>
+        <text id="afd">
+            <lp>asdfasfd
+               asd <p color="#ff0000">asdf</p>
+                asf
+            </lp>
+            <lp/>
+            <lp/>
+        </text>
+        <card width="-1" radius="10" background="#77464646" z="10">
+            <text ripple="">card1</text>
+        </card>
+        <text click ="document.$('card1').show('gone');console.log(document.page)">text</text>
+        <text>text</text>
+        <text click="document.open('zn.popup.xml')">text</text>
+        <script>
+            console.log({name:'asdfasfd'});
+            test.a();
+        </script>
+        <script>
+            fetch('http://api.zankong.com.cn:1258/logic/bookList',{
+                method:'post',
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'text/plain',
+                    'Accept-Charset': 'UTF-8'
+                },
+                body:'{}',
+            }).then(res=>res.json()).then(res=>{
+                console.log(res);
+            })
+            document.adapter().refresh([{},{},{},{},{}]);
+        </script>
+        <item click="document.stop()" longClick="console.log('longClick')">
+            <asdf/>
+        </item>
+        <text>text footer10</text>
+        <script>
+            let pro = 1;
+            let aaa = ()=>{
+                if(pro > 100)return;
+                document.$('range').setProgress(pro++);
+                setTimeout(aaa,200);
+            };
+            aaa();
+        </script>
+    </body>
+    <float bottom="200" right="200">
+        <card width="100" height="100" radius="50" background="#66464646" z="20">
+            <!--<img radius="50" attr="100,100" scale="centerCrop"  src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1531389775236&amp;di=bb3663652def5cdfd6aa581d09d13552&amp;imgtype=0&amp;src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205172406_tXJfj.thumb.700_0.jpeg"/>-->
+            <p>aaa</p>
+        </card>
+    </float>
+</listView>

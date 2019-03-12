@@ -1,0 +1,63 @@
+<plain>
+    <header>
+        <text id="header" height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">企业介绍编辑</cp>
+            <rp font="42,#ffffff" margin="0,0,42,0" click="
+            if(document.arguments().isAdd){
+                ServerAgent.invoke('user-changeDocs',{
+                    type:'enterpriseDescription',operation:'add',createSrcList:[JSON.stringify({
+                        title:document.$('title').val(),
+                        content:document.$('content').val(),
+                    })]
+                }).then(res=>{
+                    alert('添加成功');
+                    document.finish();
+                });
+            }else{
+                ServerAgent.invoke('user-changeDocs',{
+                    type:'enterpriseDescription',operation:'delete',deleteIds:[document.arguments().docId]
+                }).then(res=>{
+                    alert('删除成功');
+                    document.finish();
+                });
+            }
+            ">添加</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text id="title" rw="0" background="#ffffff" margin="0,0,39,0">
+            <lp weigth="296" padding="39">标题名称</lp>
+            <input hint="例:企业文化,企业简介等"/>
+        </text>
+        <text id="content" rw="0" background="#ffffff" margin="0,0,39,0">
+            <lp weigth="296" padding="39">内容描述</lp>
+            <input hint="请输入描述内容"/>
+        </text>
+        <text id="save" height="144" background="#5c9afd" margin="120,120,120,120" radius="72" click="ServerAgent.invoke('user-changeDocs',{
+            type:'enterpriseDescription',operation:'change',changeId:document.arguments().docId,changeSrc:JSON.stringify({
+                title:document.$('title').val(),
+                content:document.$('content').val(),
+            })
+        }).then(res=>{
+            alert('修改成功');
+            document.finish();
+        })">
+            <cp font="48,#ffffff">修改</cp>
+        </text>
+    </body>
+    <footer>
+        <script>
+            let isAdd = document.arguments().isAdd;
+            if(isAdd){
+                document.$('save').show(false);
+            }else{
+                document.$('header').get('rp').set({p:'删除',color:'#ff0000'});
+                document.$('save').show(true);
+                document.$('title').get('input').set(JSON.parse(document.arguments().src).title);
+                document.$('content').get('input').set(JSON.parse(document.arguments().src).content);
+            };
+        </script>
+    </footer>
+</plain>

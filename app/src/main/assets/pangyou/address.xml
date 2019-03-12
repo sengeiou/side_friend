@@ -1,0 +1,41 @@
+<listview>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg attr="60" click="document.finish();" margin="48,0,12,0"
+                src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="42,#e6f7fc">返回</lp>
+            <cp font="42,#e6f7fc">定位位置</cp>
+            <rp click="document.dialog('pangyou/address-common_dialog.xml',{addressId:1}).then(res=>{
+               document.next(res);
+            })" font="42,#e6f7fc" margin="0,0,48,0">常用地址
+            </rp>
+        </text>
+        <text background="#989BA0" height="144" id="searchInput">
+            <lp font="42,#171718" margin="42,0,8,0">上海</lp>
+            <rimg attr="28" src="img/normal/down_arrow.png" />
+            <input click="document.$('map2').show(false);document.adapter().refresh([]);"
+                hint="请输入地址关键字" watch="(text)=>{
+                if(text.length !== 0){
+                    BaiDuMap.getData('上海市',text).then(res=>{
+                        document.adapter().refresh(res);
+                        document.scroll(0);
+                    });
+                }
+            }"/>
+            <rp click="document.$('map2').show();document.$('searchInput').get('input').set({p:''})" font="42,#6f7072"
+                margin="30,0,60,0">
+                取消
+            </rp>
+        </text>
+        <map id="map2" locationwatch="(data)=>{
+                console.log(data);
+                document.adapter().refresh(data);
+                document.scroll(0);
+        }"/>
+    </header>
+    <body>
+        <item>
+            <locationItem click="document.next(document.adapter().getItem())" />
+        </item>
+    </body>
+</listview>

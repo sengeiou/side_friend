@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/line"
+        android:background="#e5effb" />
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        app:riv_oval="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="8dp"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        android:src="@drawable/recruit_address"
+        android:id="@+id/img"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/img"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#171718"
+            android:textSize="14sp"
+            android:id="@+id/nickname"
+            android:text="nickname"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="#8c8c8e"
+                android:text="信用等级:   "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="#8c8c8e"
+                android:id="@+id/credit"
+                android:text="9.6分"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

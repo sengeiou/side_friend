@@ -1,0 +1,39 @@
+<listView>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="#ffffff,42" margin="0,0,42,0">账单</cp>
+            <rp margin="0,0,39,0">排序/筛选</rp>
+        </text>
+    </header>
+    <body background="#e5effb" load="ServerAgent.invoke('bill-list',{page:document.billPage+=1}).then(res=>{
+        document.adapter().load(res);
+        document.stop();
+    })" refresh="ServerAgent.invoke('bill-list',{page:document.billPage=0}).then(res=>{
+        document.adapter().refresh(res);
+        document.stop();
+    })">
+        <item>
+            <bills click="
+            switch(document.adapter().getItem().payType){
+                case 'withdraw':
+                    document.open('pangyou/wallet-bill-withdraw-detail.xml',{billId:document.adapter().getItem().billId});
+                    break;
+                default:
+                    document.open('pangyou/wallet-bill-detail.xml',{billId:document.adapter().getItem().billId});
+            }"/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.billPage = 0;
+            ServerAgent.invoke('bill-list',{page:0}).then(res=>{
+                document.adapter().refresh(res);
+            });
+            ServerAgent.invoke('bill-monthTotalList').then(res=>{
+                document.adapter().setMouthList(res);
+            });
+        </script>
+    </footer>
+</listView>

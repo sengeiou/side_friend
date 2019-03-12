@@ -1,0 +1,20 @@
+<listView>
+    <body background="#e5effb">
+        <item>
+            <edit_experience/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.onResume = ()=>{
+                let userId = document.data.uid;
+                if(document.arguments().uid){
+                    userId = document.arguments().uid;
+                }
+                ServerAgent.invoke('user-docs',{type:'workMessage',page:0,uid:userId}).then(res=>{
+                    document.adapter().refresh(res.data);
+                });
+            };
+        </script>
+    </footer>
+</listView>

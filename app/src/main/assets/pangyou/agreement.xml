@@ -1,0 +1,9 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg src="img/left_w_arrow.png" click="document.finish()"/>
+            <lp font="#ffffff,42" margin="12,0,0,0" click="document.finish()">返回</lp>
+            <cp font="#ffffff,42">协议</cp>
+        </text>
+    </header>
+</plain>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:background="@drawable/background_radius"
+        android:orientation="vertical"
+        android:layout_height="380dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="200dp">
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp">
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:layout_width="85dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="14dp"
+                        android:src="@drawable/boy"
+                        android:id="@+id/right_img"
+                        android:scaleType="centerCrop"
+                        android:layout_height="85dp"
+                        app:riv_oval="true"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:id="@+id/name"
+                        android:layout_marginTop="5dp"
+                        android:textColor="#171718"
+                        android:layout_toRightOf="@+id/right_img"
+                        android:layout_alignTop="@+id/right_img"
+                        android:text="ddddddd"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="aaaaaaa"
+
+                        android:id="@+id/credit_tv"
+                        android:layout_alignLeft="@+id/name"
+                        android:layout_marginBottom="16dp"
+                        android:layout_alignBottom="@+id/right_img"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="14dp"
+                        android:id="@+id/dashang_tv"
+                        android:text="打赏金额：258"
+                        android:layout_alignBottom="@+id/credit_tv"/>
+                </RelativeLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

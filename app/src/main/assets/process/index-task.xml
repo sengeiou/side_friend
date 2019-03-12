@@ -1,0 +1,24 @@
+<listView>
+    <header>
+        <text>
+            <cp>所有的任务</cp>
+        </text>
+    </header>
+    <body refresh="ServerAgent.invoke('getTasks',{token:'someToken'}).then(res=>{
+        document.adapter().refresh(res);
+        document.stop();
+    })">
+        <item>
+            <process itemClick="let data = document.adapter().getChild();if(data.status === 'await') document.open(data.url,data.args)"/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.onResume = ()=>{
+                ServerAgent.invoke('getTasks',{token:'someToken'}).then(res=>{
+                    document.adapter().refresh(res);
+                })
+            };
+        </script>
+    </footer>
+</listView>

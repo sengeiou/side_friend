@@ -1,0 +1,35 @@
+<listView>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="42,#ffffff">邀请记录</cp>
+        </text>
+    </header>
+    
+    
+    <body background="#ffffff">
+        <hr background="#ffffff" height="39"/>
+        <index_user style="3" id="share"/>
+        <item>
+            <share_record/>
+        </item>
+    </body>
+    
+    <footer>
+        <script>
+            document.topData = {
+            count:0,
+            profit:0.00,
+            };
+            ServerAgent.invoke('share-inviteList').then(res=>{
+            document.topData.count =  res.count;
+            ServerAgent.invoke('share-inviteProfit').then(res1=>{
+            document.topData.profit =  res1.profit;
+            document.$('share').set(document.topData);
+            document.adapter().refresh(res.data);
+            });
+            });
+        </script>
+    </footer>
+</listView>

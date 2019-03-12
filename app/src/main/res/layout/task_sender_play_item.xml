@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="70dp">
+
+    
+    <ImageView
+        android:layout_width="30dp"
+        android:background="@drawable/sender_dot"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="8dp"
+        android:id="@+id/img"
+        android:layout_height="30dp" />
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@+id/img"
+      
+        android:layout_marginTop="22dp"
+        android:layout_height="wrap_content">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="成的新"
+            android:textSize="14sp"
+            android:textColor="#171718"
+            android:includeFontPadding="false"/>
+         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2018-11-26" 
+             android:layout_marginTop="3dp"
+            android:textSize="14sp"
+            android:textColor="#6f7072"
+            android:includeFontPadding="false"/>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="#171718"
+            android:textSize="14sp"
+            android:text="打赏"
+            android:layout_height="wrap_content" /> 
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="#ff0000"
+            android:textSize="14sp"
+            android:text="1.8"
+            android:layout_height="wrap_content" /> 
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="#171718"
+            android:textSize="14sp"
+            android:text="元"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    
+    
+    <View
+        android:layout_width="300dp"
+        android:background="#f3f3f3"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_height="1dp"/>
+</RelativeLayout>

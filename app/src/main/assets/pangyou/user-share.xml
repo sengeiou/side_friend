@@ -1,0 +1,24 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="42,#ffffff">分享、推广</cp>
+            <rp margin="0,0,42,0" font="42,#ffffff" click="document.open('pangyou/user-share-record.xml');">邀请记录</rp>
+        </text>
+    </header>
+    <body background="#ffffff">
+        <index_user style="2" id="share" click="(res)=>{
+                if(document.$('share').val() === res.shareUrl){
+                UmengShare.share('weChat',{url:res.shareUrl,title:'旁友',description:'邀请'});
+                }
+        }"/>
+    </body>
+    <footer>
+        <script>
+            ServerAgent.invoke('share-shareCode',{uid:localStorage.get('uid',0)}).then(res=>{
+                document.$('share').set(res);
+            });
+        </script>
+    </footer>
+</plain>

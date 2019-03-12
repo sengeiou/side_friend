@@ -1,0 +1,25 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg src="img/normal/left_w_arrow.png" attr="60" margin="42,0,12,0" click="document.finish()"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">添加技能认证</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text>
+            <lp>名称:</lp>
+            <lp val="document.arguments().certName"/>
+        </text>
+    </body>
+    <footer background="#e5effb">
+        <text radius="10" background="#5c9afd" margin="90,0,90,360" height="120" click="ServerAgent.invoke('set-skillAuthentication',{
+            typeId:document.arguments().typeId,doc:{},
+        }).then(res=>{
+            alert('提交成功');
+            document.finish();
+        })">
+            <cp font="51,#e5effb">提交审核</cp>
+        </text>
+    </footer>
+</plain>

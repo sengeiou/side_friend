@@ -1,0 +1,32 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="48,#ffffff">返回</lp>
+            <cp font="48,#ffffff">修改手机号</cp>
+        </text>
+    </header>
+    <body>
+        <text margin="42,0,42,0" height="46dp">
+            <lp val="'向手机号'+localStorage.get('phone','')+'发送验证码'"/>
+            <rp font="#ffffff,48" margin="0,5,0,5" padding="40,15,40,15" radius="5" background="#ff0000" click="ServerAgent.invoke('user-changePhone-sendCode')">发送</rp>
+        </text>
+        <text height="2" background="#5c9afd"/>
+        <text height="46dp" id="code">
+            <lp margin="42,0,0,0" font="42">验证码:</lp>
+            <input hint="请填写验证码"/>
+        </text>
+        <text height="2" background="#5c9afd"/>
+        <text height="46dp" id="phone">
+            <lp margin="42,0,0,0" font="42">新手机号:</lp>
+            <input hint="请输入新手机号"/>
+        </text>
+        <text height="2" background="#5c9afd"/>
+        <text height="144" background="#5c9afd" margin="120,120,120,20" radius="72" click="ServerAgent.invoke('user-changePhone',{code:document.$('code').val(),phone:document.$('phone').val()}).then(res=>{
+            alert('修改成功');
+            document.finish();
+        })">
+            <cp>确定</cp>
+        </text>
+    </body>
+</plain>

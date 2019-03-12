@@ -1,0 +1,7 @@
+<plain>
+    <header>
+        <limg click="document.finish()" src="img/normal/left_w_arrow.png" arrt="40" margin="10,0,10,0"/>
+        <lp click="document.finish()">返回</lp>
+        <cp>登录协议</cp>
+    </header>
+</plain>

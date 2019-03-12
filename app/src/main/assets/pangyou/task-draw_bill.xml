@@ -1,0 +1,66 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg src="img/normal/left_w_arrow.png" attr="60" click="document.finish()" margin="42,0,12,0"/>
+            <lp font="#ffffff,42" click="document.finish()">返回</lp>
+            <cp font="#ffffff,42">开具电子发票</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text height="144" background="#ffffff" margint="0,2,0,0">
+            <lp font="#eeeeee">请选择发票类型</lp>
+        </text>
+        <group num="2" button-radius="10" button-border="1" padding="0,10,0,10" button-background="#ffffff" background="#dddddd">
+            <button >
+                <tp>电子发票</tp>
+                <bp>最快5分钟开具</bp>
+            </button>
+            <button>
+                <tp>纸质发票</tp>
+                <bp>预计5天内送达</bp>
+            </button>
+        </group>
+        <text background="#ffffff" margint="0,2,0,0">
+            <lp font="#eeeeee">电子发票与纸质发票具有同等法律效力，可支持报销入账</lp>
+        </text>
+        <text>
+            <lp margin="10,0,0,0">发票详情</lp>
+        </text>
+        <text background="#ffffff" margint="0,2,0,0">
+            <lp>抬头类型</lp>
+        </text>
+        <text>
+            <lp>发票抬头</lp>
+            <input hint="xxx有限公司"/>
+        </text>
+        <text>
+            <lp>税号</lp>
+            <input hint="填写纳税人识别号"/>
+        </text>
+        <text>
+            <lp>发票内容</lp>
+            <cp>*运输服务*客运服务费</cp>
+        </text>
+        <text>
+            <lp>发票金额</lp>
+            <cp font="#ff0000">30元</cp>
+        </text>
+        <text>
+            <lp>接收方式</lp>
+        </text>
+        <text>
+            <lp>电子邮箱</lp>
+            <input hint="792659451@qq.com"/>
+        </text>
+        <text>
+            <lp>支付宝发票管家</lp>
+            <rp>去授权</rp>
+            <rimg attr="40" src="img/normal/right_w_arrow.png"/>
+        </text>
+    </body>
+    <footer>
+        <text click="alert('提交成功')" background="#dddddd">
+            <cp>提交</cp>
+        </text>
+    </footer>
+</plain>

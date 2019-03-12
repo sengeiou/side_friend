@@ -1,0 +1,46 @@
+<plain>
+    <body>
+        <text click="document.getParent().getParent().showFragment(2)">
+            欢迎页
+        </text>
+        <text click="document.dialog('zn.dialog.xml',{jjj:'fefefe'})">
+            打开dialog
+        </text>
+        <group background="#000fff">
+            <button>
+                <p>单p</p>
+            </button>
+            <button>
+                <lp>lp</lp>
+            </button>
+            <button>
+                <lp>lp加图片</lp>
+                <img attr="30,30" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+            </button>
+            <button>
+                <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                <bp background="#0000ff">bp</bp>
+            </button>
+            <button>
+                <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                <rp background="#0000ff">rp</rp>
+            </button>
+            <button>
+                <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                <rp background="#0000ff">rp</rp>
+            </button>
+            <button>
+                <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                <rp background="#0000ff">rp</rp>
+            </button>
+            <button>
+                <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                <rp background="#0000ff">rp</rp>
+            </button>
+            <button>
+                <img radius="40" attr="80,80" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1532520562161&amp;di=cb53381a9019216d062926de54fb5701&amp;imgtype=0&amp;src=http%3A%2F%2Fcomic.people.com.cn%2FNMediaFile%2F2014%2F1219%2FMAIN201412191006000280747316081.jpg"/>
+                <rp background="#0000ff">rp</rp>
+            </button>
+        </group>
+    </body>
+</plain>

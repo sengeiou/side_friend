@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="45dp"
+    android:gravity="center_vertical"
+    android:id="@+id/rl_list_child"
+    android:padding="10dp">
+    <com.zankong.tool.zkapp.views.ZKImgView
+        android:id="@+id/list_child_im1"
+        android:layout_width="22.6dp"
+        android:layout_height="22.6dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/list_child_im1"
+        android:orientation="vertical"
+        android:padding="3dp">
+
+        <com.zankong.tool.zkapp.views.ZKPView
+            android:id="@+id/list_child_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <com.zankong.tool.zkapp.views.ZKPView
+            android:id="@+id/list_child_tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/list_child_im2"
+        android:layout_width="22.7dp"
+        android:layout_height="22.7dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+</RelativeLayout>

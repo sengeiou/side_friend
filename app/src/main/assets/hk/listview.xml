@@ -1,0 +1,19 @@
+<listView>
+    <header>
+        <text margin="13,20,13,0" background="#ffffff">
+            <lp>aaaaaa</lp>
+            <rp>bbbbbbb</rp>
+        </text>
+    </header>
+    <body>
+        <item>
+            <list click="document.open('hk/plain1.xml',{str:document.adapter().getItem().name})"/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            var res = [{name:"aaaaaaa",image:"https://p1.ssl.qhmsg.com/dr/270_500_/t01aa55a69b18eb7e73.png"},{name:"bbbbb",image:"https://p1.ssl.qhmsg.com/dr/270_500_/t01aa55a69b18eb7e73.png"},{name:"ccccc"},{name:"ddddd"},{name:"eeeee"},{name:"ffffff"}];
+            document.adapter().refresh(res);
+        </script>
+    </footer>
+</listView>

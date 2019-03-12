@@ -1,0 +1,26 @@
+<plain>
+    <header background="#5c9afd">
+        <text height="144">
+            <lp font="#ffffff,42" margin="42,0,0,0" click="document.finish()">返回首页</lp>
+            <cp font="#ffffff,42">发布成功</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text margin="0,48,0,48">
+            <cp font="#8c8c8e,36">您好，您的需求已发布成功</cp>
+        </text>
+        <release id="release">
+        </release>
+        <text margin="0,90,0,0">
+            <cp font="#171718,39">您可以在我的发布订单里查看此单进度, </cp><cp click="document.next({released:true})" font="#5c9afd,39">查看订单>></cp>
+        </text>
+    </body>
+    <footer background="#e5effb">
+        <text click="document.finish()" radius="8" height="120" margin="90,0,90,240" background="#5c9afd">
+            <cp font="#e5effb,51">确定</cp>
+        </text>
+        <script>
+            document.$('release').set(document.arguments());
+        </script>
+    </footer>
+</plain>

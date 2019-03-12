@@ -1,0 +1,35 @@
+<dialog height="-2" width="-1" gravity="center|bottom" background="#ffffff">
+    <text background="#ffffff" height="180">
+        <limg attr="45" margin="60" src="img/login/error.png" click="document.finish()"/>
+        <cp font="60,#171718">提现金额</cp>
+    </text>
+    <hr height="2" background="#f2f2f2"/>
+    <text height="234" background="#ffffff">
+        <cp font="#171718,72">¥</cp>
+        <cp font="#171718,72" val="document.arguments().money+''"/>
+    </text>
+    <hr height="3" background="#f0f0f0" margin="50,0,50,0"/>
+    <text background="#ffffff" margin="60,60,60,72">
+        <lp font="#171718,48">订单信息</lp>
+        <rp font="#6f7072,48">提现</rp>
+    </text>
+    <text id="aliName" background="#ffffff" margin="60,60,60,72" click="
+        ServerAgent.invoke('pay-auth-aliPay').then(res=>{
+            AliPay.login(res.authInfo).then(res=>{
+                ServerAgent.invoke('pay-aliPay-queryInfo',{auth_code:res.auth_code}).then(res=>{
+                    document.$('aliName').get('rp').set({p:res.nickName});
+                });
+            });
+        });">
+        <lp font="#171718,48">提现到支付宝</lp>
+        <rp font="#6f7072,48" val="document.arguments().nickName?document.arguments().nickName:'去授权'"/>
+        <rimg attr="50" src="img/normal/right_arrow.png"/>
+    </text>
+    <text background="#5c9afd" margin="135,189,135,120" height="120" radius="60" click="document.dialog('pangyou/pay-password.xml').then(res=>{
+            ServerAgent.invoke('pay-withdraw-aliPay',{payPassword:res.payPassword,money:document.arguments().money,walletType:document.arguments().walletType}).then(res=>{
+                document.next({billId:res.billId});
+            });
+        });">
+        <cp font="#e5effb,51">立即提现</cp>
+    </text>
+</dialog>

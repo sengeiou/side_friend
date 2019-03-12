@@ -1,0 +1,12 @@
+<popup focusable="true" weight="300" >
+    <text click="document.next({btn:1})" ripple="#5e5e5e" background="#5c9afd" height="144">
+        <limg src="img/cat.jpg" margin="10,0,10,0" attr="50"/>
+        <lp font="42,#ffffff">发起群聊</lp>
+    </text>
+    <text height="2" background="#ffffff"/>
+    <text height="2" background="#ffffff"/>
+    <text click="document.next({btn:2})" ripple="#5e5e5e" background="#5c9afd" height="144">
+        <limg src="img/cat.jpg" margin="10,0,10,0" attr="50"/>
+        <lp font="42,#ffffff">申请列表</lp>
+    </text>
+</popup>

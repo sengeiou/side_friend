@@ -1,0 +1,8 @@
+<dialog height="-2">
+    <text>
+        <cp>你的账号正在其他地方登陆,若不是自己操作,请联系客服</cp>
+    </text>
+    <text margin="0,120,0,0">
+        <cp click="document.finish()">确定</cp>
+    </text>
+</dialog>

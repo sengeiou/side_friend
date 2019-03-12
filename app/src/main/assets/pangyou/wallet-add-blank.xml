@@ -1,0 +1,26 @@
+<plain>
+    <header>
+        <text>
+            <limg attr="40" click="document.finish()" src="img/normal/left_w_arrow.png"/>
+            <cp>填写银行卡信息</cp>
+        </text>
+    </header>
+    <body>
+        <text height="150" background="#F2F2F2">
+            <lp margin="15,0,25,0" font="32,#000000">卡类型</lp>
+            <cp font="32,#000000">中国工商银行储蓄卡</cp>
+        </text>
+        <text height="10" background="#ffffff"/>
+
+        <text height="150" background="#F2F2F2">
+            <lp margin="15,0,25,0" font="32,#000000">手机号</lp>
+            <input hint="182******90"></input>
+        </text>
+        <text margin="0,19,0,0">
+            <lp margin="18,0,0,0" font="#0000FF,28">查看《服务协议》</lp>
+        </text>
+        <text margin="50,60,50,20" background="#5673EF" radius="10" click="document.open('pangyou/wallet-add-blank.xml');">
+            <cp font="#ffffff">同意协议并绑卡</cp>
+        </text>
+    </body>
+</plain>

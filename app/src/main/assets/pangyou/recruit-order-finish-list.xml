@@ -1,0 +1,23 @@
+<listView>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg src="img/normal/left_w_arrow.png" attr="48"/>
+            <lp click="document.finish()">返回</lp>
+            <cp font="48,#ffffff">招募记录</cp>
+        </text>
+    </header>
+    <body>
+        <item>
+            <recruit_release/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.onResume = ()=>{
+                ServerAgent.invoke('enterprise-recruit-myList',{valid:0}).then(res=>{
+                    document.adapter().refresh(res);
+                });
+            };
+        </script>
+    </footer>
+</listView>

@@ -1,0 +1,8 @@
+<popup focusable="true" weight="270" background="#ffffff" margin="0,0,39,0">
+    <text height="144" background="#ffffff" click="document.next({index:0})">
+        <cp font="#6f7072,42">条件交换</cp>
+    </text>
+    <text height="144" background="#ffffff" click="document.next({index:1})">
+        <cp font="#6f7072,42">取消</cp>
+    </text>
+</popup>

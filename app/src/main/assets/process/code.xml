@@ -1,0 +1,31 @@
+<code>
+    <header>
+        <text>
+            <lp font="#ffffff" ripple="#ff0000" background="#11ffffff" click="document.finish()">返回</lp>
+            <rp font="#ffffff" ripple="#ff0000" background="#99ffffff" click="document.album().then(res=>{
+                if(res.length >= 0)
+                    document.analyzeCode(res[0]).then(res=>{alert(res)});
+            })">更多</rp>
+        </text>
+    </header>
+    <footer>
+        <group height="120" num="4" id="buttons">
+            <button click="document.$('buttons').init({item:0,img:{src:'img.home_pressed.png'},bp:{color:'#ff0000'}})">
+                <img attr="30,30" src="img.home_normal.png"/>
+                <bp font="#ffffff">首页</bp>
+            </button>
+            <button click="document.$('buttons').init({item:1,img:{src:'img.user_pressed.png'},bp:{color:'#ff0000'}})">
+                <img attr="30,30" src="img.user_normal.png"/>
+                <bp font="#ffffff">任务</bp>
+            </button>
+            <button click="document.$('buttons').init({item:2,img:{src:'img.home_pressed.png'},bp:{color:'#ff0000'}})">
+                <img attr="30,30" src="img.home_normal.png"/>
+                <bp font="#ffffff">消息</bp>
+            </button>
+            <button click="document.$('buttons').init({item:3,img:{src:'img.user_pressed.png'},bp:{color:'#ff0000'}})">
+                <img attr="30,30" src="img.user_normal.png"/>
+                <bp font="#ffffff">个人</bp>
+            </button>
+        </group>
+    </footer>
+</code>

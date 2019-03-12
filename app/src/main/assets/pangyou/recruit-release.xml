@@ -1,0 +1,209 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg src="img/normal/left_w_arrow.png" attr="60" margin="42,0,12,0" click="document.finish()"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">企业招募</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text style="input" background="#ffffff" height="370" id="description" padding="39">
+            <input hint="请详细描述岗位要求及工作内容,以便报名者清楚明白自己是否有能力完成工作" watch="(text)=>{
+                let length = text.length;
+                if(length > 300){
+                    alert('最多300字');
+                    document.$('description').get('input').set({p:text.slice(0,300)});
+                    return;
+                }else{
+                    document.$('textNum').get('rp').set(length+'/300');
+                }
+            }" />
+        </text>
+        <text background="#ffffff" id="textNum">
+            <limg attr="48" click="
+    document.album({select:4}).then(res=>{
+        let files = [];
+        let data = [];
+        for(let one of res){
+            let file2 = one.split('\.');
+            let random = Math.random()+'';
+            let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+            files.push({key,file:one});
+            data.push({type:'image',url:one});
+        }
+        document.$('editAdd').adapter().refresh(data);
+        Aliput.putFiles(files).then(urls=>{
+            document.taskMessage.additionalMessage.image = [];
+            for(let url of urls){
+                document.taskMessage.additionalMessage.image.push(url);
+            }
+        });
+    });
+" margin="42,30,0,30" src="img/task/add_img.png" />
+            <limg attr="48" margin="36,30,0,30" src="img/task/add_video.png" />
+            <limg attr="48" margin="36,30,0,30" src="img/task/add_audio.png" />
+            <rp font="36,#171718" margin="0,0,60,0">0/300</rp>
+        </text>
+        <recycle id="editAdd" margin="39,0,39,0" orientation="horizontal">
+            <editAdd click="alert('查看大图')" />
+        </recycle>
+        <text background="#ffffff" height="144" id="occupation" margin="0,3,0,0" rw="0">
+            <lp font="45,#171718" margin="39,0,0,0">岗位名称</lp>
+            <input gravity="right|center" hint="请输入所需岗位名称" maxLine="1" padding="0,0,42,0" />
+        </text>
+        <text background="#ffffff" height="144" id="recruitNum" margin="0,3,0,0" rw="0">
+            <lp font="45,#171718" margin="39,0,0,0">招募人数</lp>
+            <input gravity="right|center" hint="请输入招募人数" maxLine="1" padding="0,0,42,0"
+                type="number" />
+        </text>
+        <text background="#ffffff" height="144" id="workTime" margin="0,3,0,0">
+            <lp font="45,#171718" margin="39,0,0,0">工作时长</lp>
+            <input gravity="right|center" hint="请输入工作时长" maxLine="1" padding="0,0,10,0" type="number" />
+            <rp font="45,#5c9afd" border="#5c9afd,3" margin="0,20,0,20">小时</rp>
+            <rp font="45,#ffffff" background="#5c9afd" margin="0,20,40,20">天</rp>
+        </text>
+        <text background="#ffffff" height="144" id="reward" margin="0,3,0,0" rw="0">
+            <lp font="45,#171718" margin="39,0,0,0">薪酬(人)</lp>
+            <input gravity="right|center" hint="请输入薪酬" maxLine="1" padding="0,0,42,0"
+                type="number" />
+        </text>
+        <text background="#ffffff" height="144" id="serviceType" margin="0,3,0,0">
+            <lp font="45,#171718" margin="39,0,0,0">服务方式</lp>
+            <rp font="45,#5c9afd" border="#5c9afd,3" margin="0,20,0,20">线上</rp>
+            <rp font="45,#ffffff" background="#5c9afd" margin="0,20,40,20">线下</rp>
+        </text>
+        <text background="#ffffff" height="144" id="receiverTime_set" margin="0,3,0,0" rw="0">
+            <lp font="45,#171718" margin="39,0,0,0">报名截止时间</lp>
+            <input gravity="right|center" hint="报名截止时间" maxLine="1" padding="0,0,42,0" />
+        </text>
+        <text background="#ffffff" height="144" id="startTime_set" margin="0,3,0,0" rw="0">
+            <lp font="45,#171718" margin="39,0,0,0">工作开始日期</lp>
+            <input gravity="right|center" hint="开始日期" maxLine="1" padding="0,0,42,0" />
+        </text>
+        <text background="#ffffff" height="144" id="endTime_set" margin="0,3,0,0" rw="0">
+            <lp font="45,#171718" margin="39,0,0,0">工作结束日期</lp>
+            <input gravity="right|center" hint="结束日期" maxLine="1" padding="0,0,42,0"/>
+        </text>
+
+
+
+        <text height="144" background="#e5effb" id="workAddress">
+            <lp font="45,#171718" margin="42,0,0,0">工作地点:</lp>
+        </text>
+        <text background="#ffffff" click="document.open('pangyou/address.xml').then(res=>{
+                 document.$('addressA').get('lp').set({p:res.name});
+                 document.taskMessage.workAddress = {
+                    name:res.name,
+                    longitude : res.longitude,
+                    latitude : res.latitude,
+                 };
+            })" height="144" id="addressA" margin="0,0,0,0">
+            <lp margin="42,0,0,0">请选择工作地点</lp>
+            <rimg attr="60" margin="0,0,42,0" src="img/user/address.png" />
+        </text>
+
+
+
+        <text height="144" background="#e5effb">
+            <lp font="45,#171718" margin="42,0,0,0">预约要求<p font="32,#6f7072">(非必选)</p></lp>
+        </text>
+        <release style="2" type_left="议价" btn_tv1="可议价" btn_tv2="不可议价" click="(data)=>{
+                    if(data.check === '可议价'){
+                        document.taskMessage.bargaining = 1;
+                    }else if(data.check === '不可议价'){
+                        document.taskMessage.bargaining = 0;
+                    }else{
+                        document.taskMessage.bargaining = 1;
+                    }
+        }"/>
+
+        <release margin="0,3,0,0" style="2" type_left="性别" btn_tv1="男" btn_tv2="女" click="(data)=>{
+                    if(data.check === '男'){
+                        document.taskMessage.sex = '男';
+                    }else if(data.check === '女'){
+                       document.taskMessage.sex = '女';
+                    }else{
+                        document.taskMessage.sex = 'all';
+                    }
+        }"/>
+        <release margin="0,3,0,0" id="certificate" style="3" type_left="技能证书" btn_tv1="需要" btn_tv2="不需要" click="(data)=>{
+                    if(data.check === '需要'){
+                        document.taskMessage.isNeedCert = true;
+                    }else if(data.check === '不需要'){
+                       document.taskMessage.isNeedCert = false;
+                    }else{
+                        document.taskMessage.isNeedCert = false;
+                    }
+        }"/>
+        <release margin="0,3,0,0" style="3" id="faceCompare" type_left="人脸识别" btn_tv1="是" btn_tv2="否" click="(data)=>{
+                    if(data.check === '是'){
+                        document.taskMessage.isNeedFaceCompare = true;
+                    }else if(data.check === '否'){
+                       document.taskMessage.isNeedFaceCompare = false;
+                    }else{
+                        document.taskMessage.isNeedFaceCompare = false;
+                    }
+        }"/>
+        <script>
+        </script>
+        <text background="#ffffff" click="document.dialog('pangyou/release-credit_dialog.xml').then(res=>{
+                document.taskMessage.credit = res.credit;
+                document.$('credit').get('rp').set(res.credit+'');
+            })" height="144" id="credit" margin="0,3,0,0">
+            <lp margin="42,0,0,0">信用等级</lp>
+            <rp>0</rp>
+            <rp>等级</rp>
+            <rimg src="img/normal/right_w_arrow.png" attr="60" margin="12,0,42,0"/>
+        </text>
+        <text background="#5c9afd" click="
+            if(document.$('reward').val().length === 0){
+                alert('请输入服务价格');
+                return;
+            };
+            document.taskMessage.reward = Number(document.$('reward').val());
+            document.taskMessage.description = document.$('description').val();
+            document.taskMessage.additionalMessage.text = document.taskMessage.description;
+            document.taskMessage.recruitNum = document.$('recruitNum').val();
+            document.taskMessage.workTime = document.$('workTime').val();
+            document.taskMessage.receiverTime_set = document.$('receiverTime_set').val();
+            document.taskMessage.startTime_set = document.$('startTime_set').val();
+            document.taskMessage.endTime_set = document.$('endTime_set').val();
+            ServerAgent.invoke('enterprise-recruit',document.taskMessage).then(res=>{
+                alert('发布成功');
+                document.finish();
+            });" height="144" id="releaseButton"
+            margin="120,90,120,90" radius="30">
+            <cp font="51,#e5effb">发布</cp>
+        </text>
+        <script>
+            document.taskMessage = {
+                recruitNum:0,
+                serviceType:'线下',
+                workTime:0,
+                receiverTime_set:0,
+                startTime_set:0,
+                endTime_set:0,
+                workAddress:{},
+                reward:-1,
+                credit:0,
+                bargaining:1,
+                type:249,
+                occupation:'自定义type',
+                description:'',
+                additionalMessage:{
+                    text:'',
+                    image:[],
+                    audio:[],
+                    video:[],
+                },
+                sex:'all',
+                otherReward:'',
+                isNeedCert:false,
+            };
+            document.taskMessage.isAdvancePay = 0;
+            document.taskMessage.houseId = 0;
+        </script>
+    </body>
+</plain>
+
+

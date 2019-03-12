@@ -1,0 +1,13 @@
+<dialog height="-2">
+    <text height="100">
+        <cp>确认抢单,未完成会降低个人信誉的哦</cp>
+    </text>
+    <group num="2">
+        <button click="document.next({robbing:true})">
+            <p>确定</p>
+        </button>
+        <button click="document.finish()">
+            <p>取消</p>
+        </button>
+    </group>
+</dialog>

@@ -1,0 +1,32 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,48">返回</lp>
+            <cp font="48,#ffffff">个性签名</cp>
+            <rp font="48,#ffffff" margin="0,0,39,0" click="document.next({isChange:true,sign:document.$('sign').val()});">保存</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text background="#ffffff" height="48"/>
+        <text style="input" id="sign"  height="276" background="#ffffff">
+            <input hint="编辑属于你的个性签名" padding="42,0,42,0"
+                watch="(text)=>{
+                let length = text.length;
+                if(length > 100){
+                    alert('最多100字');
+                    document.$('sign').get('input').set({p:text.slice(0,100)});
+                    return;
+                }else{
+                    document.$('textNum').get('rp').set(length+'/100');
+                }
+            }"/>
+        </text>
+        <text id="textNum" height="144" background="#ffffff">
+            <rp font="30,#bfbfc1" margin="0,0,36,0">0/100</rp>
+        </text>
+        <script>
+            document.$('sign').get('input').set({p:localStorage.get('autograph','')});
+        </script>
+    </body>
+</plain>

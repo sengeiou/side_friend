@@ -1,0 +1,16 @@
+<plain>
+    <header>
+        <text margin="13,20,13,0" click="alert('aaaaaaaaaaaaaaaaa')" background="#ff0000">
+            <lp font="#000000,50">left</lp>
+            <cp font="#000000,50">center</cp>
+            <rp font="#000000,50">right</rp>
+        </text>
+    </header>
+    <body>
+        <group num="1" background="#80D742">
+            <button click="document.open('hk.listview.xml')">
+                <bp>listView</bp>
+            </button>
+        </group>
+    </body>
+</plain>

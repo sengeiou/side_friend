@@ -1,0 +1,34 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg attr="60" margin="42,0,12,0" click="document.finish()" src="img/normal/left_w_arrow.png"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">帮助中心</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text height="250" background="#e5effb">
+            <cp font="80">我的钱包</cp>
+        </text>
+        <text height="144" margin="0,2,0,0" background="#ffffff">
+            <lp margin="42,0,0,0" font="42">如何进行账户充值?</lp>
+            <rimg attr="60" src="img/normal/right_arrow.png"/>
+        </text>
+        <text height="144" margin="0,2,0,0" background="#ffffff">
+            <lp margin="42,0,0,0" font="42">如何进行账户提现?</lp>
+            <rimg attr="60" src="img/normal/right_arrow.png"/>
+        </text>
+        <text height="144" margin="0,2,0,0" background="#ffffff">
+            <lp margin="42,0,0,0" font="42">充值和提现是遇到网络故障怎么办?</lp>
+            <rimg attr="60" src="img/normal/right_arrow.png"/>
+        </text>
+        <text height="144" margin="0,2,0,0" background="#ffffff">
+            <lp margin="42,0,0,0" font="42">如何查看交易明细?</lp>
+            <rimg attr="60" src="img/normal/right_arrow.png"/>
+        </text>
+        <text height="144" margin="0,120,0,0" background="#ffffff">
+            <lp margin="42,0,0,0" font="42">客服电话</lp>
+            <rimg attr="60" src="img/normal/right_arrow.png"/>
+        </text>
+    </body>
+</plain>

@@ -1,0 +1,17 @@
+<frame clip="#5c9afd,2" padding="0,bar,0,0">
+    <header>
+        <text background="#5c9afd" height="144" id="headers">
+            <cp margin="0,0,102,0" font="40,#e6f7fc" click="document.showFragment(0);document.$('headers').get('cp').set({font:'#ffffff,51'});document.$('headers').get('cp',2).set({font:'#e6f7fc,40'})">消费订单</cp>
+            <cp font="40,#e6f7fc" click="document.showFragment(1);document.$('headers').get('cp',2).set({font:'#ffffff,51'});document.$('headers').get('cp').set({font:'#e6f7fc,40'})">服务订单</cp>
+        </text>
+    </header>
+    <body>
+        <page src="pangyou/task-release.xml"/>
+        <page src="pangyou/task-receiver.xml"/>
+    </body>
+    <footer>
+        <script>
+            document.$('headers').get('cp').set({font:'#ffffff,51'});
+        </script>
+    </footer>
+</frame>

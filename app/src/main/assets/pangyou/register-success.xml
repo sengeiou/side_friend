@@ -1,0 +1,17 @@
+<plain>
+    <body>
+        <img margin="0,180,0,80" attr="200" src="img/login/regist_success.png"/>
+        <text>
+            <cp fond="15,#000000">注册成功</cp>
+        </text>
+        <text>
+            <cp fond="13">完善资料，享受更优质服务</cp>
+        </text>
+        <text margin="40" background="#dddddd" radius="10" click="document.open('pangyou/login.xml')">
+            <cp>确定</cp>
+        </text>
+        <text>
+            <cp click="document.open('pangyou/credit-perfect.xml')">完善资料>></cp>
+        </text>
+    </body>
+</plain>

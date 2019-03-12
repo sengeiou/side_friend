@@ -1,0 +1,96 @@
+<plain>
+    <header background="#5c9afd">
+        <text height="144" background="#5c9afd">
+            <limg attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png" click="document.finish()"/>
+            <lp font="#ffffff,42" click="document.finish()">返回</lp>
+            <cp font="#ffffff,42">群详情</cp>
+        </text>
+    </header>
+    <body>
+        <recycle id="groupDetails" type="grid" num="5" margin="15,0,0,0">
+            <groupDetails click="
+                if(document.$('groupDetails').adapter().getItem().name === 'end'){
+                    document.open('pangyou/chat-group-add_member.xml',{houseId:document.arguments().houseId}).then(res=>{
+                        document.onResume();
+                    });
+                }
+            "/>
+        </recycle>
+        <text id="title" margin="0,50,0,0" background="#f5f5f5" height="144"
+            click="document.open('pangyou/contacts-group_detail-edit_title.xml',{houseId:document.arguments().houseId,title:document.groupTitle}).then(res=>{
+                document.$('title').get('rp').set(res.title);
+            })">
+            <lp margin="39,0,0,0" font="#000000,42">群名称:</lp>
+            <rp margin="0,0,39,0" font="#000000,42"/>
+        </text>
+        <text id="img" margin="0,50,0,0" background="#f5f5f5" height="144" click="document.dialog('pangyou/user-message-edit-header_dialog.xml').then(res=>{
+            switch(res.operation){
+                case 'album':
+                    document.album({select:1}).then(res=>{
+                        let files = [];
+                        for(let one of res){
+                            let file2 = one.split('\.');
+                            let random = Math.random()+'';
+                            let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+                            files.push({key,file:one});
+                        }
+                        Aliput.putFiles(files).then(urls=>{
+                            ServerAgent.invoke('chat-changeGroupImg',{houseId:document.arguments().houseId,img:urls[0]}).then(res=>{
+                                document.$('img').get('rimg').set({src:res.img});
+                            });
+                        });
+                    });
+                    break;
+                case 'camera':
+                    document.camera().then(res=>{
+                        let files = [];
+                        let file2 = one.split('\.');
+                        let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+'.'+file2[file2.length-1];
+                        files.push({key,file:one});
+                        console.log(files);
+                        Aliput.putFiles(files).then(urls=>{
+                            ServerAgent.invoke('chat-changeGroupImg',{houseId:document.arguments().houseId,img:urls[0]}).then(res=>{
+                                 document.$('img').get('rimg').set({src:res.img});
+                            });
+                        });
+                    });
+                    break;
+        }
+        })">
+            <lp margin="39,0,0,0" font="#000000,42">群头像</lp>
+            <rimg attr="60" margin="0,0,42,0" src="img/user/logout.png"/>
+        </text>
+        <text click="document.open('pangyou/chat-group-remove_member.xml',{houseId:document.arguments().houseId,members:document.members})">
+            <lp>删除好友</lp>
+            <rimg src="img/normal/right_arrow.png"/>
+        </text>
+        <hr margin="0,360,0,0"/>
+        <text id="dismiss" margin="120,0,120,0" radius="10" click="ServerAgent.invoke('chat-group-dismiss',{houseId:document.arguments().houseId}).then(res=>{
+            document.next({retreat:true});
+        })" height="144" background="#5c9afd">
+            <cp font="#ffffff,48">解散群</cp>
+        </text>
+        <text margin="120,50,120,0" radius="10" click="ServerAgent.invoke('chat-group-retreat',{houseId:document.arguments().houseId}).then(res=>{
+            document.next({retreat:true});
+        })" height="144" background="#5c9afd">
+            <cp font="#ffffff,48">退群</cp>
+        </text>
+    </body>
+    <footer>
+        <script>
+            document.groupTitle = '';
+            document.members = [];
+            document.onResume = ()=>{
+                ServerAgent.invoke('chat-groupDetail',{houseId:document.arguments().houseId}).then(res=>{
+                    res.users.push({name:'end'})
+                    document.$('groupDetails').adapter().refresh(res.users);
+                    document.members = res.users;
+                    document.$('title').get('rp').set(res.title);
+                    document.$('img').get('rimg').set({src:res.img});
+                    document.groupTitle = res.title;
+                    document.$('dismiss').show(!!res.isBuilder);
+                });
+            };
+        </script>
+    </footer>
+</plain>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plain>
+    
+    <header>
+        <map></map>
+    </header>
+    <body>
+        <bottpm>
+            
+        </bottpm>
+        <picker background="#ffffff" id="pick" >
+            <p line="#000000,200" font="#1a1717">1岁,2岁,3岁,4岁,5岁,6岁,7岁,8岁,9岁,10岁,11岁,12岁,13岁,14岁,15岁,16岁,17岁,18岁,19岁,20岁,21岁,22岁,23岁,24岁,25岁,26岁,27岁,28岁,29岁,30岁,31岁,32岁,33岁,34岁,35岁,36岁,37岁,38岁,39岁,40岁,41岁,42岁,43岁,44岁,45岁,46岁,47岁,48岁,49岁,50岁,未填写</p>
+        </picker>
+
+        <text click="document.abc();" height="160" >
+            <lp>确定</lp>
+        </text>
+
+        <switch style="2" background="#ffffff" id="switch" margin="0"
+            num="1" off="img.home_normal.png"
+            on="img.home_pressed.png" padding="6,0,6,0" itemClick="(res)=>{
+            console.log(res.position);
+            }">
+            <item>
+                <lp font="15,#1a1717">支付宝支付</lp>
+                <limg attr="24">img.alipay.png</limg>
+            </item>
+            <item>
+                <lp font="15,#1a1717">支付宝支付</lp>
+                <limg attr="24" src="img.home_pressed.png">img.alipay.png</limg>
+            </item>
+            <item>
+                <lp font="15,#1a1717">支付宝支付</lp>
+                <limg attr="24" src="img.home_pressed.png">img.alipay.png</limg>
+            </item>
+            <item>
+                <lp font="15,#1a1717">支付宝支付</lp>
+                <limg attr="24" src="img.home_pressed.png">img.alipay.png</limg>
+            </item>
+        </switch>
+
+
+
+        <switch style="3" num="1" position="right" id="swss" itemClick="(res)=>{
+                    console.log(res.name+'---------');
+        }">
+            <p>yyyy</p>
+            <p>2</p>
+            <p>4</p>
+            <p>3</p>
+            <p>5</p>
+        </switch>
+    </body>
+
+    <footer>
+        <script>
+            document.abc=function(){
+            console.log(document.$('swss').val());
+            }
+
+        </script>
+
+    </footer>
+
+</plain>

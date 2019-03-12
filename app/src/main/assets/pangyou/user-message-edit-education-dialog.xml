@@ -1,0 +1,27 @@
+<popup focusable="true" weight="420" background="#ffffff" position="-105,0" alpha="0.7" margin="0,0,420,0">
+    <card radius="5dp" z="0">
+        <text id="current" height="144" click="document.next({education:'研究生'})" margin="0,12,0,0">
+            <lp font="#171718,42" width="300" gravity="left|center" margin="60,0,0,0">研究生</lp>
+        </text>
+        <text height="2" background="#e5e5e5"/>
+        <text id="reward"  height="144" ripple="#555555" click="document.next({education:'本科'})">
+            <lp font="#171718,42" width="300" gravity="left|center" margin="60,0,0,0">本科</lp>
+        </text>
+        <text height="2" background="#e5e5e5"/>
+        <text id="createdAt"  height="144" ripple="#555555" click="document.next({education:'大专'})">
+            <lp font="#171718,42" width="300" gravity="left|center" margin="60,0,0,0">大专</lp>
+        </text>
+        <text height="2" background="#e5e5e5"/>
+        <text id="credit" height="144" ripple="#555555" click="document.next({education:'高中/中专'})">
+            <lp font="#171718,42" width="300" gravity="left|center" margin="60,0,0,0">高中/中专</lp>
+        </text>
+        <text height="2" background="#e5e5e5"/>
+        <text id="distance" height="144" ripple="#555555" click="document.next({education:'初中'})">
+            <lp font="#171718,42" width="300" gravity="left|center"  margin="60,0,0,0">初中</lp>
+        </text>
+        <text height="2" background="#e5e5e5"/>
+        <text id="distance" height="144" ripple="#555555" click="document.next({education:'小学'})">
+            <lp font="#171718,42" width="300" gravity="left|center"  margin="60,0,0,0">小学</lp>
+        </text>
+    </card>
+</popup>

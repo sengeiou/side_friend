@@ -1,0 +1,53 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff">返回</lp>
+            <cp font="#ffffff,42">性别</cp>
+            <rp font="42,#ffffff" margin="0,0,48,0" attr="135,72" click="      
+            if(document.choiceSex === 'all'){
+            alert('请选择一个性别');
+            return;
+        }
+        document.next({sex:document.choiceSex})">保存</rp>
+        </text>
+    </header>
+    
+    <body background="#e5effb">
+        <text height="180"/>
+        <text>
+            <cp font="51,#171718">你的性别？</cp>
+        </text>
+        <group id="sex" num="4" p-border="2,#6f7072" p-radius="192" p-padding="75"  button-click="
+    let itemIndex = document.$('sex').val();
+   
+    if(itemIndex != 0 &amp;&amp; itemIndex != 3){
+     document.choiceSex = itemIndex === 2?'女':'男';
+    document.$('sex').init({item:itemIndex,p:{border:'2,#5c9afd',color:'#5c9afd'}});
+    }
+            " margin="0,120,0,0">
+            <button>
+            </button>
+            <button>
+                <p font="42,#6f7072">男</p>
+            </button>  
+            <button>
+                <p font="42,#6f7072">女</p>
+            </button>
+            <button>
+            </button>
+        </group>
+        
+        <text height="120"/>
+        <text>
+            <cp font="48,#6f7072">性别确定后，无法更改，请如实选择</cp>
+        </text>
+    </body>
+    
+    <footer>
+        <script>
+            document.choiceSex = 'all';
+        </script>
+    </footer>
+  
+</plain>

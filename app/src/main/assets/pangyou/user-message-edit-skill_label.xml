@@ -1,0 +1,27 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png" click="document.finish()"/>
+            <lp click="document.finish()" font="48,#ffffff">返回</lp>
+            <cp font="48,#ffffff">技能标签</cp>
+            
+            <rp font="42,#ffffff"  click="
+            ServerAgent.invoke('set-saveSkillTags',{styleNames:document.$('message').val().split(',')}).then(res=>{
+                alert('修改成功');
+                document.finish();
+            })" margin="0,0,48,0">保存</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text margin="0,72,0,0">
+            <cp font="51,#6f7072" >哪个标签适合你？</cp>
+        </text>
+        <user_message style="label" id="message"/>
+        <text height="190"/>
+        <script>
+            ServerAgent.invoke('set-allTags',{uid:localStorage.get('uid',0)}).then(res=>{
+                document.$('message').set({text:res.styles,text2:res.myStyles});
+            });
+        </script>
+    </body>
+</plain>

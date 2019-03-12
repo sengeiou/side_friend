@@ -1,0 +1,17 @@
+<viewPage clip="#00ffff,1">
+    <header background="#00ffff">
+        <text height="260" id="logo">
+            <limg src="img/normal/left_w_arrow.png" attr="60" margin="42,0,0,60" click="document.finish()"/>
+            <cimg radius="180" src="img/logo.png" attr="180"/>
+        </text>
+        <text margin="0,0,0,150">
+            <cp height="60">名字</cp>
+            <cimg attr="40" src="img/logo.png"/>
+        </text>
+    </header>
+    <body>
+        <page src="pangyou/enterprise-center-message.xml">基本信息</page>
+        <page src="pangyou/enterprise-center-description.xml">企业介绍</page>
+        <page src="pangyou/enterprise-center-photo.xml">照片墙</page>
+    </body>
+</viewPage>

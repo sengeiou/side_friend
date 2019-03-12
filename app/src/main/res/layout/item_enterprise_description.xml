@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:layout_marginTop="10dp">
+
+    <TextView
+        android:layout_width="99dp"
+        android:gravity="center"
+        android:layout_height="48dp"
+        android:textSize="16sp"
+        android:textColor="#171718"
+        android:id="@+id/selfTile"
+        android:text="标题名称"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textColor="#8c8c8e"
+        android:text="企业文化"
+        android:layout_toRightOf="@id/selfTile"
+        android:id="@+id/title"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/selfTile"
+        android:id="@+id/hr"
+        android:background="#e5effb"
+        android:layout_marginBottom="16dp"/>
+    <TextView
+        android:layout_width="99dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="#171718"
+        android:gravity="center"
+        android:id="@+id/selfContent"
+        android:layout_below="@id/hr"
+        android:text="内容描述"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hr"
+        android:layout_toRightOf="@id/selfContent"
+        android:textSize="14sp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="20dp"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="#8c8c8e"
+        android:text="啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊的点点滴滴多多多多多多多多多多"
+        android:id="@+id/content"/>
+</RelativeLayout>

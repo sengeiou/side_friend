@@ -1,0 +1,43 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg margin="39,0,0,0" click="document.finish()" attr="29,54" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="42,#e6f7fc" margin="8,0,0,0">返回</lp>
+            <cp font="42,#e6f7fc">分类</cp>
+            <rp font="42,#e6f7fc" click="document.next({styleId:0,typeId:0})" margin="0,0,39,0">全部</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text click="document.next({styleId:1,typeId:0})" margin="0,42,0,0" height="144" id="text0">
+            <limg margin="39,0,12,0" attr="9,42" src="img/normal/line.png"/>
+            <lp font="#5c9afd,48"/>
+        </text>
+        <recycle id="allclassfiy0" type="grid" num="4">
+             <allclassfiy  click="
+               document.onData(document.$('allclassfiy0').adapter().getItem())
+                "/>
+        </recycle>
+        <text click="document.next({styleId:2,typeId:0})" margin="0,42,0,0" height="144" id="text1">
+            <limg margin="39,0,12,0" attr="9,42" src="img/normal/line.png"/>
+            <lp font="#5c9afd,48"/>
+        </text>
+        <recycle id="allclassfiy1" type="grid" num="4">
+             <allclassfiy click="
+               document.onData(document.$('allclassfiy1').adapter().getItem())"/>
+        </recycle>
+        <script>
+            document.style="0";
+            document.type="0";
+            ServerAgent.invoke('enterprise-occupation').then(res=>{
+                document.$('text0').get('lp',1).set({p:res[0].styleName});
+                document.$('allclassfiy0').adapter().refresh(res[0].types);
+                document.$('text1').get('lp',1).set({p:res[1].styleName});
+                document.$('allclassfiy1').adapter().refresh(res[1].types);
+                console.log(res.length);
+            });
+            document.onData=(data)=>{
+                document.next({styleId:data.style,typeId:data.id,typeName:data.name});
+            }
+        </script>
+    </body>
+</plain>

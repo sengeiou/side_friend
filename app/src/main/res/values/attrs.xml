@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CharIndexView">
+        <!-- 	banner背影色  	 -->
+        <!-- 索引字大小 -->
+        <attr name="indexTextSize" format="dimension"/>
+        <!-- 字颜色 -->
+        <attr name="charTextColor" format="color"/>
+        <!-- 索引字颜色 -->
+        <attr name="indexTextColor" format="color"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="TextView1">
+        <attr name="tvColor" format="color"/>
+        <attr name="tvSize" format="dimension"/>
+        <attr name="textContent" format="string"/>
+    </declare-styleable>
+</resources>

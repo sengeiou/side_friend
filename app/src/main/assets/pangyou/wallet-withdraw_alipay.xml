@@ -1,0 +1,41 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="#ffffff,42">提现到支付宝账户</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text id="money">
+            <input hint="提现金额"/>
+        </text>
+        <text id="payPassword">
+            <input hint="输入支付密码"/>
+        </text>
+        <text id="aliLogonId">
+            <input hint="输入要提现的支付宝账号(手机号或邮箱)"/>
+        </text>
+        <text height="144" click="ServerAgent.invoke('user-auth-aliPay').then(res=>{
+            AliPay.login(res.authInfo).then(res=>{
+                alert('用户id:',res.user_id);
+                document.$('aliLogonId').get('input').set(res.user_id);
+                ServerAgent.invoke('pay-aliPay-queryInfo',{auth_code:res.auth_code}).then(res=>{
+                    console.log(res);
+                });
+            });
+        });">
+            <cp>支付宝登录</cp>
+        </text>
+        <text height="144" background="#00ff00" click="
+    let money = document.$('money').val();
+    let payPassword = document.$('payPassword').val();
+    let aliLogonId = document.$('aliLogonId').val();
+    ServerAgent.invoke('pay-withdraw-aliPay',{money,payPassword,aliLogonId}).then(res=>{
+        alert('提现成功');
+    });
+">
+            <cp>确定</cp>
+        </text>
+    </body>
+</plain>

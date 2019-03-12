@@ -1,0 +1,31 @@
+
+<listview>
+    <header>
+        <text height="144" background="#ffffff">
+            <limg attr="31" margin="48,0,26,0" src="img/pay/play_arrow.png" click="document.finish()"/>
+            <lp font="48,#171718" click="document.finish()">打赏列表</lp>
+        </text>
+    </header>
+    <body>
+        <item>
+            <play_item />
+        </item>
+    </body>
+    <footer>
+        <script>
+            let a = [];
+            let b = {c:'1'}
+            a.push(b);
+            a.push(b);
+            a.push(b);
+            a.push(b);
+            a.push(b);
+            a.push(b);
+            a.push(b);
+            a.push(b);
+            a.push(b);
+            a.push(b);
+            document.adapter().refresh(a);
+        </script>
+    </footer>
+</listview>

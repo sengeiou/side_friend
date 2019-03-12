@@ -1,0 +1,22 @@
+<listView>
+    <body>
+        <item>
+            <recruit_release click="alert('详情')"
+                stop="ServerAgent.invoke('enterprise-recruit-stop',{recruitId:document.adapter().getItem().recruitId}).then(res=>{
+                    document.onResume();
+                })"
+                change="alert('修改')"
+                applyList="document.open('pangyou/recruit-apply-list.xml',{recruitId:document.adapter().getItem().recruitId})"
+            />
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.onResume = ()=>{
+                ServerAgent.invoke('enterprise-recruit-myList',{valid:1}).then(res=>{
+                    document.adapter().refresh(res);
+                });
+            };
+        </script>
+    </footer>
+</listView>

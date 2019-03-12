@@ -1,0 +1,47 @@
+<listview>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg src="img/normal/left_w_arrow.png" attr="48"/>
+            <lp click="document.finish()">返回</lp>
+            <cp font="48,#ffffff">报名列表</cp>
+            <rp click="document.open('pangyou/search.xml')">搜索</rp>
+        </text>
+    </header>
+    <body>
+        <item>
+            <task_receiver_list
+                click="
+                ServerAgent.invoke('chat-openHouse',{houseId:document.adapter().getItem().houseId}).then(res=>{
+                    document.open('pangyou/chat-task.xml',res);
+                });"
+                header="document.open('pangyou/task-receiver-detail.xml');"
+                agree="
+                document.dialog('pangyou/task-second-dialog.xml',{title:'是否同意接单',positive:'同意',negative:'不同意'}).then(res=>{
+                    if(res.handle === true){
+                        ServerAgent.invoke('Task-agree',{handle:true,applyId:document.adapter().getItem().applyId}).then(res=>{
+                            ServerAgent.invoke('Task-payXml',{payFor:'task',taskId:res.taskId}).then(res=>{
+                                document.open('pangyou/pay.xml',res).then(res=>{
+                                    document.next({});
+                                });
+                            });
+                        });
+                    }else if(res.handle === false){
+                        ServerAgent.invoke('Task-agree',{handle:false,taskId:document.arguments().taskId,applyId:document.adapter().getItem().applyId}).then(res=>{
+                            alert('操作成功');
+                            document.onResume();
+                        });
+                    }else{
+
+                    }
+                });"
+            />
+        </item>
+    </body>
+    <footer>
+        <script>
+            ServerAgent.invoke('enterprise-recruit-musterList',{recruitId:document.arguments().recruitId}).then(res=>{
+                document.adapter().refresh(res.list);
+            });
+        </script>
+    </footer>
+</listview>

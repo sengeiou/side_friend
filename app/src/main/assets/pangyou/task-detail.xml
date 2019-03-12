@@ -1,0 +1,49 @@
+<plain background="#e5effb">
+    <header background="#5c9afd">
+        <text background="#5c9afd" height="150">
+            <limg click="document.finish()" attr="28,54" margin="39,0,0,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#e6f7fc,36" margin="12,0,0,0">返回</lp>
+            <cp font="#e6f7fc,51">跑腿、去送快递</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <taskdetail id="task" click="(isChecked)=>{
+
+         document.isChecked = isChecked;
+        console.log(isChecked+'uuuuu');
+        }">
+            <img radius="50" val="document.arguments().img" click="document.open('pangyou/credit.xml',{uid:document.arguments().senderId})"/>
+        </taskdetail>
+    </body>
+    <footer>
+        <text height="144" id="handleBtn">
+            <lp click="ServerAgent.invoke('Task-chat',{taskId:document.arguments().taskId}).then(res=>{
+                document.open('pangyou/chat-task.xml',res);
+            })" height="150" font="48,#171718" width="0.5">咨询</lp>
+            <rp click="
+            if(document.isChecked){
+              document.dialog('pangyou/task-robbing_second_sure.xml').then(res=>{
+                ServerAgent.invoke('Task-apply',{taskId:document.arguments().taskId,bargainingPrice:-1}).then(res=>{
+                    if(!res)return;
+                    document.open('pangyou/task-robbing-success.xml').then(res=>{
+                        document.next(res);
+                    });
+                });
+            });
+            }else{
+                alert('阅读协议并同意');
+            }
+          " height="150" font="48,#f9fbff" width="0.5" background="#5c9afd" >抢单</rp>
+        </text>
+        <script>
+            document.onResume = ()=>{
+                if(document.arguments().senderId == localStorage.get('uid',0)){
+                    document.$('handleBtn').show(false);
+                }
+            }
+            document.$('task').set(document.arguments());
+            console.log(document.arguments());
+            document.isChecked = false;
+        </script>
+    </footer>
+</plain>

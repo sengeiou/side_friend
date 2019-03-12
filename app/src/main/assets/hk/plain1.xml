@@ -1,0 +1,46 @@
+<coordinator clip="#00000000,2">
+    <appbar toolbarHeight="150">
+        <banner size="16:9" collapseMode="parallax">
+            <img click="" src="http://p0.qhimgs4.com/t01867efa933fee7a62.jpg"/>
+            <img click="" src="http://p0.qhimgs4.com/t01867efa933fee7a62.jpg"/>
+            <img click="" src="http://p0.qhimgs4.com/t01867efa933fee7a62.jpg"/>
+        </banner>
+
+        <toolbar collapseMode="pin" style="2"/>
+        <toolbar collapseMode="pin" id="head">
+
+        </toolbar>
+    </appbar>
+    <body>
+        <group background="#ffffff" padding="0,60,0,60" num="5" id="ddd" img-attr="162" img-radius="81" bp-font="#171718,42" bp-margin="0,24,0,0">
+            <button>
+                <img src="img/home/帮旁友.png"/>
+                <bp>button1</bp>
+            </button>
+            <button>
+                <img src="img/home/帮旁友.png"/>
+                <bp>button2</bp>
+            </button>
+            <button>
+                <img src="img/home/帮旁友.png"/>
+                <bp>button3</bp>
+            </button>
+            <button>
+                <img src="img/home/帮旁友.png"/>
+                <bp>button4</bp>
+            </button>
+            <button>
+                <img src="img/home/帮旁友.png"/>
+                <bp>button5</bp>
+            </button>
+        </group>
+        <text font="#000000,50" padding="0,60,0,0" id="str">
+            <cp>aaaaaaaaaaaaa</cp>
+        </text>
+    </body>
+    <footer>
+        <script>
+            document.$('str').get('cp').set(document.arguments().str);
+        </script>
+    </footer>
+</coordinator>

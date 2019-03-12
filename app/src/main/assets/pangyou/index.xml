@@ -1,0 +1,65 @@
+<frame>
+    <body>
+        <page src="pangyou/index-home.xml"/>
+        <page src="pangyou/index-contacts.xml"/>
+        <page src="pangyou/index-orders_user.xml"/>
+        <page src="pangyou/index-user.xml"/>
+        <page src="pangyou/index-orders_enterprise.xml"/>
+    </body>
+    <footer>
+        <recycle id="buttons" num="4" full="true" type="grid">
+            <navigation click="
+            let i = document.$('buttons').adapter().getPosition();
+            let role = localStorage.get('role','');
+            if(i===1){
+                if(role === ''){
+                    alert('请登录');
+                    return;
+                }
+            }
+            if(i===2){
+                if(role === ''){
+                    alert('请登录');
+                    return;
+                }else if(role === 'user'){
+                    document.showFragment(i);
+                }else if(role === 'enterprise'){
+                    document.showFragment(4);
+                }
+            }else{
+                document.showFragment(i);
+            }
+            document.$('buttons').adapter().show(i);"/>
+        </recycle>
+        <script>
+            document.buttonsList = [
+                {src:'img/home/home.png',text:'首页',color:'#7c7c7c',point:false,src_fill:'img/home/home_fill.png',color_fill:'#5c9afd',show:true},
+                {src:'img/home/sidefriend.png',text:'旁友',color:'#7c7c7c',point:false,src_fill:'img/home/sidefriend_fill.png',color_fill:'#5c9afd',show:false},
+                {src:'img/home/order.png',text:'订单',color:'#7c7c7c',point:false,src_fill:'img/home/order_fill.png',color_fill:'#5c9afd',show:false},
+                {src:'img/home/user.png',text:'我的',color:'#7c7c7c',point:false,src_fill:'img/home/user_fill.png',color_fill:'#5c9afd',show:false},
+            ];
+            document.$('buttons').adapter().refresh(document.buttonsList);
+            let first = 0;
+            document.onBack = ()=>{
+                let clickTime = new Date().getTime();
+                if(clickTime - first > 2000){
+                    alert('再点击一次退出');
+                    first = clickTime;
+                    return false;
+                }else{
+                    return true;
+                }
+            };
+            document.onResume = ()=>{
+                ServerAgent.invoke('chat-newsNum').then(res=>{
+                    document.$('buttons').adapter().setPoint(1,res.sum===0?false:true);
+                });
+            };
+            document.addEvent('chat',(data)=>{
+                console.log('新消息');
+                document.$('buttons').adapter().setPoint(1,true);
+                return false;
+            });
+        </script>
+    </footer>
+</frame>

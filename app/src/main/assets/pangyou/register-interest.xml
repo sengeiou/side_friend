@@ -1,0 +1,72 @@
+<plain>
+    <header>
+        <text>
+            <limg src="img/normal/left_w_arrow.png"/>
+            <cp>选择您的兴趣爱好</cp>
+            <rp>跳过</rp>
+            <rimg src="img/normal/right_arrow.png"/>
+        </text>
+    </header>
+    <body>
+        <text>
+            <cp>选择您想看的内容、想交往的圈子
+                或者跳过下次再来选择
+            </cp>
+        </text>
+        <group p-background="#ffffff" p-border="1,#ff0000" p-radius="50"  num="4" p-padding="50,20,50,20">
+            <button >
+                <p>设计</p>
+            </button>
+            <button >
+                <p>设计</p>
+            </button>
+            <button >
+                <p>设计</p>
+            </button>
+            <button >
+            </button>
+
+
+            <button >
+            </button>
+            <button >
+                <p>设计</p>
+            </button>
+            <button >
+                <p>设计</p>
+            </button>
+            <button >
+                <p>设计</p>
+            </button>
+        </group>
+        <group p-background="#ffffff" margrin="20,20,20,20" p-border="1,#ff0000" p-radius="50"  num="3" p-padding="50,20,50,20">
+            <button >
+                <p>设计</p>
+            </button>
+            <button >
+                <p>设计</p>
+            </button>
+            <button >
+                <p>设计</p>
+            </button>
+        </group>
+        <group p-background="#ffffff"  p-border="1,#ff0000" p-radius="50"  num="4" p-padding="50,20,50,20">
+            <button >
+                <p>设计</p>
+            </button>
+            <button >
+                <p>设计</p>
+            </button>
+            <button >
+                <p>设计</p>
+            </button>
+            <button>
+            </button>
+        </group>
+    </body>
+    <footer>
+        <text>
+            <cp click="document.open('pangyou/index.xml')">选好了，进入首页</cp>
+        </text>
+    </footer>
+</plain>

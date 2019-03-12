@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#e5effb"
+    android:layout_marginBottom="120dp"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:background="@drawable/background_radius"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="14dp"
+            android:text="任务详情:"
+            android:textColor="#171718"
+            android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:text="服务类型:"
+                android:textColor="#6f7072"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/top_type_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="服务类型:"
+                android:textColor="#6f7072"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:text="任务时限:"
+                android:textColor="#6f7072"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/top_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3小时"
+                android:textColor="#6f7072"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:text="始发地:"
+                android:textColor="#6f7072"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/top_startAddress_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="14dp"
+                android:lineSpacingMultiplier="1.5"
+                android:text="上海市斜土路500号"
+                android:textColor="#6f7072"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:text="目的地:"
+                android:textColor="#6f7072"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/top_endAddress_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="14dp"
+                android:lineSpacingMultiplier="1.5"
+                android:text="上海市斜土路500号"
+                android:textColor="#6f7072"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:lineSpacingMultiplier="1.5"
+                android:text="预约要求:"
+                android:textColor="#6f7072"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/top_claim_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="12dp"
+                android:lineSpacingMultiplier="1.5"
+                android:text="男、可以加、惊世毒妃肯定是粉色礼服爱空间划分"
+                android:textColor="#6f7072"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:lineSpacingMultiplier="1.5"
+                android:text="预约详情:"
+                android:textColor="#6f7072"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/top_detail_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="12dp"
+                android:lineSpacingMultiplier="1.5"
+                android:text=""
+                android:textColor="#6f7072"
+                android:layout_marginBottom="12dp"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/top_rv"
+            android:layout_marginBottom="12dp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_radius_top"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/centre_rimg"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/text"
+                app:riv_oval="true" />
+
+            <TextView
+                android:id="@+id/centre_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/centre_rimg"
+                android:text="杨士鑫"
+                android:textColor="#171718"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/centre_rimg"
+                android:layout_alignLeft="@+id/centre_name"
+                android:layout_marginTop="8dp"
+                android:text="服务费:30元"
+                android:id="@+id/centre_service_charge"
+                android:textColor="#ef7318"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:text="打赏金:40元"
+                android:id="@+id/centre_gratuity"
+                android:textColor="#ed6f36"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="发布时间:"
+                android:textColor="#6f7072"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="2018:11:27"
+                android:id="@+id/centre_release_time"
+                android:textColor="#6f7072"
+                android:layout_marginBottom="14dp"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/background_radius_bottom"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="下单评价:"
+                android:textSize="14sp"
+                android:textColor="#6f7072"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_height="wrap_content" />
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:id="@+id/centre_rv"
+                android:layout_marginTop="12dp"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:lineSpacingMultiplier="1.5"
+                android:text="评价理由:"
+                android:textColor="#6f7072"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/centre_reason_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="12dp"
+                android:lineSpacingMultiplier="1.5"
+                android:text=""
+                android:textColor="#6f7072"
+                android:textSize="15sp" />
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/centre_rv2"
+            android:layout_marginRight="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="14dp"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_radius"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/bottom_rimg"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/text"
+                app:riv_oval="true" />
+            <TextView
+                android:id="@+id/bottom_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@+id/bottom_rimg"
+                android:text="杨士鑫"
+                android:textColor="#171718"
+                android:textSize="16sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/bottom_rimg"
+                android:layout_alignLeft="@+id/bottom_name"
+                android:layout_marginTop="8dp"
+                android:text="服务费:30元"
+                android:textColor="#ef7318"
+                android:id="@+id/bottom_service_charge"
+                android:textSize="12sp" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="14dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="#6f7072"
+                    android:textSize="14sp"
+                    android:layout_marginRight="4dp"
+                    android:text="接单时间:"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="#6f7072"
+                    android:textSize="14sp"
+                    android:text="2018_1554"
+                    android:id="@+id/bottom_stat_time"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="14dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="#6f7072"
+                    android:textSize="14sp"
+                    android:text="结束时间:"
+                    android:layout_marginRight="4dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="#6f7072"
+                    android:textSize="14sp"
+                    android:text="2018_1554"
+                    android:id="@+id/bottom_end_time"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e5effb"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#6f7072"
+                android:text="接单评价:"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="14.3dp"
+                android:layout_marginRight="8dp"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="14dp"
+                android:layout_height="wrap_content">
+                <com.zankong.tool.side_friend.diy_view.evaluate.BatingBarView1
+                    android:id="@+id/rb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    app:selectedNumber="0"
+                    app:startTotalNumber="5"
+                    app:starDistance="2dp"
+                    android:clickable="false"
+                    android:layout_marginLeft="4dp"
+                    app:starEmptyRes="@mipmap/rating"
+                    app:starHalfRes="@mipmap/rating1"
+                    app:starIsFull="false"
+                    app:starSelectedRes="@mipmap/rating1"/>
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/bottom_rv_01"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="14dp"
+                    android:layout_height="wrap_content">
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="8dp"
+                android:lineSpacingMultiplier="1.5"
+                android:text="评价理由:"
+                android:textColor="#6f7072"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/bottom_reason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="12dp"
+                android:lineSpacingMultiplier="1.5"
+                android:text="男、可以加、惊世毒妃肯定是粉色礼服爱空间划分"
+                android:textColor="#6f7072"
+                android:textSize="15sp" />
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/bootom_rv_02"
+            android:layout_marginRight="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+    </LinearLayout>

@@ -1,0 +1,17 @@
+<dialog height="-2">
+    <text>
+        <lp>原来金额:</lp>
+        <rp val="document.arguments().reward"/>
+    </text>
+    <text id="money">
+        <input type="number" hint="请输入你任务服务费:"/>
+    </text>
+    <group num="2">
+        <button click="document.finish()">
+            <p>取消</p>
+        </button>
+        <button click="document.next({bargainingPrice:document.$('money').val()})">
+            <p>确认</p>
+        </button>
+    </group>
+</dialog>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/layout_background"
+              android:layout_width="match_parent"
+              android:layout_height="45dp"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:paddingLeft="3.03dp"
+        android:paddingRight="3.03dp">
+
+        <com.zankong.tool.zkapp.views.ZKImgView
+            android:id="@+id/img_left"
+            android:layout_width="22.7dp"
+            android:layout_height="22.7dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="6.6dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:visibility="gone"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/left"
+            android:layout_toRightOf="@+id/img_left">
+
+            <com.zankong.tool.zkapp.views.ZKPView
+                android:id="@+id/left_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:singleLine="true"
+                android:textColor="@color/textColor"
+                android:textSize="15sp"/>
+
+            <com.zankong.tool.zkapp.views.ZKPView
+                android:id="@+id/left_text_second"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:singleLine="true"
+                android:textColor="#b6b6b6"
+                android:textSize="10sp"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/right"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+
+            <com.zankong.tool.zkapp.views.ZKImgView
+                android:id="@+id/switch_img_on"
+                android:layout_width="22.7dp"
+                android:layout_height="22.7dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/switch4"/>
+
+            <com.zankong.tool.zkapp.views.ZKImgView
+                android:id="@+id/switch_img_off"
+                android:layout_width="22.7dp"
+                android:layout_height="22.7dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/switch3"
+                android:visibility="gone"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

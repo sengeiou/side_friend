@@ -1,0 +1,20 @@
+<plain>
+    <header>
+        <text>
+            <limg src="img/normal/left_w_arrow.png" click="document.finish()"/>
+        </text>
+    </header>
+    <body>
+        <text>
+            <cp>已进入抢单列表,请耐心等待对方接单</cp>
+        </text>
+        <group num="2">
+            <button click="document.next({look:true})">
+                <p>查看订单</p>
+            </button>
+            <button click="document.finish()">
+                <p>返回首页</p>
+            </button>
+        </group>
+    </body>
+</plain>

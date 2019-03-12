@@ -1,0 +1,18 @@
+<listView>
+    <body background="#e5effb">
+        <item>
+            <enterpriseDescription click="document.open('pangyou/enterprise-message_edit-description-operation.xml',document.adapter().getItem())"/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            let userId = localStorage.get('uid',0);
+            if(document.arguments().uid){
+                userId = document.arguments().uid;
+            }
+            ServerAgent.invoke('user-docs',{type:'enterpriseDescription',page:0,uid:userId}).then(res=>{
+                document.adapter().refresh(res.data);
+            });
+        </script>
+    </footer>
+</listView>

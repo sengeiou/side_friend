@@ -1,0 +1,68 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg src="img/normal/left_w_arrow.png" attr="60" margin="42,0,12,0" click="document.finish()"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="51,#ffffff">设置</cp>
+        </text>
+    </header>
+    <body background="#f2f2f2">
+        <text height="150" margin="0,3,0,0" click="document.open('pangyou/set-account_and_safe.xml')" background="#ffffff">
+            <lp margin="39,0,0,0" font="45,#171718">账号与安全</lp>
+            <rimg attr="42" margin="0,0,39,0" src="img/user/右箭头.png"/>
+        </text>
+        <text height="150" margin="0,3,0,0" click="
+        ServerAgent.invoke('set-changeUserSets',{isLook:true}).then(res=>{
+            document.open('pangyou/set-notification.xml',{userSet:res});
+        });" background="#ffffff">
+            <lp margin="39,0,0,0" font="45,#171718">通知管理</lp>
+            <rimg attr="42" margin="0,0,42,0" src="img/user/右箭头.png"/>
+        </text>
+        <text id="online" height="150" margin="0,3,0,0" click="
+        ServerAgent.invoke('set-isOnline',{isOnline:!document.isOnline}).then(res=>{
+            document.isOnline = res.isOnline;
+            document.$('online').get('rimg').set({src:res.isOnline?'img/user/在线状态-是.png':'img/user/在线状态-否.png'});
+            document.$('online').get('rp').set({p:res.isOnline?'是':'否'});
+        });
+
+" background="#ffffff">
+            <lp margin="39,0,0,0" font="45,#171718">技能展示</lp>
+            <rimg attr="42" src="img/user/在线状态-否.png"/>
+            <rp margin="15,0,42,0" font="#171718,42">否</rp>
+        </text>
+        <text height="150" margin="0,3,0,0" click="document.open('pangyou/set-normal.xml');" background="#ffffff">
+            <lp margin="39,0,0,0" font="45,#171718">通用</lp>
+            <rimg attr="42" margin="0,0,42,0" src="img/user/右箭头.png"/>
+        </text>
+        <text height="150" margin="0,3,0,0" click="document.open('pangyou/set-feedback.xml')" background="#ffffff">
+            <lp margin="39,0,0,0" font="45,#171718">意见反馈</lp>
+            <rimg attr="42" margin="0,0,42,0" src="img/user/右箭头.png"/>
+        </text>
+        <text height="150" margin="0,3,0,0" click="document.open('pangyou/set-notification.xml')" background="#ffffff">
+            <lp margin="39,0,0,0" font="45,#171718">版本</lp>
+            <rp font="30,#ffffff" radius="30" height="60" width="180" background="#ff1d1d">发现新版本</rp>
+            <rimg attr="42" margin="18,0,42,0" src="img/user/右箭头.png"/>
+        </text>
+    </body>
+    <footer background="#f2f2f2">
+        <text height="144" id="logout" click="
+        ServerAgent.invoke('user-logout').then(res=>{
+            document.finish();
+            Call.logout();
+        })" background="#5c9afd" radius="10" margin="120,0,120,120">
+            <cp font="42,#ffffff">退出当前账号</cp>
+        </text>
+        <script>
+            document.isOnline = false;
+            let uid = localStorage.get('uid',0);
+            if(uid==0){
+                document.$('logout').show(false);
+            }else{
+                let isOnline = localStorage.get('isOnline',false);
+                document.isOnline = isOnline;
+                document.$('online').get('rimg').set({src:document.isOnline?'img/user/在线状态-是.png':'img/user/在线状态-否.png'});
+                document.$('online').get('rp').set({p:document.isOnline?'是':'否'});
+            }
+        </script>
+    </footer>
+</plain>

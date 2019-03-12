@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="12dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="6dp"
+        android:id="@+id/layout"
+        android:paddingBottom="6dp"
+        android:background="@drawable/lable_item_btn"
+        android:layout_height="wrap_content">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:textColor="#171718"
+            android:textSize="10sp"
+            android:id="@+id/tv"
+            android:text="与照片不一致"/>
+    </RelativeLayout>
+</LinearLayout>

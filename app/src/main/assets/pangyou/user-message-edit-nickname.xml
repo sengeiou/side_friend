@@ -1,0 +1,29 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,48">返回</lp>
+            <cp font="48,#ffffff">昵称</cp>
+            <rp font="48,#ffffff" click="document.next({isChange:true,nickname:document.$('nickname').val()});" margin="0,0,39,0">保存</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text style="input" id="nickname"  margin="0,72,0,0" height="144">
+            <input hint="请输入昵称，12字以内" padding="45,0,45,0"
+                watch="(text)=>{
+                let length = text.length;
+                if(length > 12){
+                    alert('最多12字');
+                    document.$('nickname').get('input').set({p:text.slice(0,12)});
+                    return;
+                }else{
+                    document.$('textNum').get('rp').set(length+'/12');
+                }
+            }"/>
+        </text>
+        <text height="2" background="#dfdfdf" margin="45,0,45,0"/>
+        <text id="textNum" margin="0,15,0,0">
+            <rp font="30,#bfbfc1" margin="0,0,45,0">0/12</rp>
+        </text>
+    </body>
+</plain>

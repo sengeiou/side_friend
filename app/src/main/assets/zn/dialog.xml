@@ -1,0 +1,24 @@
+<listView clip="#457859,2">
+    <header>
+        <text>dialog</text>
+    </header>
+    <body refresh="" load="">
+        <text click="document.next({name:'张三'})">next</text>
+        <text click="document.dialog('zn.dialog.xml',{jjj:'fffffffff'}).then(res=>{
+            console.log('dialog then',res);
+        })">dialog</text>
+        <script>
+            console.log({name:'asdfasfd'});
+            test.a();
+        </script>
+        <script>
+            document.adapter().refresh([{},{},{},{},{}]);
+            console.log(document.arguments().jjj);
+        </script>
+        <item click="document.stop()" longClick="console.log('longClick')">
+            <asdf/>
+        </item>
+        <text>index页面 footer9</text>
+        <text>index页面 footer10</text>
+    </body>
+</listView>

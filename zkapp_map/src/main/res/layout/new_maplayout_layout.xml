@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coord_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/design_bottom_sheet_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        app:layout_anchorGravity="top">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#5c9afd"
+            app:title="巅峰榜 流行指数 第64天">
+            
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="#5c9afd"
+                android:layout_height="match_parent">
+                
+                <RelativeLayout
+                    android:layout_width="46dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/icon_left"
+                        android:layout_centerInParent="true"/>
+                </RelativeLayout>
+               
+                
+                
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="106dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/icon_new_location_nor"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="#ffffff"
+                        android:id="@+id/tv_location"
+                        android:textSize="17sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <include layout="@layout/new_map_layout" />
+    <include layout="@layout/new_map_bottom_sheet" />
+</android.support.design.widget.CoordinatorLayout>

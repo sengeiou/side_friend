@@ -1,0 +1,21 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,48">返回</lp>
+            <cp font="48,#ffffff">联系邮箱</cp>
+            <rp font="48,#ffffff" click="document.next({email:document.$('email').val()});" margin="0,0,39,0">保存</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text style="input" id="email"  margin="0,72,0,0" height="144">
+            <input hint="请输入常用邮箱" padding="45,0,45,0" />
+        </text>
+        <text height="2" background="#dfdfdf" margin="45,0,45,0"/>
+    </body>
+    <footer>
+        <script>
+            document.$('email').get('input').set({p:localStorage.get('email','')});
+        </script>
+    </footer>
+</plain>

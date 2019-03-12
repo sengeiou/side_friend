@@ -1,0 +1,110 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg src="img/normal/left_w_arrow.png" attr="60" click="document.finish()" margin="42,0,12,0"/>
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="#ffffff,42">SOS</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text id="contact" height="144" background="#ffffff">
+            <lp margin="42,0,0,0" width="200" gravity="left|center">联系人:</lp>
+            <input val="localStorage.get('nickname','')" hint="请输入你的称呼"/>
+        </text>
+        <text id="contactPhone" height="144" margin="0,2,0,0" background="#ffffff">
+            <lp margin="42,0,0,0" width="200" gravity="left|center">联系电话:</lp>
+            <input val="localStorage.get('phone','')" hint="请输入你的联系电话"/>
+        </text>
+        <text id="address" height="144" background="#ffffff" margin="0,2,0,0" click="document.open('pangyou/address.xml').then(res=>{
+            document.sosMessage.address = res.name,
+            document.sosMessage.longitude = res.longitude,
+            document.sosMessage.latitude = res.latitude,
+            document.$('address').get('lp',2).set({p:res.name});
+        })">
+            <lp margin="42,0,0,0" width="200" gravity="left|center">联系地址:</lp>
+            <lp>点击选择地址</lp>
+            <rimg attr="60" click="document.open('pangyou/address.xml')" margin="12,0,42,0" src="img/user/address.png"/>
+        </text>
+        <text background="#ffffff" style="input" height="370" id="description" padding="39">
+            <input hint="详细描述你所提供的共享品特征及可共享的时间，方便预约者清楚了解。至少输入20个字"
+                watch="(text)=>{
+                let length = text.length;
+                if(length > 200){
+                    alert('最多200字');
+                    document.$('description').get('input').set({p:text.slice(0,200)});
+                    return;
+                }else{
+                    document.$('textNum').get('rp').set(length+'/200');
+                }
+            }"/>
+        </text>
+        <text background="#ffffff" id="textNum">
+            <limg attr="72" margin="42,30,0,30" src="img/task/add_img.png" click="
+    document.album({select:4}).then(res=>{
+        let files = [];
+        let data = [];
+        for(let one of res){
+            let file2 = one.split('\.');
+            let random = Math.random()+'';
+            let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+            files.push({key,file:one});
+            data.push({type:'image',url:one});
+        }
+        document.$('editAdd').adapter().refresh(data);
+        Aliput.putFiles(files).then(urls=>{
+            document.message.image = [];
+            for(let url of urls){
+                document.message.image.push(url);
+            }
+        });
+    });
+"/>
+            <limg attr="72" margin="36,30,0,30" src="img/task/add_video.png"/>
+            <limg attr="72" margin="36,30,0,30" src="img/task/add_audio.png"/>
+            <rp font="36,#171718" margin="0,0,60,0">0/200</rp>
+        </text>
+        <recycle id="editAdd" margin="0,42,0,0" orientation="horizontal">
+            <editAdd click="alert('你好')"/>
+        </recycle>
+    </body>
+    <footer background="#e5effb">
+        <text margin="120,0,120,180" height="120" radius="3" background="#5c9afd" click="
+        let contact = document.$('contact').val();
+        let contactPhone = document.$('contactPhone').val();
+        document.sosMessage.contact = contact;
+        document.sosMessage.contactPhone = contactPhone;
+        document.sosMessage.detail = document.message;
+        if(!document.sosMessage.address){
+            alert('请输入地址');
+            return;
+        }
+        ServerAgent.invoke('sos-create-orange',document.sosMessage).then(res=>{
+            alert('发送成功,已通知'+res.number+'人,请静候佳音');
+            document.finish();
+        });">
+            <cp font="48,#e6f7fc">发布</cp>
+        </text>
+        <script>
+            document.message = {
+                text:'',
+                image:[],
+                audio:[],
+                video:[],
+            };
+            BaiDuMap.initLocation();
+            BaiDuMap.startLocation().then(res=>{
+                document.sosMessage.address = res.address,
+                document.sosMessage.longitude = res.longitude,
+                document.sosMessage.latitude = res.latitude,
+                document.$('address').get('lp',2).set({p:res.address});
+            })
+            document.sosMessage = {
+                contact:'',
+                address : localStorage.get('address',''),
+                longitude : localStorage.get('longitude'),
+                latitude : localStorage.get('latitude'),
+            };
+            document.$('address').get('lp',2).set({p:document.sosMessage.address});
+        </script>
+    </footer>
+</plain>

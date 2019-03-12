@@ -1,0 +1,43 @@
+<plain>
+    <header>
+        <text height="350">
+            <cp font="#000000,42">绑定手机号</cp>
+        </text>
+    </header>
+    <body>
+        <text lw="0" id="phone" margin="90,90,90,0" height="120">
+            <input type="number" nobackground="true" hint="请输入11位手机号码" hintFont="45,#8c8c8e"/>
+            <rimg attr="48" margin="0,0,114,0" src="img/normal/null.png"/>
+            <rp gravity="right|center" font="45,#171718" click="
+    if(document.lastTime > 0)return;
+    ServerAgent.invoke('user-bindPhone-sendCode',{phone:document.$('phone').val()}).then(res=>{
+        document.lastTime = 60;
+        let send = ()=>{
+            document.$('phone').get('rp').set({text:document.lastTime+'秒后重发'});
+            document.lastTime --;
+            setTimeout(()=>{
+                if(document.lastTime > 0){
+                    send();
+                }else{
+                    document.$('phone').get('rp').set({text:'获取验证码'});
+                }
+            },1000);
+        };
+        send();
+    });
+">获取验证码</rp>
+        </text>
+        <hr background="#8c8c8e" height="2" margin="90,0,90,90"/>
+        <text lw="0" id="code" margin="90,90,90,0" height="120">
+            <input hintFont="45,#8c8c8e" type="number" hint="输入6位验证码"/>
+            <rimg attr="48" src="img/normal/null.png"/>
+        </text>
+        <hr background="#8c8c8e" height="2" margin="90,0,90,24"/>
+        <text margin="120,360,120,0" background="#5c9afd" radius="72" height="144" click="
+        ServerAgent.invoke('user-bindPhone',{phone:document.$('phone').val(),code:document.$('code').val()}).then(res=>{
+            document.next({phone:res.phone});
+        })">
+            <cp font="#ffffff,48">确定</cp>
+        </text>
+    </body>
+</plain>

@@ -1,0 +1,27 @@
+<listView>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg src="img/normal/left_w_arrow.png" attr="60" margin="42,0,12,0" click="document.finish()"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">技能认证</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <item>
+            <skillList add="
+            document.open('pangyou/home-task_type.xml').then(res=>{
+                document.open('pangyou/skill-create.xml',{certName:res.typeName,typeId:res.typeId})
+            });" skill="alert('点击查看大图')"/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.onResume = ()=>{
+                ServerAgent.invoke('set-skillList',{uid:document.arguments().lookUid}).then(res=>{
+                    res.push({isAdd:'add'});
+                    document.adapter().refresh(res);
+                });
+            };
+        </script>
+    </footer>
+</listView>

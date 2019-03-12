@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:behavior_peekHeight="107.6dp"
+    android:id="@+id/design_bottom_sheet"
+    app:behavior_hideable="true"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    android:layout_height="wrap_content">
+
+    
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/top_layout"
+        android:background="#ffffff"
+        android:layout_height="48dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="需求推荐"
+            android:textColor="#171718"
+            android:textSize="16sp"
+            android:layout_marginLeft="14dp"
+            android:layout_centerVertical="true"
+            android:includeFontPadding="false"/>
+        
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:id="@+id/top_right_layout"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="筛选"
+                android:textSize="14sp"
+                android:textColor="#8c8c8e"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:background="#ececec"
+            android:layout_alignParentBottom="true"
+            android:layout_height="1dp"/>
+    </RelativeLayout>
+ 
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/rv"
+            android:background="#ffffff"
+            android:layout_below="@+id/top_layout"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>>
+ 
+</RelativeLayout>

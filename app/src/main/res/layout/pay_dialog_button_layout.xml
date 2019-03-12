@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/button_dialog_pay"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:id="@+id/layout"
+        android:layout_height="40dp">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="下一步"
+            android:textColor="#e5effb"
+            android:textSize="17sp"
+            android:includeFontPadding="false"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+</LinearLayout>

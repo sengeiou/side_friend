@@ -1,0 +1,23 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg src="img/normal/left_w_arrow.png" click="document.finish()"/>
+            <lp click="document.finish()" font="42,#ffffff">返回</lp>
+            <cp font="#ffffff,42">实名认证</cp>
+        </text>
+    </header>
+    <body>
+        <!--<text background="#5c9afd" margin="100,0,10,20" radius="40" height="144" click="ServerAgent.invoke('identity-initialize').then(res=>{-->
+            <!--if(res)Identity.startIdentity(res.aliAppUrl);-->
+        <!--});">-->
+            <!--<cp font="42">开始人脸识别sdk</cp>-->
+        <!--</text>-->   
+       
+       <!---->
+        <hr height="154"/>
+        <identity onClick="(res)=>{
+            Identity.compare({name:res.name,id:res.id});
+        }"/>
+       <!--<identity style="1"/>-->
+    </body>
+</plain>

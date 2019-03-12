@@ -1,0 +1,14 @@
+<viewPage>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" src="img/normal/left_w_arrow.png" attr="60" margin="42,0,12,0"/>
+            <lp font="#ffffff,42" click="document.finish()">返回</lp>
+            <cp font="#ffffff,42">我的求助</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <page src="pangyou/sos-list-universal.xml" data="{url:'sos-list',isMy:true,status:'released'}">求助中</page>
+        <page src="pangyou/sos-list-universal.xml" data="{url:'sos-list',isMy:true,status:'finish'}">已获得帮助</page>
+        <page src="pangyou/sos-list-universal.xml" data="{url:'sos-list-care',isMy:false,status:false}">我的关注</page>
+    </body>
+</viewPage>

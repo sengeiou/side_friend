@@ -1,0 +1,39 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="#ffffff,42" margin="0,0,42,0">提现进度</cp>
+        </text>
+    </header>
+    <body background="#ffffff">
+        <hr background="#f5f5f5" height="3" margin="72,90,72,24"/>
+        <text margin="72,36,72,0">
+            <lp font="42,#cccccc">提现金额</lp>
+            <rp font="42,#171718">¥ 125.00</rp>
+        </text>
+        <text margin="72,36,72,0">
+            <lp font="42,#cccccc">到账方式</lp>
+            <rp font="42,#171718">支付宝</rp>
+        </text>
+        <text margin="72,36,72,0">
+            <lp font="42,#cccccc">提现来源</lp>
+            <rp font="42,#171718">我的垫付</rp>
+        </text>
+        <text margin="72,36,72,0">
+            <lp font="42,#cccccc">申请时间</lp>
+            <rp font="42,#171718">2019-01-22 10:00</rp>
+        </text>
+        <text margin="72,36,72,0">
+            <lp font="42,#cccccc">预计到账时间</lp>
+            <rp font="42,#171718">2019-01-23 10:00</rp>
+        </text>
+        <text margin="72,36,72,0">
+            <lp font="42,#cccccc">提现单号</lp>
+            <rp font="42,#171718">2019-45487-5454545-56</rp>
+        </text>
+        <text margin="0,144,0,0" radius="12"  click="document.finish()">
+            <cp  border="3,#5c9afd" width="300" height="120" font="48,#5c9afd">确定</cp>
+        </text>
+    </body>
+</plain>

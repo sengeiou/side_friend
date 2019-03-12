@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="#F2F2F2"
+    app:cardCornerRadius="19dp"
+    android:layout_margin="15dp"
+    app:cardElevation="6dp"
+    android:layout_height="165dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:src="@drawable/address"
+            android:layout_margin="10dp"
+            android:id="@+id/img_right"
+            android:layout_height="80dp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/img_right"
+            android:orientation="horizontal"
+            android:id="@+id/layout1"
+            android:layout_marginTop="22dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignBaseline="@+id/img_right"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:id="@+id/sos_name"
+                android:layout_marginRight="13dp"
+                android:text="杨士鑫"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignBaseline="@+id/img_right"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:id="@+id/sos_sex"
+                android:text="男"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignLeft="@+id/layout1"
+            android:layout_below="@+id/layout1"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="联系电话:"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="17839945867"
+                android:id="@+id/sos_phone"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F45151"
+            android:layout_margin="13dp"
+            android:text="紧急求救中..."
+            android:layout_alignParentRight="true"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="22dp"
+           android:layout_below="@+id/img_right"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="事发地点:"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="上海市静安区人民广场人才大厦附近"
+                android:id="@+id/sos_address"
+                android:layout_height="wrap_content"
+                />
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_marginLeft="9dp"
+                android:src="@drawable/address"
+                android:layout_height="25dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>

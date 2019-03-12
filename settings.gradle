@@ -1,0 +1,1 @@
+include ':app', ':v8lib', ':album', ':lib-zxing', ':zkapp', ':zkapp_map', ':zkapp_identity', ':zkapp_umeng', ':zkapp_update', ':zkapp_call', ':zkapp_wechat', ':zkapp_qiniu', ':dome', "zkapp_alipay", ':ocr_ui', ':faceplatform-ui', ':faceplatform',':popuwindow'

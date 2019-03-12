@@ -1,0 +1,15 @@
+<dialog height="-2" width="-1" gravity="center|bottom" position="0,100">
+    <group height="300" img-attr="180" num="2" img-radius="90" radius="4" margin="0,30,0,0">
+        <button click="alert('您还没有认证，不能发布需求');">
+            <img src="img/release/runleg_nor.png"/>
+            <bp margin="0,18,0,0" font="36,#171718">跑腿代办</bp>
+        </button>
+        <button click="alert('您还没有认证，不能发布需求');">
+            <img src="img/release/skill_nor.png"/>
+            <bp margin="0,18,0,0" font="36,#171718">技能服务</bp>
+        </button>
+    </group>
+    <text margin="0,20,0,30">
+        <cp font="39,#171718">您还没有认证，不能发布需求，<p font="39,#fa9e10">点击认证</p></cp>
+    </text>
+</dialog>

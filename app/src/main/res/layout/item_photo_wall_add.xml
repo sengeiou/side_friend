@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
+    <com.zankong.tool.side_friend.div_item.PhotoWallCustomImg
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/photo_wall_add"
+        android:id="@+id/img"
+        android:scaleType="centerCrop"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@id/img"
+        android:layout_centerHorizontal="true"
+        android:text="上传照片"
+        android:textSize="10sp"
+        android:paddingTop="4dp"
+        android:textColor="#6f7072"
+        />
+</RelativeLayout>

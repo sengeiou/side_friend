@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#ffffff"
+        app:cardCornerRadius="5dp"
+        android:elevation="0dp"
+        android:layout_margin="16dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:riv_oval="true"
+                android:scaleType="centerCrop"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/img"
+                android:src="@drawable/splash"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="名字"
+                android:layout_toRightOf="@+id/img"
+                android:layout_marginLeft="8dp"
+                android:includeFontPadding="false"
+                android:textColor="#171718"
+                android:textSize="16sp"
+                android:layout_marginTop="14dp"
+                android:id="@+id/nickname" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="取送快递"
+                android:includeFontPadding="false"
+                android:layout_marginTop="8dp"
+                android:id="@+id/type"
+                android:layout_alignLeft="@+id/nickname"
+                android:layout_below="@+id/nickname"
+                android:textColor="#171718"
+                android:textSize="15sp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignBaseline="@+id/nickname"
+                android:includeFontPadding="false"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/waitPay"
+                android:textColor="#ed6f36"
+                android:text="等待支付"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_alignBaseline="@+id/type"
+                android:id="@+id/receiverNum"
+                android:text="目前已有5人抢单"
+                android:layout_marginRight="20dp"
+                android:textColor="#ff0000"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:visibility="gone"
+                android:src="@drawable/address"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/type"
+                android:layout_marginLeft="61.33dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/reward"
+                    android:textColor="#6f7072"
+                    android:textSize="15sp"
+                    android:includeFontPadding="false"
+                    android:text="跑腿费：10元"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/outTime"
+                    android:textColor="#6f7072"
+                    android:textSize="15sp"
+                    android:layout_marginTop="8dp"
+                    android:includeFontPadding="false"
+                    android:text="任务超时时间：2018-08-25  06：00"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/receiverTime"
+                    android:textColor="#6f7072"
+                    android:textSize="15sp"
+                    android:layout_marginTop="8dp"
+                    android:includeFontPadding="false"
+                    android:text="接单时间：2018-08-24  11：51"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:id="@+id/timeout" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal">
+                    <RelativeLayout
+                        android:layout_width="60dp"
+                        android:layout_marginRight="16dp"
+                        android:id="@+id/chatLayout"
+                        android:background="@drawable/task_release_btn1"
+                        android:layout_height="32dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="16sp"
+                            android:includeFontPadding="false"
+                            android:textColor="#ed6f36"
+                            android:text="聊天"
+                            android:layout_centerInParent="true"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="90dp"
+                        android:id="@+id/disApplyLayout"
+                        android:background="@drawable/task_cancel_btn"
+                        android:layout_height="32dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="16sp"
+                            android:includeFontPadding="false"
+                            android:textColor="#fff4ef"
+                            android:text="取消抢单"
+                            android:layout_centerInParent="true"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+
+                    <Button
+                        android:layout_width="90dp"
+                        android:visibility="gone"
+                        android:layout_height="32dp"
+
+                        android:text="聊天"
+                        android:id="@+id/chat"/>
+                    <Button
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="取消抢单"
+                        android:id="@+id/disApply"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

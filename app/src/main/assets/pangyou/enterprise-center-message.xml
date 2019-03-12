@@ -1,0 +1,30 @@
+<plain>
+    <body background="#e5effb">
+        <text id="name" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">企业名称</lp>
+            <rp margin="0,0,42,0" font="#e5e5e5,42"/>
+        </text>
+        <text id="corporation" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">联系人</lp>
+            <rp margin="0,0,42,0" font="#e5e5e5,42"/>
+        </text>
+        <text id="isExamine" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">认证情况</lp>
+            <rp margin="0,0,42,0" font="39,#5c9afd"/>
+        </text>
+    </body>
+    <footer>
+        <script>
+            let userId = localStorage.get('uid',0);
+            if(document.arguments().uid){
+                userId = document.arguments().uid;
+            }
+            ServerAgent.invoke('enterprise-messageDetail',{uid:userId}).then(res=>{
+                document.$('name').get('rp').set({p:res.name});
+                document.$('corporation').get('rp').set({p:res.corporation});
+                document.$('isExamine').get('rp').set({p:res.isExamine});
+                document.getParent().$('logo').get('cimg').set({src:res.logo});
+            });
+        </script>
+    </footer>
+</plain>

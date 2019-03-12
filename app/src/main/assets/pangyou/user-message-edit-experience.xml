@@ -1,0 +1,32 @@
+<listView>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,48">返回</lp>
+            <cp font="48,#ffffff">工作信息</cp>
+            <rp font="48,#ffffff" click="document.open('pangyou/user-message-edit-add_experience.xml',{isAdd:true});" margin="0,0,39,0">添加</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text margin="0,20,0,0" id="tv_top" click="document.open('pangyou/user-message-edit-add_experience.xml',{isAdd:true});">
+            <cp font="#8c8c8e,42">暂未添加任何项目经验,</cp><cp font="#5c9afd,42">点击添加</cp>
+        </text>
+        <item>
+            <edit_experience click="document.open('pangyou/user-message-edit-add_experience.xml',document.adapter().getItem())"/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.onResume = ()=>{
+                ServerAgent.invoke('user-docs',{uid:localStorage.get('uid',0),type:'workMessage'}).then(res=>{
+                    if(res.data.length === 0){
+                        document.open('pangyou/user-message-edit-add_experience.xml',{isAdd:true});
+                    }else{
+                        document.adapter().refresh(res.data);
+                        document.$('tv_top').show(document.adapter().getSize() === 0);
+                    }
+                });
+            }
+        </script>
+    </footer>
+</listView>

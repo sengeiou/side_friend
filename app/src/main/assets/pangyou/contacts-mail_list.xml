@@ -1,0 +1,21 @@
+<linearlayout>
+    <body>
+        <maillist id="mail" itemClick="(data)=>{
+            ServerAgent.invoke('chat-openHouse',{houseId:data.houseId}).then(res=>{
+                document.open('pangyou/chat-friend.xml',res);
+            });
+        }">
+        </maillist>
+        <script>
+            document.onResume = ()=>{
+                ServerAgent.invoke('chat-contacts').then(res=>{
+                    document.$('mail').set(res);
+                });
+            }
+        </script>
+    </body>
+</linearlayout>
+    <!--ServerAgent.invoke('chat-ptp-delete',{otherId:data.uid}).then(res=>{-->
+    <!--document.onResume();-->
+    <!--});-->
+    <!--return;-->

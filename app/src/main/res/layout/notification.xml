@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/time"
+            android:text="2018-10-18 16:37"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="15dp"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:layout_below="@+id/time"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:maxLines="2"
+            android:lineSpacingExtra="6dp"
+            android:id="@+id/notification"
+            android:ellipsize="end"
+            android:text="可是够疯狂点击官方孤独烈酒国防科大机构对接缸发动机 "
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="#f2f2f2"/>
+</LinearLayout>

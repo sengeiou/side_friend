@@ -1,0 +1,9 @@
+<plain>
+    <header>
+        <script src="pangyou/text.js">
+            Identity.startIdentity(document.data);
+        </script>
+    </header>
+
+
+</plain>

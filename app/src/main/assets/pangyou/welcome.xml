@@ -1,0 +1,15 @@
+<plain>
+    <header>
+        <viewPage height="-1">
+            <page>
+                <img attr="-1,-1" src="img/welcome/welcome_1.png"/>
+            </page>
+            <page>
+                <img attr="-1,-1" src="img/welcome/welcome_2.png"/>
+            </page>
+            <page>
+                <img click="document.open('pangyou/index.xml');document.finish()" attr="-1,-1" src="img/welcome/welcome_3.png"/>
+            </page>
+        </viewPage>
+    </header>
+</plain>

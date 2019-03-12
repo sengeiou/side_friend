@@ -1,0 +1,27 @@
+<plain>
+    <header>
+        <text>
+            <limg src="img/normal/left_w_arrow.png"/>
+            <cp>完善信息</cp>
+            <rp>跳过</rp>
+            <rimg src="img/normal/right_arrow.png"/>
+        </text>
+    </header>
+    <body >
+        <text id="img" background="#dddddd" margin="0,200,0,0">
+            <limg attr="100" margin="16,0,0,0" src="img/user_normal.png"/>
+            <rp>上传头像</rp>
+            <rimg src="img/normal/right_arrow.png"/>
+        </text>
+        <text id="nickname" margin="0,10,0,0" background="#dddddd">
+            <lp margin="16,0,0,0">姓名</lp>
+            <input hint="请输入真实姓名"/>
+        </text>
+        <text>
+            <cp font="#0000ff">旁友app是基于用户实名认证服务的平台，请输入真实头像与姓名，以确保交易双方的信用与安全。</cp>
+        </text>
+        <text radius="20" background="#dddddd" margin="20,200,20,0" click="document.open('pangyou/register-exhibition.xml')">
+            <cp>下一步</cp>
+        </text>
+    </body>
+</plain>

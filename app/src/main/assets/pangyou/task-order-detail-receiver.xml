@@ -1,0 +1,73 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg attr="60" click="document.finish()" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp font="#ffffff,42" click="document.finish()">返回</lp>
+            <cp font="#ffffff,42">订单详情</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text height="144">
+            <cp font="42,#171718" val="document.arguments().statusChina+''">订单状态:</cp>
+        </text>
+        <text background="#ffffff" id="receiver" margin='0,2,0,0' height="144">
+            <lp margin='42,0,0,0'>下单人:</lp>
+            <rp>user</rp>
+            <rimg margin="12,0,42,0" attr="60" src="img/home/user.png"/>
+        </text>
+        <text background="#ffffff" margin='0,2,0,0' height="144">
+            <lp margin='42,0,0,0'>下单时间:</lp>
+            <rp margin="0,0,42,0" val="document.arguments().createTime+''">createTime</rp>
+        </text>
+        <text background="#ffffff" margin='0,2,0,0' height="144">
+            <lp margin='42,0,0,0'>类型:</lp>
+            <rp margin="0,0,42,0" val="document.arguments().type+''">style-type</rp>
+        </text>
+        <text background="#ffffff" margin='0,2,0,0' height="144">
+            <lp margin='42,0,0,0'>任务号:</lp>
+            <rp margin="0,0,42,0" val="document.arguments().taskId+''">taskId</rp>
+        </text>
+        <text background="#ffffff" id="receiverTime" margin='0,2,0,0' height="144">
+            <lp margin='42,0,0,0'>接单时间:</lp>
+            <rp margin="0,0,42,0">receiverTime</rp>
+        </text>
+        <text background="#ffffff" margin='0,2,0,0' height="144">
+            <lp margin='42,0,0,0'>任务超时时限时间:</lp>
+            <rp margin="0,0,42,0" val="document.arguments().outTime+''">outTime</rp>
+        </text>
+        <text background="#ffffff" margin='0,2,0,0' height="144">
+            <lp margin='42,0,0,0'>价格:</lp>
+            <rp margin="0,0,42,0" val="document.arguments().reward+''">reward</rp>
+        </text>
+        <text background="#ffffff" margin='0,2,0,0' height="144">
+            <lp margin='42,0,0,0'>始发地:</lp>
+            <rp margin="0,0,42,0" val="document.arguments().addressA+''">addressA</rp>
+        </text>
+        <text background="#ffffff" margin='0,2,0,0' height="144">
+            <lp margin='42,0,0,0'>目的地:</lp>
+            <rp margin="0,0,42,0" val="document.arguments().addressB+''">addressB</rp>
+        </text>
+        <text background="#ffffff" margin='0,2,0,0' height="144">
+            <lp margin='42,0,0,0'>始发地到目的地距离:</lp>
+            <rp margin="0,0,42,0" val="document.arguments().distanceA2B + ''">addressA2B</rp>
+        </text>
+    </body>
+    <footer>
+        <script>
+
+            console.log(document.arguments());
+            let user = document.$('receiver');
+            let receiverTime = document.$('receiverTime');
+            if(document.arguments().img){
+            user.show(true);
+            user.get('rimg').set({src:document.arguments().img});
+            user.get('rp').set({p:document.arguments().nickname});
+            receiverTime.show(true);
+            receiverTime.get('rp').set({p:document.arguments().receiverTime});
+            }else{
+            user.show(false);
+            receiverTime.show(false);
+            }
+        </script>
+    </footer>
+</plain>

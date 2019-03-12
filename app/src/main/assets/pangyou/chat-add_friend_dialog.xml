@@ -1,0 +1,14 @@
+<dialog width="-1" cancel="false">
+    <text>
+        <cp val="document.arguments().isApplyFriend?'对方申请成为你的好友,是否同意':'是否申请成为对方好友'"/>
+    </text>
+    <text>
+        <lp click="ServerAgent.invoke('chat-addFriend',{otherId:document.arguments().otherId,agree:true}).then(res=>{
+            document.next();
+        })">是</lp>
+        <rp click="
+        ServerAgent.invoke('chat-addFriend',{otherId:document.arguments().otherId,agree:false}).then(res=>{
+            document.next();
+        })">否</rp>
+    </text>
+</dialog>

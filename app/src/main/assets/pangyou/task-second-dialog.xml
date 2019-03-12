@@ -1,0 +1,13 @@
+<dialog height="-2">
+    <text height="144">
+        <cp val="document.arguments().title">标题</cp>
+    </text>
+    <group num="2">
+        <button click="document.next({handle:true})">
+            <p val="document.arguments().positive">同意</p>
+        </button>
+        <button click="document.next({handle:false})">
+            <p val="document.arguments().negative">不同意</p>
+        </button>
+    </group>
+</dialog>

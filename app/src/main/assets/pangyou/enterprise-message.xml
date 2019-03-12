@@ -1,0 +1,32 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">企业信息</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text radius="5" id="status" margin="45,30,45,0" height="144" background="#ffffff" click="
+        ServerAgent.invoke('enterprise-docDetail').then(res=>{
+            document.open('pangyou/enterprise-authentication.xml',res);
+        });">
+            <lp margin="45,0,0,0" font="48,#171718">企业认证</lp>
+            <rp font="48,#171718"/>
+            <rimg attr="60" margin="45,0,45,0" src="img/normal/right_arrow.png"/>
+        </text>
+        <text radius="5" margin="45,2,45,0" background="#ffffff" height="144" click="
+            document.open('pangyou/enterprise-message_edit.xml')
+       ">
+            <lp margin="45,0,0,0" font="48,#171718">完善企业信息</lp>
+            <rimg src="img/normal/right_arrow.png" margin="0,0,45,0" attr="60"/>
+        </text>
+    </body>
+    <footer>
+        <script>
+            ServerAgent.invoke('enterprise-authenticationStatus',{uid:localStorage.get('uid',0)}).then(res=>{
+                document.$('status').get('rp').set({p:res.isExamine});
+            });
+        </script>
+    </footer>
+</plain>

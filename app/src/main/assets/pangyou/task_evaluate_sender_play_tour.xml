@@ -1,0 +1,11 @@
+<linearlayout background="#ffffff">
+    <body>
+       <ratingbar style="5"/>
+        <text id="gratuity" type="number">
+            <input hint="输入小费金额"/>
+        </text>
+        <text height="144" click="document.next({money:Number(document.$('gratuity').val())})">
+            <cp>确定</cp>
+        </text>
+    </body>
+</linearlayout>

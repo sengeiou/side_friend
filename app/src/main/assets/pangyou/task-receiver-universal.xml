@@ -1,0 +1,69 @@
+<listView>
+    <body load=" ServerAgent.invoke('Task-list',{status:document.data.status,userType:'receiver',page:document.currentPage+=1}).then(res=>{
+                    document.adapter().load(res);
+                    document.stop();
+                });">
+        <item id="task_receiver">
+            <task_receiver
+                click="ServerAgent.invoke('Task-order-detail',{taskId:document.adapter().getItem().taskId,userType:'receiver'});"
+                chat="ServerAgent.invoke('Task-chat',{taskId:document.adapter().getItem().taskId}).then(res=>{
+                    document.open('pangyou/chat-task.xml',res);
+                })"
+                disApply="document.dialog('pangyou/task-second-dialog.xml',{
+                    title:'确定取消任务申请',
+                    negative:'返回',
+                    positive:'确定',
+                }).then(res=>{
+                    if(res.handle){
+                        ServerAgent.invoke('Task-disApply',{taskId:document.adapter().getItem().taskId}).then(res=>{
+                            document.onResume();
+                        });
+                    }
+                })"
+
+                changeAdvancePay="
+                document.open('pangyou/task-evaluate-change_advance_pay.xml',{taskId:document.adapter().getItem().taskId}).then(res=>{
+
+                });"
+                serviced="
+                ServerAgent.invoke('Task-evaluateReceiverXml',{taskId:document.adapter().getItem().taskId}).then(res=>{
+                    document.open('pangyou/task-order-evaluate_receiver.xml',res).then(res=>{
+
+                    });
+                });"
+                back="document.dialog('pangyou/task-second-dialog.xml',{
+                    title:'确认退单',
+                    negative:'返回',
+                    positive:'确定',
+                }).then(res=>{
+                    if(res.handle){
+                        ServerAgent.invoke('Task-back',{taskId:document.adapter().getItem().taskId}).then(res=>{
+                            alert('等待对方确认');
+                            document.onResume();
+                        });
+                    }
+                })"
+                handle="document.dialog('pangyou/task-second-dialog.xml',{
+                    title:'确认退单',
+                    negative:'拒绝退单',
+                    positive:'同意退单',
+                }).then(res=>{
+                    ServerAgent.invoke('Task-back',{taskId:document.adapter().getItem().taskId,isBack:res.handle}).then(res=>{
+                        alert('等待对方确认');
+                        document.onResume();
+                    });
+                })"
+            />
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.onResume = ()=>{
+                document.currentPage = 0;
+                ServerAgent.invoke('Task-list',{status:document.data.status,userType:'receiver'}).then(res=>{
+                    document.adapter().refresh(res);
+                });
+            };
+        </script>
+    </footer>
+</listView>

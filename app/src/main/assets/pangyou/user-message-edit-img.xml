@@ -1,0 +1,71 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff">返回</lp>
+            <cp font="#ffffff,42">上传头像</cp>
+            <rp font="#ffffff" margin="0,0,39,0" padding="20,5,20,5" click="
+                        if(document.imgSrc){
+                            ServerAgent.invoke('user-changeMessage',{key:'img',value:document.imgSrc}).then(res=>{
+                                if(res.value){
+                                    document.next({img:res.value});
+                                }
+                            });
+                        }else{
+                            document.finish();
+                        }">保存</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <group num="1" margin="0,210,0,0" img-attr="300" id="group" img-radius="150">
+            <button click="document.dialog('pangyou/user-message-edit-header_dialog.xml').then(res=>{
+            switch(res.operation){
+                case 'album':
+                    document.album({select:1,clear:true}).then(res=>{
+                        let files = [];
+                        for(let one of res){
+                            let file2 = one.split('\.');
+                            let random = Math.random()+'';
+                            let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+                            files.push({key,file:one});
+                        }
+                        console.log(files);
+                        Aliput.putFiles(files).then(urls=>{
+                            document.imgSrc = urls[0];
+                            console.log('ddddddddddd',urls[0]);
+                            console.log('ddddddddddd',urls);
+                            document.$('group').init({item:0,img:{src:urls[0]}});
+                        });
+                    });
+                    break;
+                case 'camera':
+                    document.camera().then(one=>{
+                        let files = [];
+                        let file2 = one.split('\.');
+                       let random = Math.random()+'';
+                        let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+                        files.push({key,file:one});
+                        console.log(files);
+                        Aliput.putFiles(files).then(urls=>{
+                            document.imgSrc = urls[0];
+                            console.log('ddddddddddd',urls[0]);
+                            document.$('group').init({item:0,img:{src:urls[0]}});
+                        });
+                    });
+                    break;
+            }
+        })">
+                <img src="img/pay/money_icon.png"/>
+                <bp font="42,#8c8c8e" margin="0,18,0,0">上传本人头像</bp>
+            </button>
+        </group>
+        <text margin="0,210,0,0">
+            <cp font="48,#cbcbcb">让大家更好的认识你</cp>
+        </text>
+    </body>
+    <footer>
+        <script>
+            document.imgSrc = false;
+        </script>
+    </footer>
+</plain>

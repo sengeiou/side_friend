@@ -1,0 +1,43 @@
+<plain>
+    <header>
+        <text>
+            <limg click="document.finish()" attr="40" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()">返回</lp>
+            <cp>帮助中心</cp>
+        </text>
+    </header>
+    <body>
+        <text height="190" background="#0099CC">
+            <cp font="#ffffff,52">认证</cp>
+        </text>
+        <text background="#E4E4E4">
+            <lp margin="13,0,0,0" font="#000000">为什么要进行共享认证</lp>
+            <rimg margin="0,0,15,0" src="img/normal/right_arrow.png"/>
+        </text>
+        <text background="#ffffff" height="6"/>
+        <text background="#E4E4E4">
+            <lp margin="13,0,0,0" font="#000000">怎么进入共享认证？</lp>
+            <rimg margin="0,0,15,0" src="img/normal/right_arrow.png"/>
+        </text>
+        <text background="#ffffff" height="6"/>
+        <text background="#E4E4E4">
+            <lp margin="13,0,0,0" font="#000000">为什么要进行共享认证</lp>
+            <rimg margin="0,0,15,0" src="img/normal/right_arrow.png"/>
+        </text>
+        <text background="#ffffff" height="6"/>
+        <text background="#E4E4E4">
+            <lp margin="13,0,0,0" font="#000000">如何进行实名认证？</lp>
+            <rimg margin="0,0,15,0" src="img/normal/right_arrow.png"/>
+        </text>
+        <text background="#ffffff" height="6"/>
+        <text background="#E4E4E4">
+            <lp margin="13,0,0,0" font="#000000">等等</lp>
+            <rimg margin="0,0,15,0" src="img/normal/right_arrow.png"/>
+        </text>
+        <text background="#ffffff" height="120"/>
+        <text background="#E4E4E4">
+            <lp margin="13,0,0,0" font="#000000">客服电话</lp>
+            <rimg margin="0,0,15,0" src="img/normal/right_arrow.png"/>
+        </text>
+    </body>
+</plain>

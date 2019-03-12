@@ -1,0 +1,12 @@
+<plain>
+    <body>
+        <text id="changePay">
+            <input hint="修改商品金额"/>
+        </text>
+        <text height="144" click="ServerAgent.invoke('Task-changeAdvanceMoney',{taskId:document.arguments().taskId,advanceMoney:Number(document.$('changePay').val())}).then(res=>{
+            document.next({});
+        })">
+            <cp>确定</cp>
+        </text>
+    </body>
+</plain>

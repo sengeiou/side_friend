@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="64dp">
+    <!--这里不用match_parent，因为在有些机型上显示的背景不全，源码中的高度是64dp,这样背景能全部覆盖通知栏的背景-->
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="13dp" />
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dip"
+        android:layout_centerVertical="true"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_toEndOf="@id/img"
+        android:layout_toLeftOf="@+id/time"
+        android:layout_marginRight="10dp"
+        android:layout_toStartOf="@id/time"
+        android:layout_marginStart="7dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/NotificationTitle"
+            android:maxLines="1"
+            android:layout_marginTop="14dp"/>
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="14dp"
+            style="@style/NotificationInfo"  />
+    </RelativeLayout>
+</RelativeLayout>

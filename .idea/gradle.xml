@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/album" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/dome" />
+            <option value="$PROJECT_DIR$/faceplatform" />
+            <option value="$PROJECT_DIR$/faceplatform-ui" />
+            <option value="$PROJECT_DIR$/lib-zxing" />
+            <option value="$PROJECT_DIR$/ocr_ui" />
+            <option value="$PROJECT_DIR$/popuwindow" />
+            <option value="$PROJECT_DIR$/v8lib" />
+            <option value="$PROJECT_DIR$/zkapp" />
+            <option value="$PROJECT_DIR$/zkapp_alipay" />
+            <option value="$PROJECT_DIR$/zkapp_call" />
+            <option value="$PROJECT_DIR$/zkapp_identity" />
+            <option value="$PROJECT_DIR$/zkapp_map" />
+            <option value="$PROJECT_DIR$/zkapp_qiniu" />
+            <option value="$PROJECT_DIR$/zkapp_umeng" />
+            <option value="$PROJECT_DIR$/zkapp_update" />
+            <option value="$PROJECT_DIR$/zkapp_wechat" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

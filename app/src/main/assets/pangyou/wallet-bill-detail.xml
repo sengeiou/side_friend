@@ -1,0 +1,102 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="#ffffff,42" margin="0,0,42,0">交易详情</cp>
+            <!--<rp>排序/筛选</rp>-->
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text height="42" background="#ffffff"/>
+        <text background="#ffffff" id="top_t">
+            <cimg margin="0,0,18,0" attr="72" radius="36"/>
+            <cp font="42,#171718"></cp>
+        </text>
+        <hr height="60" background="#ffffff"/>
+        <text background="#ffffff" id="money">
+            <cp font="72,#171718"></cp>
+        </text>
+        <hr height="60" background="#ffffff" />
+        <text background="#ffffff" id="payStatus">
+            <cp font="36,#6f7072"></cp>
+        </text>
+        <hr height="42" background="#ffffff"/>
+        <text height="2" background="#e5effb"/>
+        <text background="#ffffff" height="144" id="money1">
+            <lp margin="39,0,0,0" font="42,#6f7072">订单金额</lp>
+            <rp margin="0,0,42,0" font="48,#171718"></rp>
+        </text> 
+        <text background="#ffffff" height="144" id="platform">
+            <lp margin="39,0,0,0" font="42,#ed6f36">平台收费</lp>
+            <rp margin="0,0,42,0" font="48,#ed6f36"></rp>
+        </text>  
+        <text background="#ffffff" height="144" id="play_tour">
+            <lp margin="39,0,0,0" font="42,#ed6f36">打赏金</lp>
+            <rp margin="0,0,42,0" font="48,#ed6f36"></rp>
+        </text>
+        <text background="#ffffff" height="144" id="other_money">
+            <lp margin="39,0,0,0" font="42,#ed6f36">差评扣除金</lp>
+            <rp margin="0,0,42,0" font="48,#ed6f36"></rp>
+        </text>
+        <text margin="0,2,0,0" height="144" background="#ffffff" id="payType">
+            <lp font="42,#6f7072" margin="39,0,0,0">付款方式</lp>
+            <rp font="42,#171718" margin="0,0,42,0"></rp>
+        </text>   
+        <text height="144" background="#ffffff" id="endTime">
+            <lp font="42,#6f7072" margin="39,0,0,0">付款时间</lp>
+            <rp font="42,#171718" margin="0,0,42,0"></rp>
+        </text>   
+        <text height="144" background="#ffffff" id="payTag">
+            <lp font="42,#6f7072" margin="39,0,0,0">账单类型</lp>
+            <rp font="42,#171718" margin="0,0,42,0"></rp>
+        </text>   
+        <text height="144" background="#ffffff" margin="0,2,0,0" id="createdAt">
+            <lp font="42,#6f7072" margin="39,0,0,0">创建时间</lp>
+            <rp font="42,#171718" margin="0,0,42,0"></rp>
+        </text>   
+        <text height="144" background="#ffffff" id="billId">
+            <lp font="42,#6f7072" margin="39,0,0,0">订单号</lp>
+            <rp font="42,#171718" margin="0,0,42,0"></rp>
+        </text>
+        <hr height="233" background="#e5effb"/>
+    </body>
+    <footer>
+        <script>
+            ServerAgent.invoke('bill-detail',{billId:document.arguments().billId}).then(res=>{
+            document.$('top_t').get('cp').set({p:res.otherNickname});
+            document.$('top_t').get('cimg').set({src:res.otherImg});
+            document.$('money1').get('rp').set({p:res.money});
+            document.$('payType').get('rp').set({p:res.payType});
+            document.$('payTag').get('rp').set({p:res.payTag});
+            document.$('createdAt').get('rp').set({p:res.createdAt});
+            document.$('endTime').get('rp').set({p:res.endTime});
+            document.$('billId').get('rp').set({p:res.billId+''});
+            if(res.role==='uid'){
+            document.$('platform').show(false);
+            document.$('play_tour').show(false);
+            document.$('other_money').show(false);
+            document.$('money').get('cp').set({p:'-'+res.realMoney});
+            }else if(res.role === 'target'){
+            document.$('money').get('cp').set({p:'+'+res.realMoney});
+            document.$('platform').show(true);
+            document.$('play_tour').show(false);
+            document.$('other_money').show(false);
+            document.$('platform').get('rp').set({p:res.platform+''});
+                    if(res.billType === 'badBackMoney'){
+                         document.$('platform').show(false);
+                    }
+            }
+            if(res.payStatus === '冻结'){
+            document.$('payStatus').get('cp').set({p:'未到账'});
+            }else if(res.payStatus === '到账'){
+            document.$('payStatus').get('cp').set({p:'已到账'});
+            }else if(res.payStatus === '退款'){
+            document.$('payStatus').get('cp').set({p:'已退款'});
+            }else if(res.payStatus === '审核'){
+            document.$('payStatus').get('cp').set({p:'审核中'});
+            }
+            });
+        </script>
+    </footer>
+</plain>

@@ -1,0 +1,114 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg margin="20,0,0,0" src="img/left_w_arrow.png" click="document.finish()"/>
+            <lp margin="8,0,0,0" click="document.finish()" font="#ffffff">返回</lp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <homescreen id="type1" type="按距离:" firstitem="0"/>
+        <homescreen id="type2" type="服务费:" firstitem="1"/>
+        <homescreen id="type3" type="按信用:" firstitem="1"/>
+
+        <script>
+            document.index;
+            document.index2;
+            document.index3;
+            document.currentScreen = {
+            r:document.arguments().range.r,
+            reward:document.arguments().reward,
+            credit:document.arguments().credit,
+            };
+            switch(document.arguments().range.r){
+            case 1000:
+            document.index = 10;
+            break;
+            case 2000:
+            document.index = 0;
+            break;
+            case 3000:
+            document.index = 1;
+            break;
+            case 4000:
+            document.index = 2;
+            break;
+            case 5000:
+            document.index = 3;
+            break;
+            }
+
+
+            if(document.arguments().credit === 0){
+            document.index3 = 10;
+            }else{
+            document.index3 = (document.arguments().credit-1);
+            }
+            if(document.arguments().reward === 0){
+            document.index2 = 10;
+            }else{
+            document.index2 = (document.arguments().reward-1);
+            }
+            console.log('aaaaaaaaa1===>'+document.index+','+document.index2+','+document.index3);
+            document.$('type1').set(['2km','3km','4km','5km'],document.index,'0');
+            document.$('type2').set(['20元以内','50元以内','100元以内','100元以外'],document.index2,'1');
+            document.$('type3').set(['2.0以上','8.0以上','6.0以上','8.0以上'],document.index3,'2');
+            document.getData = (data)=>{
+            if(data.r != undefined){
+            console.log('aaaaaaaaaaa4===>'+data.r);
+            switch(data.r){
+            case 0:
+            document.currentScreen['r'] = 2000;
+            break;
+            case 1:
+            document.currentScreen['r'] = 3000;
+            break;
+            case 2:
+            document.currentScreen['r'] = 4000;
+            break;
+            case 3:
+            document.currentScreen['r'] = 5000;
+            break;
+            case 10:
+            document.currentScreen['r'] = 1000;
+            break;
+            }
+            }
+
+
+            if(data.reward != undefined){
+            console.log('aaaaaaaaaaa2===>'+data.reward);
+            if(data.reward != 10){
+            document.currentScreen['reward'] = (data.reward+1);
+            }else{
+            document.currentScreen['reward'] = 0;
+            }
+            }
+
+
+            if(data.credit != undefined){
+            console.log('aaaaaaaaaa3===>'+data.credit);
+            if(data.credit != 10){
+            document.currentScreen['credit'] = (data.credit+1);
+            }else{
+            document.currentScreen['credit'] = 0;
+            }
+            }
+
+
+            }
+        </script>
+    </body>
+
+
+    <footer background="#e5effb">
+
+        <text margin="210,0,210,180" >
+            <lp height="90" font="#e85707,48" width="300" radius="45" background="#dadadc" >重置</lp>
+            <rp height="90" font="#ffffff,48" width="300" radius="45" background="#e85707" click="
+            document.getData(document.$('type1').val());
+            document.getData(document.$('type2').val());
+            document.getData(document.$('type3').val());
+            document.next(document.currentScreen)">确定</rp>
+        </text>
+    </footer>
+</plain>

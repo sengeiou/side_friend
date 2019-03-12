@@ -1,0 +1,27 @@
+{
+  "sdkappid": 1400069362,
+  "users": [
+    {
+      "userId": "Android_trtc_01",
+      "userToken": "eJxlj1FPgzAYRd-5FYRXjbb9RjNMfMCBGzK2qFtge2kI7WaHQFc64zT*dycukcT7ek7uzf20bNt2FtPnq7womkNtmDkq4dg3toOcyz*olOQsNww0-wfFu5JasHxjhO4gdl2XINR3JBe1kRt5Nvya6*bUaLQpGMI9seUl69Z*mwanGuoBJX1FbjuYhMtRFL4e9usgmMHCkw8xJEPeNum8TUVSzPaTY4o*4L4MRPyosC9DX2cTipLYo6qEp9Vq5F6nY76raPWyhrt5FeFttkTji2w3jW57k0ZW4nxtAEMAQvvn3oRuZVN3AkHYxQTQTxzry-oGHylfaQ__"
+    },
+    {
+      "userId": "Android_trtc_02",
+      "userToken": "eJxlj11PgzAARd-5FYRXjfaDVjDxAcmmMwPiGDHZS4NtWcoYYOmUafzv23CJGO-rObk398uybdtZztOrnPNmVxtm9q107FvbAc7lL2xbJVhuGNbiH5R9q7RkeWGkHiAkhCAAxo4SsjaqUGcjqIVujo1GG84AGomd2LBh7afJPdZQH9M-iloPMJpk4ew5TGs3Cj1Tfb4*oUDzmxjfo3SO-fKiuk7S0p-AftPTR0K3wWy9rFZvq068FIQ*KM9dFLtyIfwEJ1keowzGCZ5*hFUrpjy6G00atZXnay72MEZ0fO5d6k419SAgAAlEGJziWN-WAd-DXzU_"
+    },
+    {
+      "userId": "Android_trtc_03",
+      "userToken": "eJxlj11PgzAARd-5FYRnI6UFRBMfYNJlERbdBy6*NNh2rGHSrtS5afzvTlxiE*-rObk399NxXddbFPPLmlL51hlijop77o3rAe-iDyolGKkNQZr9g-yghOakXhuuBxhEUQQBsB3BeGfEWpyNtGNanhqNNpQAZIk9a8mw9tsUnmriaxRDWxHNAMt8OZqMEKQfftKMd8mqqKvFw-3qGbbgrtxuZjg7vLdPMptUJQ63s1Tk6V5dpb1uFBBTPN6ovi-kNNOSzv1iyaqXJsc4MLjb*Y-hrTVpxCs-XwtRghCM7XN7rnshu0GAIIgCiMBPPOfL*QZ2pmCL"
+    },
+    {
+      "userId": "Android_trtc_04",
+      "userToken": "eJxlj8FOg0AURfd8BWFbo8MMoDRxAZYUKtLQFutugvCoT1IYplPbxvjvVmwiiXd7Tu7N-dR0XTdW8fI6L4p23yiuTgIMfawbxLj6g0JgyXPFmSz-QTgKlMDzSoHsoWnbNiVk6GAJjcIKL4bXlLI9NyqpCk6sgbgra96v-TZZ5xrHZQ4dKrjp4VOQPUShDxTmi85SSReG00oE-k16XIpJEOX17eFNbjN3dkpkNkk8DLw6reeNu3j231-AsTbrIlpPX0dxayMGjzDqaEzDfTpzMGrvB5MKt3C5ZrE7xqgzPPcBcodt0wuUmLZJGfmJoX1p33X7YEM_"
+    }
+  ],
+  "roles": [
+    {
+      "name": "user",
+      "value": "640x368"
+    }
+  ]
+}

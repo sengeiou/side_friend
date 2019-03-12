@@ -1,0 +1,11 @@
+<dialog height="-2">
+    <text height="100" click="document.next({operation:'camera'})" margin="0,0,0,3" background="#dddddd">
+        <cp>拍照</cp>
+    </text>
+    <text height="100" click="document.next({operation:'album'})" margin="0,0,0,3" background="#dddddd">
+        <cp>从相册中选择</cp>
+    </text>
+    <text height="100" click="document.next({operation:'cancel'})" background="#dddddd">
+        <cp>取消</cp>
+    </text>
+</dialog>

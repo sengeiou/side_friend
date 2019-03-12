@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/group_layout"
+        android:layout_height="48dp">
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/credit_assess"
+            android:text="信用评价"
+            android:textColor="@drawable/text_cor_sel"
+            android:button="@null"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_width="1dp"
+            android:background="#000000"
+            android:layout_gravity="center_vertical"
+            android:layout_height="15dp"/>
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="魅力值"
+            android:button="@null"
+            android:id="@+id/meili_tv"
+            android:gravity="center"
+            android:background="@android:color/transparent"
+            android:textColor="@drawable/text_cor_sel"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_width="1dp"
+            android:background="#000000"
+            android:layout_gravity="center_vertical"
+            android:layout_height="15dp"/>
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="接单评价"
+            android:background="@android:color/transparent"
+            android:textColor="@drawable/text_cor_sel"
+            android:gravity="center"
+            android:button="@null"
+            android:id="@+id/jiedan_tv"
+            android:layout_height="match_parent" />
+
+    </RadioGroup>
+</LinearLayout>

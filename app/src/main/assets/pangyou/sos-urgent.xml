@@ -1,0 +1,30 @@
+<listview>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp font="#ffffff,42" click="document.finish()">返回</lp>
+            <cp font="#ffffff,42">紧急求助信息</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <item>
+            <sos_urgent/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            let arrayObj = [];
+            let obj = {sos_name:'杨士鑫',sos_sex:'男',sos_phone:'17839945867',sos_address:'斜土路500人才大厦'};
+            let obj2 = {sos_name:'杨士鑫',sos_sex:'男',sos_phone:'17839945867',sos_address:'斜土路500人才大厦'};
+            let obj3 = {sos_name:'杨士鑫',sos_sex:'男',sos_phone:'17839945867',sos_address:'斜土路500人才大厦'};
+            let obj4 = {sos_name:'杨士鑫',sos_sex:'男',sos_phone:'17839945867',sos_address:'斜土路500人才大厦'};
+            let obj5 = {sos_name:'杨士鑫',sos_sex:'男',sos_phone:'17839945867',sos_address:'斜土路500人才大厦'};
+            arrayObj.push(obj);
+            arrayObj.push(obj2);
+            arrayObj.push(obj3);
+            arrayObj.push(obj4);
+            arrayObj.push(obj5);
+            document.adapter().refresh(arrayObj);
+        </script>
+    </footer>
+</listview>

@@ -1,0 +1,8 @@
+<viewPage>
+    <body>
+        <page src="pangyou/task-release-universal.xml" data="{status:'released'}">已发布</page>
+        <page src="pangyou/task-release-universal.xml" data="{status:'running'}">进行中</page>
+        <page src="pangyou/task-release-universal.xml" data="{status:'serviced'}">确认完成</page>
+        <page src="pangyou/task-release-universal.xml" data="{status:'finish'}">已完成</page>
+    </body>
+</viewPage>

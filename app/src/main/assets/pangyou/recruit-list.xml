@@ -1,0 +1,60 @@
+<listview>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg src="img/normal/left_w_arrow.png" attr="48" margin="42,0,0,0"/>
+            <lp font="#ffffff,42" click="document.finish()">返回</lp>
+            <cp font="48,#ffffff">企业招募</cp>
+            <rp font="48,#ffffff" margin="0,0,42,0" click="document.open('pangyou/search.xml')">搜索</rp>
+        </text>
+        <screen style="recruit" id="screen" dialogClick="(key,value)=>{
+            switch(key){
+                case 'city':
+                    document.screenData.screen.city = value;
+                    break;
+                case 'order':
+                    document.screenData.order = value;
+                    break;
+                case 'reward':
+                    document.screenData.screen.reward = value;
+                    break;
+                case 'credit':
+                    document.screenData.screen.credit = value;
+                    break;
+                case 'type':
+                    document.screenData.screen.type = value;
+                    break;
+             }
+             document.screenData.page = 0;
+             ServerAgent.invoke('enterprise-recruit-list',document.screenData).then(res=>{
+                document.adapter().refresh(res);
+             });
+        }"/>
+    </header>
+    <body background="#ececec">
+        <hr height="3" background="#ececec"/>
+        <item>
+            <recruit click="document.open('pangyou/recruit-detail.xml',{recruitId:document.adapter().getItem().recruitId});"
+                apply="ServerAgent.invoke('enterprise-recruit-enlist',{recruitId:document.adapter().getItem().recruitId,bargainingPrice:-1}).then(res=>{
+                    alert('ok');
+                })"
+            />
+        </item>
+    </body>
+    <footer>
+        <script>
+            ServerAgent.invoke('enterprise-occupation').then(res=>{
+                document.$('screen').setScreen(res);
+            });
+            document.screenData = {page:0,limit:10,screen:{range:{r:3000,lat:localStorage.get('latitude',0),lng:localStorage.get('longitude',0)}},order:1};
+            ServerAgent.invoke('enterprise-recruit-list',document.screenData).then(res=>{
+                document.adapter().refresh(res);
+            });
+        </script>
+    </footer>
+    <float bottom="200" right="200">
+        <card width="-2" height="100">
+            <img attr="100" src="img/release.png" click="
+                document.open('pangyou/recruit-release.xml');"/>
+        </card>
+    </float>
+</listview>

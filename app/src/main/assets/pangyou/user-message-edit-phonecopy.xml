@@ -1,0 +1,27 @@
+<plain>
+    <header>
+        <text>
+            <limg click="document.finish()" attr="40" margin="10,0,10,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()">返回</lp>
+            <cp>短信验证</cp>
+        </text>
+    </header>
+    <body>
+        <text margin="0,120,0,0">
+            <lp margin="20,0,0,0">短信验证码已经发送至18016068501，请查收</lp>
+        </text>
+
+        <text margin="0,50,0,0">
+            <input hint="验证码">
+            </input>
+        </text>
+        <text height="1" background="#000000"/>
+        <text click="" background="#dddddd" radius="10" margin="60">
+            <cp>完成</cp>
+        </text>
+
+        <text margin="0,20,0,0">
+            <cp font="#000000,34">重新发送验证码</cp>
+        </text>
+    </body>
+</plain>

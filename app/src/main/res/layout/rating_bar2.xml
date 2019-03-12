@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="#ffffff"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/layout"
+        android:layout_height="wrap_content">
+
+        <com.zankong.tool.side_friend.diy_view.evaluate.BatingBarView1
+            android:id="@+id/rb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:selectedNumber="5"
+            app:startTotalNumber="5"
+            app:starDistance="2dp"
+            app:starEmptyRes="@mipmap/rating"
+            app:starHalfRes="@mipmap/rating1"
+            app:starIsFull="true"
+            app:starSelectedRes="@mipmap/rating1"/>
+    </LinearLayout>
+
+</LinearLayout>

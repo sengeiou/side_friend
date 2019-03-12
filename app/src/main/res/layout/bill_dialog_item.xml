@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/bill_dialog_item_btn_01"
+        
+        android:layout_height="37.7dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="支出"
+            android:layout_centerInParent="true"
+            android:textColor="#171718"
+            android:textSize="14sp"
+            android:includeFontPadding="false"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>

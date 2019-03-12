@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_marginTop="40dp"
+    android:layout_marginLeft="20dp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#171718"
+        android:text="距离是:"
+        android:id="@+id/type_tv"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_width="50dp"
+        android:background="@drawable/home_screen_nor_btn"
+        android:textColor="#171718"
+        android:layout_marginRight="20dp"
+        android:id="@+id/btn"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_height="26dp"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/rv"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

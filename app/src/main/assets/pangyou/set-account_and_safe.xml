@@ -1,0 +1,28 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg src="img/normal/left_w_arrow.png" attr="60" margin="42,0,12,0" click="document.finish()"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="51,#ffffff">账号与安全</cp>
+        </text>
+    </header>
+    <body background="#f2f2f2">
+        <text height="150" margin="0,3,0,0" click="document.open('pangyou/set-privacy.xml')" background="#ffffff">
+            <lp margin="39,0,0,0" font="45,#171718">设置支付密码</lp>
+            <rimg attr="42" margin="0,0,39,0" src="img/user/右箭头.png"/>
+        </text>
+        <text height="150" margin="0,3,0,0" click="document.open('pangyou/set-notification.xml')" background="#ffffff">
+            <lp margin="39,0,0,0" font="45,#171718">修改登录密码</lp>
+            <rimg attr="42" margin="0,0,42,0" src="img/user/右箭头.png"/>
+        </text>
+        <text height="150" margin="0,3,0,0" click="document.open('pangyou/set-notification.xml')" background="#ffffff">
+            <lp margin="39,0,0,0" font="45,#171718">支付宝账号绑定</lp>
+            <rp font="#171718,45">已授权</rp>
+            <rimg attr="42" margin="0,0,42,0" src="img/user/右箭头.png"/>
+        </text>
+        <text height="150" margin="0,3,0,0" click="document.open('pangyou/set-notification.xml')" background="#ffffff">
+            <lp margin="39,0,0,0" font="45,#171718">钱包手势密码</lp>
+            <rimg attr="42" margin="0,0,42,0" src="img/user/右箭头.png"/>
+        </text>
+    </body>
+</plain>

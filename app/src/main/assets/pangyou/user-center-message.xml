@@ -1,0 +1,44 @@
+<plain>
+    <body background="#e5effb">
+        <text id="sex" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">性别</lp>
+            <rp margin="0,0,42,0" font="#8c8c8e,42"/>
+        </text>
+        <text id="education" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">最高学历</lp>
+            <rp margin="0,0,42,0" font="#8c8c8e,42"/>
+        </text>
+        <text id="occupation" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">本人职业</lp>
+            <rp font="39,#8c8c8e"/>
+            <rimg attr="45" margin="18,0,42,0" src="img/normal/right_arrow.png"/>
+        </text>
+        <text id="occupation" background="#ffffff" height="144" margin="0,30,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">信息完善情况</lp>
+            <rp margin="0,0,42,0" font="39,#8c8c8e">80%</rp>
+        </text>
+        <text id="occupation" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">认证情况</lp>
+            <rp margin="0,0,42,0" font="39,#8c8c8e"/>
+        </text>
+        <text id="occupation" background="#ffffff" height="144" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="#000000,42">个性标签</lp>
+            <rp margin="0,0,42,0" font="39,#8c8c8e"/>
+        </text>
+    </body>
+    <footer>
+        <script>
+            let userId = document.data.uid;
+            if(document.arguments().uid){
+                userId = document.arguments().uid;
+            }
+            ServerAgent.invoke('user-message',{uid:userId}).then(res=>{
+                document.$('sex').get('rp').set({p:res.sex});
+                document.$('education').get('rp').set({p:res.education});
+                document.$('occupation').get('rp').set({p:res.occupation});
+                document.getParent().$('img').get('cimg').set({src:res.img});
+                document.getParent().$('nickname').get('cp').set({src:res.nickname});
+            });
+        </script>
+    </footer>
+</plain>

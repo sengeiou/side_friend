@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="30dp"
+    android:gravity="center"
+    android:layout_height="wrap_content">
+
+    <CheckBox
+        android:layout_width="80dp"
+        android:button="@null"
+        android:id="@+id/check_box"
+        android:text="音乐"
+        android:textSize="15sp"
+        android:textColor="@drawable/label_tv_color"
+        android:checked="true"
+        android:gravity="center"
+        android:background="@drawable/message_label_sel"
+        android:layout_height="28dp" />
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.zankong.tool.zkapp">
+
+    <application>
+        <!--正常的activity-->
+        <activity android:name=".activity.ZKActivity"
+                  android:configChanges="orientation|screenSize|keyboard|keyboardHidden">
+        </activity>
+        <!--zkapp用到的socket-->
+        <service android:name="com.zankong.tool.zkapp.v8fn.socket_pck.ZKServiceSocket"/>
+        <!--ZKActivity的生命周期和接口回调管理-->
+        <activity android:name=".activity.ZKNaiveActivity"/>
+    </application>
+
+</manifest>

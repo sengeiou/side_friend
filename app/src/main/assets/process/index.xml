@@ -1,0 +1,47 @@
+<frame>
+    <body>
+        <page src="process/index-home.xml"/>
+        <page src="process/index-task.xml"/>
+        <page src="process/index-message.xml"/>
+        <page src="zn/text.xml"/>
+    </body>
+    <footer>
+        <group height="120" num="4" id="buttons">
+            <button click="document.showFragment(0);document.$('buttons').init({item:0,img:{src:'img.home_pressed.png'},bp:{color:'#ff0000'}})">
+                <img attr="30,30" src="img.home_normal.png"/>
+                <bp>首页</bp>
+            </button>
+            <button click="document.showFragment(1);document.$('buttons').init({item:1,img:{src:'img.user_pressed.png'},bp:{color:'#ff0000'}})">
+                <img attr="30,30" src="img.user_normal.png"/>
+                <bp>任务</bp>
+            </button>
+            <button click="document.showFragment(2);document.$('buttons').init({item:2,img:{src:'img.home_pressed.png'},bp:{color:'#ff0000'}})">
+                <img attr="30,30" src="img.home_normal.png"/>
+                <bp>消息</bp>
+            </button>
+            <button click="document.showFragment(3);document.$('buttons').init({item:3,img:{src:'img.user_pressed.png'},bp:{color:'#ff0000'}})">
+                <img attr="30,30" src="img.user_normal.png"/>
+                <bp>个人</bp>
+            </button>
+        </group>
+        <script>
+            document.$('buttons').set({item:0,img:{src:'img.home_pressed.png'},bp:{color:'#ff0000'}});
+        </script>
+        <group p-font="" button-click="" img-src="">
+            <button>
+                <p></p>
+                <img/>
+            </button>
+        </group>
+        <group>
+            <button click="">
+                <p font=""></p>
+                <img src=""/>
+            </button>
+            <button>
+                <tp></tp>
+                <bp></bp>
+            </button>
+        </group>
+    </footer>
+</frame>

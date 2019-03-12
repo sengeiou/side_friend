@@ -1,0 +1,103 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg attr="60" margin="42,0,0,0" src="img/normal/left_w_arrow.png" click="document.finish();"/>
+            <lp font="#ffffff,42" click="document.finish()">返回</lp>
+            <cp font="#ffffff,42">修改地址</cp>
+            <rp font="#ffffff,42" margin="0,0,42,0" val="document.arguments().change?'删除':'取消'" click="
+            if(document.arguments().change){
+                ServerAgent.invoke('address-delete',{addressId:document.arguments().id}).then(res=>{
+                    document.finish();
+                });
+            }else{
+                document.finish();
+            }
+            ">删除</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text id="name" height="144" click="document.open('pangyou/address.xml').then(res=>{
+            document.addressMessage.name = res.name;
+            document.addressMessage.longitude = res.longitude;
+            document.addressMessage.latitude = res.latitude;
+            document.$('name').get('lp',2).set({p:res.name,color:'#6f7072'});
+        })" background="#ffffff">
+            <lp font="48,#6f7072" width="277" padding="42,0,0,0" gravity="left|center">收货地址:</lp>
+            <lp font="42,#c0c0c2">请填写地址</lp>
+            <rimg attr="60" margin="0,0,39,0" src="img/normal/right_arrow.png"/>
+        </text>
+        <text id="detail" height="144" margin="0,2,0,2" background="#ffffff">
+            <lp font="48,#6f7072" width="277" padding="42,0,0,0" gravity="left|center">门牌号:</lp>
+            <input hint="请填写门牌号"/>
+            <rimg attr="60" margin="0,0,39,0" src="img/normal/right_arrow.png"/>
+        </text>
+        <text height="144" id="tag" background="#ffffff">
+            <lp  font="48,#6f7072" width="277" padding="42,0,0,0" gravity="left|center">标签</lp>
+            <lp radius="5" margin="0,20,0,20" border="1dp,#333333" padding="40,0,40,0" click="document.changeTag(2,'家')">家</lp>
+            <lp radius="5" margin="60,20,0,20" border="1dp,#333333" padding="40,0,40,0" click="document.changeTag(3,'公司')">公司</lp>
+            <lp radius="5" margin="60,20,0,20" border="1dp,#333333" padding="40,0,40,0" click="document.changeTag(4,'学校')">学校</lp>
+        </text>
+        <text background="#5c9afd" radius="80" height="140" margin="120,360,120,0" click="
+if(document.arguments().change){
+    document.addressMessage.detail = document.$('detail').val();
+    ServerAgent.invoke('address-change',document.addressMessage).then(res=>{
+        alert('修改成功');
+        document.finish();
+    });
+}else{
+    document.addressMessage.detail = document.$('detail').val();
+    ServerAgent.invoke('address-create',document.addressMessage).then(res=>{
+        alert('创建成功');
+        document.finish();
+    });
+}
+">
+            <cp font="48,#ffffff">保存地址</cp>
+        </text>
+    </body>
+    <footer>
+        <script>
+            document.addressMessage = {
+                detail:'',
+                tag:'',
+                name:'',
+                longitude:0,
+                latitude:0,
+                alias:'',
+            };
+            if(document.arguments().change){
+                document.addressMessage = {
+                    detail:document.arguments().detail,
+                    tag:document.arguments().tag,
+                    name:document.arguments().name,
+                    longitude:document.arguments().longitude,
+                    latitude:document.arguments().latitude,
+                    alias:document.arguments().alias,
+                    addressId : document.arguments().id,
+                };
+                document.$('name').get('lp',2).set({p:document.arguments().name,color:'#6f7072'});
+                document.$('detail').get('input').set({p:document.arguments().detail});
+                let tagView = document.$('tag');
+                switch(document.arguments().tag){
+                    case '家':
+                        tagView.get('lp',2).set({background:'#5c9afd',border:'1,#333333',color:'#ffffff'});
+                        break;
+                    case '公司':
+                        tagView.get('lp',3).set({background:'#5c9afd',border:'1,#333333',color:'#ffffff'});
+                        break;
+                    case '学校':
+                        tagView.get('lp',4).set({background:'#5c9afd',border:'1,#333333',color:'#ffffff'});
+                        break;
+                }
+            }
+            document.changeTag = (index,val)=>{
+                document.addressMessage.tag = val;
+                let tagView = document.$('tag');
+                tagView.get('lp',2).init();
+                tagView.get('lp',3).init();
+                tagView.get('lp',4).init();
+                tagView.get('lp',index).set({background:'#0000ff',color:'#ffffff'});
+            };
+        </script>
+    </footer>
+</plain>

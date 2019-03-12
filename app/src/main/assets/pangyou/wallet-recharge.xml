@@ -1,0 +1,81 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="#ffffff,42" margin="0,0,42,0">充值</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <hr background="#ffffff" height="60"/>
+        <text background="#ffffff">
+            <lp margin="42,0,0,0" font="42,#6f7072">充值金额:</lp>
+        </text>
+        
+        <text id="money" background="#ffffff" height="144">
+            <lp font="72,#171718" margin="42,0,0,0">￥</lp>
+            <input hint="请输入充值金额" type="number"/>
+        </text>
+        <hr height="40" background="#ffffff"/>
+        <text background="#dddddd" height="144" margin="0,100,0,0">
+            <lp margin="10,0,0,0">支付方式:</lp>
+        </text>
+        <switch style="2" background="#ffffff" id="switchPay" margin="0"
+            num="1" off="img/pay/select_off.png"
+            on="img/pay/select_on.png" padding="6,0,6,0" itemClick="(res)=>{
+            console.log(res.position +'');
+            }">
+            <item>
+                <lp>微信支付</lp>
+                <limg attr="40" src="img/login/wechat.png"/>
+            </item>
+            <item>
+                <lp>支付宝支付</lp>
+                <limg attr="40" src="img/pay/alipay.png"/>
+            </item>
+        </switch>
+    </body>
+    <footer margin="0,0,0,90" background="#e5effb">
+        <!--<dialog_button margin="0,0,0,220"/>-->
+        <text background="#5c9afd" height="120" radius="10" margin="135,0,135,120" click="
+        let payMethod = '';
+        let money = document.$('money').val();
+        if(0>=Number(money)){
+            alert('请输入正确的金额');
+            return;
+        }
+        switch(document.$('switchPay').ff()){
+            case 0:
+                alert('微信支付');
+                payMethod = 'weChatPay';
+                break;
+            case 1:
+                alert('支付宝支付');
+                payMethod = 'aliPay';
+                break;
+        };
+        if(payMethod.length===0){
+            alert('请选择支付方式');
+            return;
+        }
+        ServerAgent.invoke('pay-recharge',{money,method:payMethod}).then(res=>{
+            switch(payMethod){
+                case 'aliPay':
+                    AliPay.pay(document,res.out_trade_no).then(res=>{
+                        alert('支付成功');
+                        document.finish();
+                    });
+                    break;
+                case 'weChatPay':
+                    weChatPay.pay(res.weChatPayNo).then(res=>{
+                        alert('支付成功');
+                        document.finish();
+                    });
+                    break;
+            }
+        });
+">
+            <cp font="48,#ffffff">下一步</cp>
+        </text>
+    </footer>
+</plain>

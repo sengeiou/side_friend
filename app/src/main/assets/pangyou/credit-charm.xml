@@ -1,0 +1,56 @@
+<plain>
+    <body background="#e5effb">
+        <text height="144" id="charm">
+            <lp font="42,#6f7072" margin="39,0,0,0">魅力评分:</lp>
+            <lp font="42,#6f7072" margin="39,0,0,0">9.1</lp>
+        </text>
+        <ratingbar id="ratingbar" type="魅力等级:" />
+        <text background="#ffffff" height="144" id="releaseNum" click="document.toEvaluate('taskNum')">
+            <lp font="42,#6f7072" margin="39,0,0,0">总任务数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" margin="0,0,42,0" src="img/normal/right_arrow.png" />
+        </text>
+        <text id="gratuityNum" background="#ffffff" height="144" margin="0,3,0,0" click="document.toEvaluate('gratuity')">
+            <lp font="42,#6f7072" margin="39,0,0,0">打赏次数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" margin="0,0,42,0" src="img/normal/right_arrow.png" />
+        </text>
+        <text id="notSatisfyAttitudeNum" background="#ffffff" height="144" margin="0,3,0,0" click="document.toEvaluate('isSatisfyAttitude')">
+            <lp font="42,#6f7072" margin="39,0,0,0">不满意态度次数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" margin="0,0,42,0" src="img/normal/right_arrow.png" />
+        </text>
+        <text id="violateNum" background="#ffffff" height="144" margin="0,3,0,0" click="document.toEvaluate('violate')">
+            <lp font="42,#6f7072" margin="39,0,0,0">爽约次数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" margin="0,0,42,0" src="img/normal/right_arrow.png" />
+        </text>
+        <text id="notMessageMatchNum" background="#ffffff" height="144" margin="0,3,0,0" click="document.toEvaluate('isMessageMatch')">
+            <lp font="42,#6f7072" margin="39,0,0,0">信息不匹配次数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" margin="0,0,42,0" src="img/normal/right_arrow.png" />
+        </text>
+        <text id="notTaskMatchNum" background="#ffffff" height="144" margin="0,3,0,0" click="document.toEvaluate('isTaskMatch')">
+            <lp font="42,#6f7072" margin="39,0,0,0">任务信息不匹配次数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" margin="0,0,42,0" src="img/normal/right_arrow.png" />
+        </text>
+        <script>
+            document.onResume = ()=>{
+                ServerAgent.invoke('credit-collect',{type:document.data.type,uid:document.data.uid}).then(res=>{
+                    document.$('charm').get('lp',2).set(res.charmGrade+'分');
+                    document.$('ratingbar').set({totalnumber:'5',selectednumber:parseInt(res.charmGrade/20)+''});
+                    document.$('releaseNum').get('rp').set(res.releaseNum+'次');
+                    document.$('notSatisfyAttitudeNum').get('rp').set(res.notSatisfyAttitudeNum+'次');
+                    document.$('violateNum').get('rp').set(res.violateNum+'次');
+                    document.$('notMessageMatchNum').get('rp').set(res.notMessageMatchNum+'次');
+                    document.$('notTaskMatchNum').get('rp').set(res.notTaskMatchNum+'次');
+                    document.$('gratuityNum').get('rp').set(res.gratuityNum+'次');
+                });
+            };
+            document.toEvaluate = (screen)=>{
+                document.open('pangyou/credit-evaluate-list.xml',{screen,uid:document.data.uid});
+            };
+        </script>
+    </body>
+</plain>

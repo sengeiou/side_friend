@@ -1,0 +1,29 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg attr="60" margin="42,0,12,0" click="document.finish()" src="img/normal/left_w_arrow.png"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff" margin="0,0,42,0">添加银行卡</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+     
+        <text margin="0,42,0,42">
+            <lp margin="48,0,0,0" font="36,#6f7072">请绑定持卡人本人的银行卡</lp>
+        </text>
+        <text height="144" background="#ffffff">
+            <lp margin="48,0,0,0" font="48,#171718">持卡人</lp>
+            <lp font="#6f7072,48" margin="90,0,0,0">中国工商银行储蓄卡</lp>
+        </text>
+        <text height="144" background="#ffffff" margin="0,2,0,0">
+            <lp margin="48,0,0,0"  font="48,#171718">手机号</lp>
+            <lp font="#6f7072,48" margin="90,0,0,0">178*****867</lp>
+        </text>
+        <text margin="0,36,0,0">
+            <lp margin="42,0,0,0" font="36,#ed6f36">查看《服务协议》</lp>
+        </text>
+        <text height="144" background="#5c9afd" radius="72" margin="135,360,135,0">
+            <cp font="51,#e5effb">同意协议并绑卡</cp>
+        </text>
+    </body>
+</plain>

@@ -1,0 +1,26 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg attr="60" margin="42,0,12,0" click="document.finish()" src="img/normal/left_w_arrow.png"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff" margin="0,0,42,0">添加银行卡</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text margin="0,42,0,42">
+            <lp margin="48,0,0,0" font="36,#6f7072">请绑定持卡人本人的银行卡</lp>
+        </text>
+        <text height="144" background="#ffffff">
+            <lp width="200" gravity="left|center" margin="42,0,0,0" font="48,#171718">持卡人:</lp>
+            <input hint="真实姓名"/>
+        </text>
+        <text height="144" background="#ffffff" margin="0,2,0,0">
+            <lp width="200" margin="42,0,0,0" gravity="left|center" font="48,#171718">卡  号:</lp>
+            <input hint="卡号"/>
+        </text>
+        <text height="144" background="#5c9afd" radius="72" margin="135,273,135,0" click="document.open('pangyou/wallet-reflect-addblank-info.xml').then(res=>{
+        });">
+            <cp font="51,#e5effb">下一步</cp>
+        </text>
+    </body>
+</plain>

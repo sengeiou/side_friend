@@ -1,0 +1,143 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg attr="40" click="document.finish()" margin="10,0,10,0"
+                src="img/normal/left_w_arrow.png" />
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="#ffffff,42">评价</cp>
+            <rp font="40,#ffffff" margin="0,0,32,0" click="
+            document.senderEvaluate.isGratuity = 0;
+            let item = document.getEvaluateData();
+            ServerAgent.invoke('Task-evaluateBySender',item).then(res=>{
+                new Promise((res,rej)=>{
+                    if(document.arguments().advancePayIsNeedPay){
+                        ServerAgent.invoke('Task-payXml',{payFor:'advancePay',taskId:document.arguments().taskId}).then(()=>{
+                            res();
+                        });
+                    }else{
+                        res();
+                    }
+                }).then(res=>{
+                    ServerAgent.invoke('chat-isApplyFriend',{otherId:document.arguments().otherUid}).then(res=>{
+                        console.log('判断是否好友');
+                        if(!res.isFriend){
+                            document.dialog('pangyou/chat-add_friend_dialog.xml',res).then(res=>{
+                                document.finish();
+                            });
+                        }else document.finish();
+                    });
+                });
+            });
+            ">提交</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <ratingbar style="3" id="ratingbar" stripe_width="30" text_color="#ff0000" text_size="42" reward="document.arguments().obj.reward"/>
+        <text height="144">
+            <cp font="36,#8c8c8e" margin="0,24,0,24">您的评价对服务者的收益有直接关系,请谨慎评价!</cp>
+        </text>
+        <text height="144" background="#ffffff" id="isOnline">
+            <lp font="42,#171718" margin="36,0,0,0">垫付价格:</lp>
+            <lp val="document.arguments().obj.advancePayMoney||0+''"/>
+            <rimg attr="48" click="document.changeStatus('isOnline')"
+                src="img/task/choice_off.png" />
+            <rp click="document.changeStatus('isOnline')" font="39,#171718" gravity="left|center"
+                padding="12,0,0,0" width="240">线上支付</rp>
+        </text>
+        <text background="#ffffff" height="144" id="isMessageMatch">
+            <lp font="42,#171718" margin="36,0,0,0">用户信息是否匹配</lp>
+            <rimg attr="48" click="document.changeStatus('isMessageMatch')"
+                src="img/task/choice_off.png" />
+            <rp click="document.changeStatus('isMessageMatch')" font="39,#171718" gravity="left|center"
+                padding="12,0,0,0" width="240">不匹配</rp>
+        </text>
+        <text background="#ffffff" height="144" id="isTimeout">
+            <lp font="42,#171718" margin="36,0,0,0">是否按约定时间完成任务</lp>
+            <rimg attr="48" click="document.changeStatus('isTimeout')"
+                src="img/task/choice_off.png" />
+            <rp click="document.changeStatus('isTimeout')" font="39,#171718" gravity="left|center"
+                padding="12,0,0,0" width="240">超时</rp>
+        </text>
+        <text background="#ffffff" height="144" id="isSatisfyService">
+            <lp font="42,#171718" margin="36,0,0,0">是否满意本次服务</lp>
+            <rimg attr="48" click="document.changeStatus('isSatisfyService')"
+                src="img/task/choice_off.png" />
+            <rp click="document.changeStatus('isSatisfyService')" font="39,#171718" gravity="left|center"
+                padding="12,0,0,0" width="240">不满意</rp>
+        </text>
+        <text height="15" background="#ffffff"/>
+        <text background="#ffffff" id="isGratuity" height="144" click="
+        document.open('pangyou/task_evaluate_sender_play_tour.xml',{money:document.senderEvaluate.isGratuity}).then(res=>{
+            document.senderEvaluate.isGratuity = res.money;
+            let item = document.getEvaluateData();
+            ServerAgent.invoke('Task-evaluateBySender',document.getEvaluateData()).then(res=>{
+                if(document.senderEvaluate.isGratuity > 0){
+                    ServerAgent.invoke('Task-payXml',{taskId:document.arguments().taskId,payFor:'gratuity'}).then(res=>{
+                        document.open('pangyou/pay.xml',res).then(res=>{
+                            ServerAgent.invoke('chat-isApplyFriend',{otherId:document.arguments().otherUid}).then(res=>{
+                                console.log('判断是否好友');
+                                if(!res.isFriend){
+                                    document.dialog('pangyou/chat-add_friend_dialog.xml',res).then(res=>{
+                                        document.finish();
+                                    });
+                                }else document.finish();
+                            });
+                        });
+                    });
+                }
+            });
+        })">
+            <limg attr="40" margin="39,0,8,0" src="img/pay/money_icon.png"/>
+            <lp font="#ef7318,42">打赏</lp>
+            <rimg attr="42" src="img/normal/right_w_arrow.png" margin="0,0,60,0"/>
+        </text>
+        <text height="2"/>
+        <ratingbar style="4" id="label1"/>
+        <ratingbar style="4" id="label2"/>
+        <ratingbar style="4" id="label3"/>
+        <text height="12" background="#ffffff"/>
+        <text style="input" background="#ffffff" height="370" id="input" padding="39">
+            <input hint="详细描述你所提供的共享品特征及可共享的时间，方便预约者清楚了解。至少输入20个字" watch="(text)=>{
+                let length = text.length;
+                if(length > 200){
+                    alert('最多200字');
+                    document.$('description').get('input').set({p:text.slice(0,200)});
+                    return;
+                }else{
+                    document.$('textNum').get('rp').set(length+'/200');
+                }
+            }" />
+        </text>
+        <text background="#ffffff" id="textNum">
+            <limg attr="48" click="
+    document.album({select:4}).then(res=>{
+        let files = [];
+        let data = [];
+        for(let one of res){
+            let file2 = one.split('\.');
+            let random = Math.random()+'';
+            let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+            files.push({key,file:one});
+            data.push({type:'image',url:one});
+        }
+        document.$('editAdd').adapter().refresh(data);
+        Aliput.putFiles(files).then(urls=>{
+            document.senderEvaluate.additionalMessage.image = [];
+            for(let url of urls){
+                document.senderEvaluate.additionalMessage.image.push(url);
+            }
+        });
+    });
+" margin="42,30,0,30" src="img/task/add_img.png" />
+            <limg attr="48" margin="36,30,0,30" src="img/task/add_video.png" />
+            <limg attr="48" margin="36,30,0,30" src="img/task/add_audio.png" />
+            <rp font="36,#171718" margin="0,0,60,0">0/200</rp>
+        </text>
+        <recycle id="editAdd" orientation="horizontal">
+            <editAdd click="alert('你好')" />
+        </recycle>
+    </body>
+    <footer>
+        <script src="pangyou/task-order-evaluate_sender.js"/>
+    </footer>
+</plain>

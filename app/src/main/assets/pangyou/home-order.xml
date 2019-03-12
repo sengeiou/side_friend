@@ -1,0 +1,36 @@
+<popup focusable="true" weight="420" background="#ffffff" position="-105,0">
+    <text id="current" height="100" click="document.next({order:document.currentOrder})" margin="0,12,0,0">
+        <lp font="#5b9bfc,36" width="300" gravity="left|center" margin="24,0,0,0">信用度优先</lp>
+        <limg attr="35,19" src="img/task/screen_choice_down.png" margin="0,0,24,0"/>
+    </text>
+    <text id="reward"  height="100" ripple="#555555" click="document.getOrder(0)">
+        <lp font="#6f7072,39" width="300" gravity="left|center" margin="24,0,0,0">价格从高到低</lp>
+        <limg attr="36" margin="0,0,24,0" src=""/>
+    </text>
+    <text id="createdAt"  height="100" ripple="#555555" click="document.getOrder(1)">
+        <lp font="#6f7072,39" width="300" gravity="left|center" margin="24,0,0,0">最新发布时间</lp>
+        <limg attr="36" margin="0,0,24,0"/>
+    </text>
+    <text id="credit" height="100" ripple="#555555" click="document.getOrder(2)">
+        <lp font="#6f7072,39" width="300" gravity="left|center" margin="24,0,0,0">信用度高优先</lp>
+        <limg attr="36" margin="0,0,24,0" />
+    </text>
+    <text id="distance" height="100" ripple="#555555" margin="0,0,0,12" click="document.getOrder(3)">
+        <lp font="#6f7072,39" width="300" gravity="left|center"  margin="24,0,0,0">距离最近</lp>
+        <limg attr="36" margin="0,0,24,0"/>
+    </text>
+    <script>
+        console.log('order:'+document.arguments().order);
+        document.currentOrder = document.arguments().order;
+        let ids = ['reward','createdAt','credit','distance'];
+        let doc = [0,1,2,3];
+        document.$('current').get('lp').set({p:document.$(ids[document.currentOrder]).get('lp').val(),color:'#5b9bfc'});
+        document.$(ids[document.currentOrder]).get('limg').set({src:'img/task/screen_choice_yes.png'});
+        document.getOrder = (index)=>{
+        document.$(ids[document.currentOrder]).get('limg').set({src:'img/#fffff.png'});
+            document.currentOrder = index;
+            document.$(ids[index]).get('limg').set({src:'img/task/screen_choice_yes.png'});
+            document.$('current').get('lp').set({p:document.$(ids[index]).get('lp').val(),color:'#5b9bfc'});
+        };
+    </script>
+</popup>

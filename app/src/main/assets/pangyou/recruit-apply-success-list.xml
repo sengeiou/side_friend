@@ -1,0 +1,21 @@
+<listview>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg src="img/normal/left_w_arrow.png" attr="48"/>
+            <lp click="document.finish()">返回</lp>
+            <cp font="48,#ffffff">成功报名列表</cp>
+        </text>
+    </header>
+    <body>
+        <item>
+            <recruitApply/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            ServerAgent.invoke('enterprise-establish-list',{recruitId:document.arguments().recruitId,limit:10,page:0}).then(res=>{
+                document.adapter().refresh(res.list);
+            });
+        </script>
+    </footer>
+</listview>

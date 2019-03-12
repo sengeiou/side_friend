@@ -1,0 +1,24 @@
+<plain>
+    <body>
+        <text click="ServerAgent.invoke('test').then(res=>{
+            console.log(res);
+        })">
+            <lp>测试</lp>
+        </text>
+        <text margin="0,100,0,0" click="ServerAgent.invoke('login').then(res=>{
+            console.log(res);
+
+            #5c9afd
+            #171718
+            #e5effb
+
+
+
+        })">
+            <lp>login</lp>
+        </text>
+
+
+    </body>
+
+</plain>

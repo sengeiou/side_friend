@@ -1,0 +1,139 @@
+<plain>
+    <header background="#5c9afd">
+        <text height="144">
+            <limg click="document.finish()" attr="54" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff">返回</lp>
+            <cp font="#ffffff,42">个人资料</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text click="document.open('pangyou/user-message-edit-img.xml').then(res=>{
+                document.$('header').get('rimg').set({src:res.img});
+        })"  background="#ffffff" id="header" margin="0,0,0,0" height="144">
+            <lp margin="42,0,0,0" font="45,#171718">头像</lp>
+            <lp margin="10,0,0,0" font="#fda85c,39">(必填)</lp>
+            <rp font="#8c8c8e,39" margin="0,0,18,0">请上传本人清晰照片</rp>
+            <rimg attr="90" radius="45" margin="0,0,42,0" val="localStorage.get('img')"/>
+        </text>
+        <text click="document.open('pangyou/user-message-edit-nickname.xml').then(res=>{
+            if(res.isChange)
+            ServerAgent.invoke('user-changeMessage',{key:'nickname',value:res.nickname}).then(res=>{
+                document.$('nickname').get('rp').set({p:res.value});
+            });
+        })" background="#ffffff" id="nickname" margin="0,2,0,0" height="144">
+            <lp margin="42,0,0,0" font="45,#171718">昵称</lp>
+            <lp margin="10,0,0,0" font="#fda85c,39">(必填)</lp>
+            <rp val="localStorage.get('nickname','未填写');" font="39,#8c8c8e"> </rp>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+        <text id="sex" click="
+            let sex = localStorage.get('sex','');
+        if(sex !== ''){
+            alert('无法修改性别');
+            return;
+        }else{
+            document.open('pangyou/user-message-edit-sex.xml').then(res=>{
+                ServerAgent.invoke('user-changeMessage',{key:'sex',value:res.sex}).then(res=>{
+                    document.$('sex').get('rp').set(res.value);
+                });
+            })
+        };" background="#ffffff" margin="0,2,0,0" height="144">
+            <lp margin="42,0,0,0" font="45,#171718">性别</lp>
+            <lp margin="10,0,0,0" font="#fda85c,39">(必填)</lp>
+            <rp val="localStorage.get('sex','')"/>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+        <text background="#ffffff" margin="0,2,0,0" height="144" id="sign" click="
+        document.open('pangyou/user-message-edit-sign.xml').then(res=>{
+           ServerAgent.invoke('user-changeMessage',{key:'autograph',value:res.sign}).then(res=>{
+                    if(res.value){
+                       document.$('sign').get('rp').set(res.value.slice(0,20));
+                       alert('修改成功');
+                    }
+                });
+        });">
+            <lp margin="42,0,0,0" font="45,#171718">个性签名</lp>
+            <rp font="39,#8c8c8e" val="localStorage.get('autograph','')"/>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+        <text background="#ffffff" margin="0,2,0,0" height="144" click="document.open('pangyou/user-message-edit-phone2.xml')">
+            <lp margin="42,0,0,0" font="45,#171718">电话号码</lp>
+            <rp font="39,#8c8c8e" val="localStorage.get('phone','')"/>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+        <text background="#ffffff" margin="0,2,0,0" height="144" click="
+        if(localStorage.get('identity',false)){
+            alert('已经进行了身份认证');
+            return;
+        }
+        document.open('pangyou/authentication-id.xml')">
+            <lp margin="42,0,0,0" font="45,#171718">身份认证</lp>
+            <lp margin="10,0,0,0" font="#fda85c,39">(必填)</lp>
+            <rp font="39,#8c8c8e" val="localStorage.get('identity',false)?'已认证':'未认证'"/>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+
+        <text id="email" background="#ffffff" margin="0,2,0,0" height="144" click="document.open('pangyou/user-message-edit-email.xml').then(res=>{
+            ServerAgent.invoke('user-changeMessage',{key:'email',value:res.email}).then(res=>{
+                alert('修改成功');
+                document.$('email').get('rp').set(res.value);
+            })
+        })">
+            <lp margin="42,0,0,0" font="45,#171718">联系邮箱</lp>
+            <rp font="#8c8c8e,39" val="localStorage.get('email','')"/>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+        <text background="#ffffff" margin="0,2,0,0" height="144" click="document.open('pangyou/user-message-edit-skill_label.xml')">
+            <lp margin="42,0,0,0" font="45,#171718">技能标签</lp>
+            <rp font="39,#8c8c8e" />
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+        <text background="#ffffff" margin="0,2,0,0" height="144" click="document.open('pangyou/skill-list.xml',{lookUid:localStorage.get('uid',0)})">
+            <lp margin="42,0,0,0" font="45,#171718">技能认证</lp>
+            <rp font="39,#8c8c8e" />
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+        <text background="#ffffff" margin="0,2,0,0" height="144" click="document.open('pangyou/user-message-edit-phone2.xml')">
+            <lp margin="42,0,0,0" font="45,#171718">预收费方式</lp>
+            <rp font="39,#8c8c8e" />
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+         <text background="#ffffff" id="education" margin="0,2,0,0" height="144" click="
+            document.popup(
+                'pangyou/user-message-edit-education-dialog.xml',
+                document.$('education').get('rimg').getView()
+            ).then(res=>{
+                      ServerAgent.invoke('user-changeMessage',{key:'education',value:res.education}).then(res=>{
+                      document.$('education').get('rp').set({p:res.value});
+                       alert('修改成功');
+            });
+            })">
+            <lp margin="42,0,0,0" font="45,#171718">最高学历</lp>
+             <rp val="localStorage.get('education','')"/>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0" />
+        </text>
+             <text background="#ffffff" margin="0,2,0,0" height="144" click="document.open('pangyou/user-message-edit-job.xml')">
+            <lp margin="42,0,0,0" font="45,#171718">职业</lp>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+        <text background="#ffffff" margin="0,2,0,0" height="144" click="document.open('pangyou/user-message-edit-experience.xml')">
+            <lp margin="42,0,0,0" font="45,#171718">工作描述</lp>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+        <text background="#ffffff" margin="0,2,0,0" height="144" click="document.open('pangyou/user-message-edit-photo_wall.xml')">
+            <lp margin="42,0,0,0" font="45,#171718">我的相册</lp>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+        <text background="#ffffff" margin="0,2,0,0" height="144" click="alert('暂无')">
+            <lp margin="42,0,0,0" font="45,#171718">我的视频</lp>
+            <rimg attr="54" src="img/normal/right_arrow.png" margin="12,0,39,0"/>
+        </text>
+    </body>
+    <footer>
+        <script>
+            if(localStorage.get('img')){
+                document.$('header').get('rp').show(false);
+            }
+        </script>
+    </footer>
+</plain>

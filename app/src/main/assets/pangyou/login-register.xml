@@ -1,0 +1,79 @@
+<plain>
+    <header background="#ffffff">
+        <text margin="0,52,0,0">
+            <rimg attr="40" click="document.finish()" margin="0,0,52,0" src="img/login/error.png"/>
+        </text>
+        <text>
+            <cimg margin="0,154,0,210" attr="225" src="img/logo.png"/>
+        </text>
+    </header>
+    <body background="#ffffff">
+        <text lw="0" id="phone" margin="90,90,90,0" height="120">
+            <input type="number" nobackground="true" hint="请输入11位手机号码" hintFont="45,#8c8c8e"/>
+            <rimg attr="48" margin="0,0,42,0" src="img/normal/null.png"/>
+            <rp gravity="right|center" font="45,#171718" click="
+        if(document.lastTime > 0)return;
+        ServerAgent.invoke('user-register-sendCode',{phone:document.$('phone').val()}).then(res=>{
+            document.lastTime = 60;
+            let send = ()=>{
+                document.$('phone').get('rp').set({text:document.lastTime+'秒后重发'});
+                document.lastTime --;
+                setTimeout(()=>{
+                    if(document.lastTime > 0){
+                        send();
+                    }else{
+                        document.$('phone').get('rp').set({text:'获取验证码'});
+                    }
+                },1000);
+            };
+            send();
+        });
+    ">获取验证码</rp>
+        </text>
+        <hr background="#8c8c8e" height="2" margin="90,0,90,0"/>
+        <text lw="0" id="code" margin="90,90,90,0" height="120">
+            <input hintFont="45,#8c8c8e" type="number" hint="输入6位验证码"/>
+            <rimg attr="48" src="img/normal/null.png"/>
+        </text>
+        <hr background="#8c8c8e" height="2" margin="90,0,90,0"/>
+
+        <text lw="0" id="password" margin="90,90,90,0" height="120">
+            <input hintFont="45,#8c8c8e" type="number" hint="输入密码"/>
+            <rimg attr="48" src="img/normal/null.png"/>
+        </text>
+        <hr background="#8c8c8e" height="2" margin="90,0,90,0"/>
+
+        <text lw="0" id="appExtendCode" margin="90,90,90,0" height="120">
+            <input hintFont="45,#8c8c8e" type="number" hint="使用邀请码(选填)"/>
+            <rimg attr="48" src="img/normal/null.png"/>
+        </text>
+        <hr background="#8c8c8e" height="2" margin="90,0,90,24"/>
+        <text margin="90,0,0,0" height="50" id="agree">
+            <limg attr="39" margin="19,0,12,0" src="img/task/screen_choice_yes.png" click="
+                document.currentAgree = !document.currentAgree;
+        document.$('agree').get('limg').set({src:document.currentAgree?'img/task/screen_choice_yes.png':'img/user/null.png'})
+    "/>
+            <lp font="#8c8c8e,36">我已阅读并同意</lp>
+            <lp font="#F78A64,36">用户协议</lp>
+            <lp font="#8c8c8e,36">和</lp>
+            <lp font="#F78A64,36">隐私条款</lp>
+        </text>
+        <text background="#5c9afd" margin="120,150,120,0" height="144" click="
+            if(!document.currentAgree){
+                alert('请同意用户协议');
+                return;
+            }
+            ServerAgent.invoke('user-register',{phone:document.$('phone').val(),code:document.$('code').val(),appExtendCode:document.$('appExtendCode').val()}).then(res=>{
+                document.finish();
+            })" radius="72">
+            <cp font="#ffffff,48">注册</cp>
+        </text>
+    </body>
+    <footer background="#ffffff">
+        <script>
+            document.currentAgree = false;
+            document.$('agree').get('limg').set({src:document.currentAgree?'img/task/screen_choice_yes.png':'img/user/null.png'})
+            document.keyword.nothing();
+        </script>
+    </footer>
+</plain>

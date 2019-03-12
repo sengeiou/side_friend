@@ -1,0 +1,108 @@
+<plain>
+    <header background="#5c9afd">
+        <text height="144">
+            <limg click="document.finish()" attr="50" margin="10,0,0,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff">返回</lp>
+            <cp font="42,#ffffff">个人资料</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <img radius="50" attr="100" src="img/user/header.jpg"/>
+        <text>
+            <cp>心底那一处柔软<p font="#00ff00">(信息完善度80%)</p></cp>
+        </text>
+        <text>
+            <cp>工程师</cp>
+        </text>
+        <text>
+            <cp>凡事随缘随遇而安，不随波逐流</cp>
+        </text>
+        <group background="#dddddd" num="3">
+            <button>
+                <tp>0</tp>
+                <bp>成交量</bp>
+            </button>
+            <button>
+                <tp>0</tp>
+                <bp>好评率</bp>
+            </button>
+            <button>
+                <tp>0</tp>
+                <bp>共同好友</bp>
+            </button>
+        </group>
+        <text>
+            <limg attr="40" src="img/user/right.png"/>
+            <lp>实名认证</lp>
+            <rp>信用等级;4</rp>
+            <rimg attr="40" src="img/user/star.png"/>
+        </text>
+        <text>
+            <limg attr="40" src="img/user/address.png"/>
+            <lp>上海市黄浦区海悦花园</lp>
+        </text>
+        <text background="#dddddd">
+            <limg attr="40" src="img/user/line.png"/>
+            <lp>标签</lp>
+        </text>
+        <group p-background="#ffffff" border="1,#ff0000" p-radius="5" p-padding="10" background="#dddddd" num="6">
+            <button>
+                <p>小清新</p>
+            </button>
+            <button>
+                <p>文艺</p>
+            </button>
+            <button>
+                <p>前卫</p>
+            </button>
+            <button>
+                <p>摄影</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+            </button>
+        </group>
+        <text background="#dddddd">
+            <limg attr="40" src="img/user/line.png"/>
+            <lp>个人相册</lp>
+        </text>
+        <group num="3">
+            <button>
+                <img attr="100" src="img/user/album_1.jpg"/>
+            </button>
+            <button>
+                <img attr="100" src="img/user/album_1.jpg"/>
+            </button>
+            <button>
+                <img attr="100" src="img/user/album_1.jpg"/>
+            </button>
+        </group>
+        <text background="#dddddd">
+            <limg attr="40" src="img/user/line.png"/>
+            <lp>自我描述</lp>
+        </text>
+        <text>
+            <cp maxLine="4">美容师是一种专业美容领域的职业称谓，主要工作在美容院及能为顾客提供美容服务的场所，工作职责是为顾客提供美容服务，比如洗脸、保养、按摩、香薰、和减肥等皮肤护理工作。</cp>
+        </text>
+        <text background="#dddddd">
+            <limg attr="40" src="img/user/line.png"/>
+            <lp>我的简介</lp>
+        </text>
+        <text>
+            <lp font="#000000,30">职业经历</lp>
+            <cp>拍摄男女写真、淘宝详情拍摄，酒店菜品拍摄等</cp>
+        </text>
+    </body>
+    <footer>
+        <group num="2" height="100" background="#dddddd">
+            <button>
+                <p>关注</p>
+            </button>
+            <button>
+                <p>私信</p>
+            </button>
+        </group>
+    </footer>
+</plain>

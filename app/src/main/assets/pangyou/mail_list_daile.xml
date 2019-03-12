@@ -1,0 +1,91 @@
+<plain>
+    <header background="#5c9afd">
+        <text height="144" background="#5c9afd">
+            <limg src="img/normal/left_w_arrow.png" click="document.finish()"/>
+            <lp font="#ffffff,42">群详情</lp>
+        </text>
+    </header>
+    <body>
+        <recycle id="groupdetails" type="grid" num="5" margin="15,0,0,0">
+            <groupDetails click="
+                if(document.$('groupdetails').adapter().getItem().name === 'end'){
+                    document.open('pangyou/chat-group-create.xml').then(res=>{
+                    res.push({name:'end'});
+                         document.$('groupdetails').adapter().refresh(res);
+                    })
+                }
+            "/>
+        </recycle>
+        <text margin="0,50,0,0" background="#f5f5f5" height="144">
+            <lp margin="39,0,0,0" font="#000000,42">群名称</lp>
+            <rp margin="0,0,39,0" font="#000000,42">顶顶顶顶</rp>
+        </text>
+        <text margin="0,4,0,0" background="#f5f5f5" height="144">
+            <lp margin="39,0,0,0" font="#000000,42">消息免打扰</lp>
+            <rp margin="0,0,39,0" font="#000000,42"></rp>
+        </text>
+        <text margin="0,50,0,0" background="#f5f5f5" height="144">
+            <lp margin="39,0,0,0" font="#000000,42">我在本群的昵称</lp>
+            <rp margin="0,0,39,0" font="#000000,42">哈哈</rp>
+        </text>
+        <text margin="0,4,0,0" background="#f5f5f5" height="144">
+            <lp margin="39,0,0,0" font="#000000,42">查看聊天记录</lp>
+            <rimg margin="0,0,39,0" src="img/right_arrow.png"/>
+        </text>
+        <text margin="0,4,0,0" background="#f5f5f5" height="144">
+            <lp margin="39,0,0,0" font="#000000,42">查看聊天记录</lp>
+            <rimg margin="0,0,39,0" src="img/right_arrow.png"/>
+        </text>
+    </body>
+    <footer>
+        <script>
+            let list = [];
+            let obj0 = {name:'杨士鑫1',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:11};
+            let obj1 = {name:'孙士鑫2',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:21};
+            let obj2 = {name:'张士鑫3',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:31};
+            let obj3 = {name:'赵士鑫4',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:4};
+            let obj4 = {name:'钱士鑫5',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:5};
+            let obj5 = {name:'周士鑫6',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:6};
+            let obj6 = {name:'吴士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:7};
+            let obj7 = {name:'王士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:8};
+            let obj8 = {name:'冯士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:9};
+            let obj9 = {name:'陈士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:0};
+            let obj10 ={name:'将士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:33};
+            let obj11 ={name:'将士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:334};
+            let obj12 ={name:'将士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:3333};
+            let obj13 ={name:'将士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:33333};
+            let obj14 ={name:'将士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:444};
+            let obj15 ={name:'将士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:44};
+            let obj16 ={name:'将士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:4444};
+            let obj17 ={name:'将士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:55};
+            let obj18 ={name:'将士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:5555};
+            let obj19 ={name:'将士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:66};
+            let obj20 ={name:'将士鑫7',imgUrl:'http://pic1.win4000.com/wallpaper/2017-11-04/59fd578c00b3a.jpg',id:666};
+            let obj22 ={name:'end'};
+            list.push(obj0);
+            list.push(obj1);
+            list.push(obj2);
+            list.push(obj3);
+            list.push(obj4);
+            list.push(obj5);
+            list.push(obj6);
+            list.push(obj7);
+            list.push(obj8);
+            list.push(obj9);
+            list.push(obj10);
+            list.push(obj11);
+            list.push(obj12);
+            list.push(obj13);
+            list.push(obj14);
+            list.push(obj15);
+            list.push(obj16);
+            list.push(obj17);
+            list.push(obj18);
+            list.push(obj19);
+            list.push(obj20);
+            list.push(obj22);
+            document.$('groupdetails').adapter().refresh(list);
+
+        </script>
+    </footer>
+</plain>

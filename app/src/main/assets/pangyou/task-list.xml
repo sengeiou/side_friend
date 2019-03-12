@@ -1,0 +1,11 @@
+<maplayout>
+    <script>
+        ServerAgent.invoke('Task-taskType').then(res=>{
+            console.log('ddddddddddddddddd',res);
+            document.setSearchList(res);
+        });
+    </script>
+    <item>
+        <AdapterMapTask/>
+    </item>
+</maplayout>

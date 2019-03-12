@@ -1,0 +1,23 @@
+<listView>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="28,51" margin="39,0,39,0" src="img/normal/left_w_arrow.png"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="42,#ffffff">好友申请列表</cp>
+        </text>
+    </header>
+    <body >
+        <item>
+            <applyFriend click="
+            ServerAgent.invoke('chat-addFriend',{agree:true,otherId:document.adapter().getItem().uid}).then(res=>{
+            })"/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            ServerAgent.invoke('chat-addFriendApplyList',{}).then(res=>{
+                document.adapter().refresh(res);
+            })
+        </script>
+    </footer>
+</listView>

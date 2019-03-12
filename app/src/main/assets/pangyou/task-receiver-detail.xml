@@ -1,0 +1,33 @@
+<plain>
+    <header>
+        <text>
+            <limg attr="40" src="img/normal/left_w_arrow.png" margin="10,0,10,0" click="document.finish()" />
+            <lp click="document.finish()">返回</lp>
+            <cp>王师傅</cp>
+            <rp click="document.open('pangyou/user-message.xml')" font="#0000ff" margin="0,0,10,0">查看个人主页</rp>
+        </text>
+    </header>
+    <body>
+        <pangyou_header></pangyou_header>
+        <text background="#dddddd" margin="0,10,0,0">
+            <lp margin="10,0,0,0">服务次数</lp>
+            <rp margin="0,0,10,0">300次</rp>
+        </text>
+        <text background="#dddddd" margin="0,10,0,0">
+            <lp margin="10,0,0,0">投诉次数</lp>
+            <rp margin="0,0,10,0">3次</rp>
+        </text>
+        <text background="#dddddd" margin="0,10,0,0">
+            <lp margin="10,0,0,0">撤单次数</lp>
+            <rp margin="0,0,10,0">2次</rp>
+        </text>
+        <text background="#dddddd" margin="0,10,0,0">
+            <lp margin="10,0,0,0">好评次数（4分及4分以上为好评）</lp>
+            <rp margin="0,0,10,0">580</rp>
+        </text>
+        <text background="#dddddd" margin="0,10,0,0">
+            <lp margin="10,0,0,0">差评次数（3.5分以下为差评）</lp>
+            <rp margin="0,0,10,0">13次</rp>
+        </text>
+    </body>
+</plain>

@@ -1,0 +1,32 @@
+<listView>
+    <body background="#e5effb" refresh="
+    document.currentPage = 0;
+    ServerAgent.invoke(document.data.url,{page:document.currentPage,isMy:document.data.isMy,status:document.data.status,longitude:localStorage.get('longitude'),latitude:localStorage.get('latitude')}).then(res=>{
+        document.adapter().refresh(res);
+        document.stop();
+    })" load="ServerAgent.invoke(document.data.url,{page:document.currentPage+=1,isMy:document.data.isMy,status:document.data.status,longitude:localStorage.get('longitude'),latitude:localStorage.get('latitude')}).then(res=>{
+        document.adapter().load(res);
+        document.stop();
+    })">
+        <item margin="0,42,0,0">
+            <sos_list click="
+            ServerAgent.invoke('sos-detail',{sosId:document.adapter().getItem().sosId}).then(res=>{
+                document.open('pangyou/sos-detail.xml',res);
+            });"
+                handle="
+                ServerAgent.invoke('sos-solve',{sosId:document.adapter().getItem().sosId}).then(res=>{
+                    alert('处理成功');
+                    document.onResume();
+                })"
+            />
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.currentPage = 0;
+            ServerAgent.invoke(document.data.url,{page:0,isMy:document.data.isMy,status:document.data.status,longitude:localStorage.get('longitude'),latitude:localStorage.get('latitude')}).then(res=>{
+                document.adapter().refresh(res);
+            });
+        </script>
+    </footer>
+</listView>

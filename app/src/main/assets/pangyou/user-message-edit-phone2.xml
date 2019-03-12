@@ -1,0 +1,29 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="48,#ffffff">返回</lp>
+            <cp font="48,#ffffff">更换手机号</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text style="input" id="phone"  margin="0,72,0,0" height="144">
+            <input hint="请输入手机号码" padding="45,0,45,0"
+                watch="(text)=>{
+                let length = text.length;
+                if(length > 11){
+                    alert('最多11字');
+                    document.$('phone').get('input').set({p:text.slice(0,12)});
+                    return;
+                }
+            }"/>
+        </text>
+        <text height="2" background="#dfdfdf" margin="45,0,45,0"/>
+        <text height="144" background="#5c9afd" margin="90,340,90,20" radius="12" click="ServerAgent.invoke('user-changePhone',{code:document.$('code').val(),phone:document.$('phone').val()}).then(res=>{
+            alert('修改成功');
+            document.finish();
+        })">
+            <cp font="#e5effb,51">更换手机号</cp>
+        </text>
+    </body>
+</plain>

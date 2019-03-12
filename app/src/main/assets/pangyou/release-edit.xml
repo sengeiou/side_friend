@@ -1,0 +1,275 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg attr="60" click="document.finish()" margin="42,0,12,0"
+                src="img/normal/left_w_arrow.png" />
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="#ffffff,48" val="document.arguments().title">任务类型</cp>
+        </text>
+    </header>
+
+    <body background="#e5effb">
+        <text style="input" background="#ffffff" height="370" id="description" padding="39">
+            <input hint="详细描述你所提供的共享品特征及可共享的时间，方便预约者清楚了解。至少输入20个字" watch="(text)=>{
+                let length = text.length;
+                if(length > 200){
+                    alert('最多200字');
+                    document.$('description').get('input').set({p:text.slice(0,200)});
+                    return;
+                }else{
+                    document.$('textNum').get('rp').set(length+'/200');
+                }
+            }" />
+        </text>
+        <text background="#ffffff" id="textNum">
+            <limg attr="48" click="
+    document.album({select:4}).then(res=>{
+        let files = [];
+        let data = [];
+        for(let one of res){
+            let file2 = one.split('\.');
+            let random = Math.random()+'';
+            let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+            files.push({key,file:one});
+            data.push({type:'image',url:one});
+        }
+        document.$('editAdd').adapter().refresh(data);
+        Aliput.putFiles(files).then(urls=>{
+            document.taskMessage.additionalMessage.image = [];
+            for(let url of urls){
+                document.taskMessage.additionalMessage.image.push(url);
+            }
+        });
+    });
+" margin="42,30,0,30" src="img/task/add_img.png" />
+            <limg attr="48" margin="36,30,0,30" src="img/task/add_video.png" />
+            <limg attr="48" margin="36,30,0,30" src="img/task/add_audio.png" />
+            <rp font="36,#171718" margin="0,0,60,0">0/200</rp>
+        </text>
+        <recycle id="editAdd" margin="39,0,39,0" orientation="horizontal">
+            <editAdd click="alert('你好')" />
+        </recycle>
+        <!--<script>-->
+        <!--document.$('editAdd').adapter().load([{type:'image'},{type:'image'},{type:'image'},{type:'image'},{type:'image'},{type:'image'},{type:'image'}]);-->
+        <!--</script>-->
+        <text background="#ffffff" height="144" id="reward" margin="0,15,0,0" rw="0">
+            <lp font="45,#171718" margin="39,0,0,0">服务费</lp>
+            <input gravity="right|center" hint="请输入共享价格" maxLine="1" padding="0,0,42,0"
+                type="number" />
+        </text>
+        <text background="#ffffff" height="144" id="otherReward" margin="0,2,0,0">
+            <lp font="45,#171718"  margin="42,0,0,0">或者其他报酬方式</lp>
+            <rp click="
+            document.popup('pangyou/release_condition_popu.xml', document.$('otherReward').get('rimg').getView()).then(res=>{
+         if(res.index === 0){
+                let newPayMethod = '技能交换';
+                document.taskMessage.otherReward = newPayMethod;
+                document.$('otherReward').get('rp').set(newPayMethod);
+            }else{
+
+                let newPayMethod ='';
+                document.taskMessage.otherReward = newPayMethod;
+                document.$('otherReward').get('rp').set(newPayMethod);
+            }
+
+            })"/>
+            <rimg attr="22,42" click="
+            document.popup('pangyou/release_condition_popu.xml', document.$('otherReward').get('rimg').getView()).then(res=>{
+
+            if(res.index === 0){
+                let newPayMethod = '技能交换';
+                document.taskMessage.otherReward = newPayMethod;
+                document.$('otherReward').get('rp').set(newPayMethod);
+            }else{
+                let newPayMethod ='';
+                document.taskMessage.otherReward = newPayMethod;
+                document.$('otherReward').get('rp').set(newPayMethod);
+            }
+            })" margin="0,0,42,0" src="img/right_arrow.png" />
+        </text>
+        <text background="#ffffff" id="outTime" margin="0,2,0,0" height="144">
+            <lp margin="42,0,0,0" font="45,#171718">任务时限</lp>
+            <input hint="设置一个任务截止时限" gravity="right|center" type="number"></input>
+            <rp margin="0,0,42,0">(小时)</rp>
+        </text>
+        <text height="144" background="#e5effb" id="addressA1">
+            <lp font="45,#171718" margin="42,0,0,0">始发地:</lp>
+        </text>
+        <text background="#ffffff" click="document.open('pangyou/address.xml').then(res=>{
+                 document.$('addressA').get('lp').set({p:res.name});
+                 document.taskMessage.addressA = {
+                    name:res.name,
+                    startLongitude : res.longitude,
+                    startLatitude : res.latitude,
+                 };
+            })" height="144" id="addressA" margin="0,0,0,0">
+            <lp margin="42,0,0,0">请选择始发地</lp>
+            <rimg attr="60" margin="0,0,42,0" src="img/user/address.png" />
+        </text>
+        <text height="144" background="#e5effb" id="addressB1">
+            <lp font="45,#171718" margin="42,0,0,0">目的地:</lp>
+        </text>
+        <text background="#ffffff" click="document.open('pangyou/address.xml').then(res=>{
+                 document.$('addressB').get('lp').set({p:res.name});
+                 document.taskMessage.addressB = {
+                    name:res.name,
+                    endLongitude : res.longitude,
+                    endLatitude : res.latitude,
+                 };
+            })" height="144" id="addressB" margin="0,2,0,0">
+            <lp margin="42,0,0,0">请选择目的地</lp>
+            <rimg attr="60" margin="0,0,42,0" src="img/user/address.png" />
+        </text>
+
+        <text height="144" background="#e5effb">
+            <lp font="45,#171718" margin="42,0,0,0">预约要求<p font="32,#6f7072">(非必选)</p></lp>
+        </text>
+        <release style="2" type_left="议价" btn_tv1="可议价" btn_tv2="不可议价" click="(data)=>{
+                    if(data.check === '可议价'){
+                        document.taskMessage.bargaining = 1;
+                    }else if(data.check === '不可议价'){
+                        document.taskMessage.bargaining = 0;
+                    }else{
+                        document.taskMessage.bargaining = 1;
+                    }
+        }"/>
+
+        <release style="2" type_left="性别" btn_tv1="男" btn_tv2="女" click="(data)=>{
+                    if(data.check === '男'){
+                        document.taskMessage.sex = '男';
+                    }else if(data.check === '女'){
+                       document.taskMessage.sex = '女';
+                    }else{
+                        document.taskMessage.sex = 'all';
+                    }
+        }"/>
+        <release id="certificate" style="3" type_left="技能证书" btn_tv1="需要" btn_tv2="不需要" click="(data)=>{
+                    if(data.check === '需要'){
+                        document.taskMessage.isNeedCert = true;
+                    }else if(data.check === '不需要'){
+                       document.taskMessage.isNeedCert = false;
+                    }else{
+                        document.taskMessage.isNeedCert = false;
+                    }
+        }"/>
+        <release style="3" id="deposit" type_left="预付定金" btn_tv1="是" btn_tv2="否" click="(data)=>{
+                    if(data.check === '是'){
+                        document.taskMessage.isAdvance = true;
+                    }else if(data.check === '否'){
+                       document.taskMessage.isAdvance = false;
+                    }else{
+                        document.taskMessage.isAdvance = false;
+                    }
+        }"/>
+        <script>
+        </script>
+        <text background="#ffffff" click="document.dialog('pangyou/release-credit_dialog.xml').then(res=>{
+                document.taskMessage.credit = res.credit;
+                document.$('credit').get('rp').set(res.credit+'');
+            })" height="144" id="credit" margin="0,20,0,0">
+            <lp margin="42,0,0,0">信用等级</lp>
+            <rp>0</rp>
+            <rp>等级</rp>
+            <rimg src="img/normal/right_w_arrow.png" attr="60" margin="12,0,42,0"/>
+        </text>
+        <text background="#5c9afd" click="
+            if(document.$('reward').val().length === 0){
+                alert('请输入服务价格');
+                return;
+            };
+            document.taskMessage.reward = Number(document.$('reward').val());
+            document.taskMessage.description = document.$('description').val();
+            document.taskMessage.additionalMessage.text = document.taskMessage.description;
+            document.taskMessage.outTime = document.$('outTime').val()||0;
+            if(document.arguments().change){
+                document.next(document.taskMessage);
+            }else if(document.arguments().isAdvancePay){
+                ServerAgent.invoke('Task-create',document.taskMessage).then(res=>{
+                    document.next(res);
+                });
+            } else {
+                ServerAgent.invoke('Task-create',document.taskMessage).then(res=>{
+                    document.open('pangyou/release-success.xml',res).then(res=>{
+                        document.next(res);
+                    }).catch(e=>{
+                        document.finish();
+                    });
+                });
+            }" height="144" id="releaseButton"
+            margin="120,90,120,90" radius="30">
+            <cp font="51,#e5effb">发布</cp>
+        </text>
+        <script>
+            document.taskMessage = {
+            reward:-1,
+            credit:0,
+            bargaining:1,
+            outTime:2,
+            type:document.arguments().typeId,
+            description:'',
+            additionalMessage:{
+            text:'',
+            image:[],
+            audio:[],
+            video:[],
+            },
+            receiverId:document.arguments().receiverId||null,
+            sex:'all',
+            isAdvance:false,
+            otherReward:'',
+            isNeedCert:false,
+            };
+            if(document.arguments().canProvide){
+            if(document.arguments().isNecessaryCert){
+            }
+            }else{
+            }
+            if(document.arguments().styleId !== 2){
+            };
+            if(!document.arguments().hasOrigin){
+            document.$('addressA').show(false);
+            document.$('addressA1').show(false);
+            document.taskMessage.addressA = {};
+            }
+            if(!document.arguments().hasDestination){
+            document.$('addressB').show(false);
+            document.$('addressB1').show(false);
+            document.taskMessage.addressB = {};
+            }
+
+            if(document.arguments().change){
+            let args = document.arguments();
+            for(let key in args){
+            document.taskMessage[key] = args[key];
+            }
+            document.$('description').get('input').set({p:document.taskMessage.description});
+            document.$('reward').get('input').set({p:document.taskMessage.reward+''});
+            document.$('outTime').get('input').set({p:document.taskMessage.outTime+''});
+            document.$('addressA').get('lp').set({p:document.taskMessage.addressA});
+            document.$('addressB').get('lp').set({p:document.taskMessage.addressB});
+            document.$('credit').get('rp').set(document.taskMessage.credit+'');
+            document.$('releaseButton').get('cp').set({p:'修改'});
+            }
+            if(document.arguments().styleId === 1){
+            document.$('deposit').show(false);
+            }else if(document.arguments().styleId === 2){
+            document.$('deposit').show(true);
+            }
+            if(document.arguments().canProvide === 1){
+            document.$('certificate').show(true);
+            if(document.arguments().isNecessaryCert === 1){
+            document.$('certificate').end({check:true});
+            document.taskMessage.isNeedCert = true;
+            }
+            }else{
+            document.$('certificate').show(false);
+            }
+            if(document.arguments().isAdvancePay){
+                document.taskMessage.isAdvancePay = 1;
+            }
+            if(document.arguments().houseId){
+                document.taskMessage.houseId = document.arguments().houseId;
+            }
+        </script>
+    </body>
+</plain>

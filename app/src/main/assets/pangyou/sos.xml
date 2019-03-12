@@ -1,0 +1,62 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="#ffffff,42">SOS</cp>
+            <rp font="#ffffff,42" margin="0,0,42,0" click="document.open('pangyou/sos-list.xml')">旁友求助</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text height="144" id="notify">
+            <cp font="#000000,33" click="document.open('pangyou/sos-list.xml')"/>
+        </text>
+        <text click="document.open('pangyou/sos-release.xml')" height="144" background="#5c9afd" margin="120,360,120,0" radius="72">
+            <cp font="48,#ffffff">发布求助信息</cp>
+        </text>
+        <text click="document.open('pangyou/sos-my_list.xml')" height="144" background="#5c9afd" margin="120,120,120,0" radius="72">
+            <cp font="48,#ffffff">我的求助</cp>
+        </text>
+        <!--<card height="500" width="500" show="false">-->
+            <!--<img att="500,500" src="img/home/user.png" radius="250" touch="(event)=>{-->
+                <!--switch(event.action){-->
+                    <!--case event.ACTION_DOWN:-->
+                        <!--document.touchTime = new Date().getTime();-->
+                        <!--BaiDuMap.startLocation().then(res=>{-->
+                            <!--localStorage.put({address:res.address,longitude:res.longitude+'',latitude:res.latitude+''});-->
+                        <!--});-->
+                        <!--break;-->
+                    <!--case event.ACTION_UP:-->
+                        <!--let upTime = new Date().getTime();-->
+                        <!--if(upTime - document.touchTime > 3*1000){-->
+                                <!--ServerAgent.invoke('sos-create-red',{address:localStorage.get('address'),longitude:localStorage.get('longitude'),latitude:localStorage.get('latitude')}).then(res=>{-->
+                                    <!--alert('发送成功,请静候佳音');-->
+                                <!--});-->
+                        <!--}-->
+                        <!--break;-->
+                <!--}-->
+            <!--}"/>-->
+        <!--</card>-->
+        
+        <sos margin="0,200,0,0"/>
+        <text>
+            <cp>长按三秒钟,发送紧急求助</cp>
+        </text>
+        <text click="document.open('pangyou/sos-list.xml')" margin="0,0,0,40">
+            <cp font="#5c9afd,42">查看别人的求助信息>></cp>
+        </text>
+    </body>
+    <footer background="#e5effb">
+        <script>
+            document.touchTime = 0;
+            BaiDuMap.initLocation();
+            ServerAgent.invoke('sos-sideNum',{longitude:localStorage.get('longitude'),latitude:localStorage.get('latitude')}).then(res=>{
+                if(res.count === 0){
+                    document.$('notify').show(false);
+                }else{
+                    document.$('notify').get('cp').set('搜索到'+res.count+'条紧急信息，立即查看');
+                }
+            });
+        </script>
+    </footer>
+</plain>

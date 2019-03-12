@@ -1,0 +1,24 @@
+<viewPage clip="#0000ffff,2">
+    <appbar toolbarHeight="492" height="492">
+        <img collapseMode="parallax" attr="-1,-1" src="img/user/个人主页_01.png"/>
+        <toolbar style="3" collapseMode="pin"/>
+        <text height="240" id="img" collapseMode="pin" margin="0,bar,0,0">
+            <limg src="img/normal/left_w_arrow.png" attr="54" margin="42,0,0,60" click="document.finish()"/>
+            <cimg radius="180" src="img/logo.png" attr="180"/>
+            <rimg src="img/user/编辑_03.png" attr="54" margin="0,0,42,60" click="document.open('pangyou/user-message-edit.xml')"/>
+        </text>
+        <text id="nickname" collapseMode="pin" height="60">
+            <cp margin="0,0,18,0" font="39,#171718">名字</cp>
+            <cimg attr="33" src="img/user/个人主页_女.png"/>
+        </text>
+        <text id="label" collapseMode="pin">
+            <cp height="60" font="39,#171718">个性签名:</cp>
+            <cp height="60" font="39,#171718" length="15"/>
+        </text>
+    </appbar>
+    <body>
+        <page src="pangyou/user-center-message.xml" data="{uid:document.arguments().uid}">基本信息</page>
+        <page src="pangyou/user-center-description.xml" data="{uid:document.arguments().uid}">工作描述</page>
+        <page src="pangyou/user-center-photo.xml" data="{uid:document.arguments().uid}">照片墙</page>
+    </body>
+</viewPage>

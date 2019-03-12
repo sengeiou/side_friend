@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/back_layout"
+    tools:context="com.zankong.tool.zkapp.activity.ZKActivity">
+    <com.zankong.tool.zkapp.util.pull_refresh_layout.ZKPullRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/footer"
+        android:layout_below="@id/header"
+        android:id="@+id/zkRefresh">
+        <include layout="@layout/refresh_head" />
+        <!-- 支持所有实现Pullable接口的View -->
+        <com.zankong.tool.zkapp.document.plain.ZKScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:id="@+id/scrollView">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/body">
+            </LinearLayout>
+
+        </com.zankong.tool.zkapp.document.plain.ZKScrollView>
+        <include layout="@layout/load_more" />
+    </com.zankong.tool.zkapp.util.pull_refresh_layout.ZKPullRefreshLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/footer">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:id="@+id/header">
+    </LinearLayout>
+    <com.zankong.tool.zkapp.views.ZKImgView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/header"
+        android:scaleType="centerCrop"
+        android:layout_above="@id/zkRefresh"
+        android:id="@+id/headerImg" />
+</RelativeLayout>

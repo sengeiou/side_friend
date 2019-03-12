@@ -1,0 +1,133 @@
+<listView>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp font="#ffffff,42" click="document.finish()">返回</lp>
+            <cp font="#ffffff,48" val="document.arguments().title||'李四'">张三</cp>
+        </text>
+    </header>
+    <body refresh="ServerAgent.invoke('chat-itemList',{page:document.currentPage+=1,houseId:document.arguments().houseId}).then(res=>{
+    document.adapter().upload(res);
+    document.stop();
+    });">
+        <item>
+            <chat_task>
+                <task agree="
+                ServerAgent.invoke('Task-agree',{handle:true,applyId:document.adapter().getItem().bargainingApply.id}).then(res=>{
+                    document.onResume();
+                    ServerAgent.invoke('Task-payXml',{payFor:'task',taskId:document.adapter().getItem().bargainingApply.taskId}).then(res=>{
+                        document.open('pangyou/pay.xml',res);
+                    });
+                });
+" disagree="ServerAgent.invoke('Task-agree',{handle:false,applyId:document.adapter().getItem().bargainingApply.id}).then(res=>{
+    alert('拒绝成功');
+    document.onResume();
+})"/>
+            </chat_task>
+        </item>
+    </body>
+    <footer>
+        <text id="chat">
+            <limg margin="45,0,0,0" attr="60" src="img.luyin.png"/>
+            <input click="document.inputClick()" watch="(text)=>{
+                if(text.length === 0){
+                    document.$('chat').get('rimg',2).set({src:'img.add.png'});
+                }else{
+                    document.$('chat').get('rimg',2).set({src:'img/chat/send.png'});
+                }
+            }"/>
+            <rimg click="document.faceClick();" margin="10,0,10,0" attr="60" src="img.smile.png"/>
+            <rimg margin="10,0,15,0" attr="60" click="document.moreClick()" src="img.add.png"/>
+        </text>
+        <face height="keyword" id="face" itemClick="(res)=>{
+            document.$('chat').get('input').insert(res);
+        }"/>
+        <group num="3" height="keyword" id="more" click="document.moreClick()">
+            <button click="if(callLive.isLogin()){
+                    callLive.call({nums:['callLive_'+document.arguments().uid],type:'video',info:{name:document.arguments().otherName,img:document.arguments().otherImg,myName:localStorage.get('nickname',''),myImg:localStorage.get('img','img.user/header.jpg')}});
+                }else{
+                    callLive.login(localStorage.get('callId',''),localStorage.get('userSig','')).then(res=>{
+                        callLive.call({nums:['callLive_'+document.arguments().uid],type:'video',info:{name:document.arguments().otherName,img:document.arguments().otherImg,myName:localStorage.get('nickname',''),myImg:localStorage.get('img','img.user/header.jpg')}});
+                    })
+                }">
+                <p>视频</p>
+            </button>
+            <button click="
+            Call.login(localStorage.get('callId'),localStorage.get('userSig')).then(res=>{
+                ServerAgent.invoke('call-startCall',{houseId:document.arguments().houseId});
+                Call.call({isCaller:true,roomid:document.arguments().houseId,img:document.arguments().otherImg,nickname:document.arguments().otherName,uid:document.arguments().otherUid,privateMapKey:document.arguments().privateMapKey});
+            })">
+                <p>音频</p>
+            </button>
+            <button click="document.album().then(res=>{
+                let files = [];
+                for(let one of res){
+                    let file2 = one.split('\.');
+                    let random = Math.random()+'';
+                    let key = 'image/uid='+localStorage.get('uid',0)+'&amp;'+'name='+new Date().getTime()+random.substring(2,random.length-1)+'.'+file2[file2.length-1];
+                    files.push({key,file:one});
+                }
+                Aliput.putFiles(files).then(urls=>{
+                    for(let i in urls){
+                        ServerAgent.invoke('chat-send',{houseId:document.arguments().houseId,content:urls[i],type:'image'}).then(res=>{
+                            console.log('发送成功',res);
+                            document.adapter().load({
+                                self:localStorage.get('uid',0),
+                                sender:localStorage.get('uid',0),
+                                content:urls[i],
+                                type:'image',
+                                senderImg:localStorage.get('img'),
+                                senderName:localStorage.get('nickname'),
+                            });
+                            document.scroll(-1);
+                        });
+                    }
+                });
+            })">
+                <p>图片</p>
+            </button>
+            <button>
+                <p>红包</p>
+            </button>
+            <button click="
+            if(!document.arguments().canBargaining){
+                alert('不支持议价');
+                return;
+            }
+            document.dialog('pangyou/chat-task-apply_dialog.xml',document.arguments()).then(res=>{
+                ServerAgent.invoke('Task-apply',{bargainingPrice:res.bargainingPrice,taskId:document.arguments().taskId}).then(res=>{
+                    document.adapter().load(res);
+                    document.scroll(-1);
+                });
+            })">
+                <p>议价</p>
+            </button>
+        </group>
+        <script>
+            document.currentPage = 0;
+            document.onResume = ()=>{
+                ServerAgent.invoke('chat-itemList',{houseId:document.arguments().houseId}).then(res=>{
+                    document.adapter().refresh(res);
+                    document.scroll(-1);
+                });
+            };
+            document.addEvent('chat',(data)=>{
+                if(document.arguments().houseId === data.houseId){
+                    document.adapter().load({
+                        self:localStorage.get('uid',0),
+                        sender:data.sender,
+                        content:data.content,
+                        type:data.type,
+                        senderImg:data.senderImg,
+                        senderName:data.senderName,
+                        taskId:data.taskId,
+                    });
+                    document.scroll(-1);
+                    ServerAgent.invoke('chat-clearNewsNum',{houseId:document.arguments().houseId});
+                }
+                return true;
+            });
+        </script>
+        <script src="pangyou/chat-task.js"/>
+    </footer>
+</listView>

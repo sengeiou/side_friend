@@ -1,0 +1,44 @@
+<listview>
+    <body background="#e5effb" refresh="ServerAgent.invoke('chat-houseList').then(res=>{
+                document.adapter().refresh(res);
+                document.stop();
+            });">
+        <item id="friends">
+            <contacts click="
+            let item = document.adapter().getItem();
+            ServerAgent.invoke('chat-openHouse',{houseId:item.houseId}).then(res=>{
+                if(res.type === 'system'){
+                    switch(res.systemType){
+                        case '系统通知':
+                            document.open('pangyou/chat-system-notify.xml',res);
+                            break;
+                    }
+                }else{
+                    document.open(res.openUrl,res)
+                }
+            });"/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.onResume = ()=>{
+                ServerAgent.invoke('chat-houseList').then(res=>{
+                    document.adapter().refresh(res);
+                    let point = false;
+                    for(let one of res){
+                        if(one.newsNum !== 0){
+                            point = true;
+                            break;
+                        }
+                    }
+                    document.getParent().getParent().$('buttons').adapter().setPoint(1,point);
+                });
+            }
+            document.addEvent('chat',(data)=>{
+                console.log('新消息');
+                document.onResume();
+                return false;
+            });
+        </script>
+    </footer>
+</listview>

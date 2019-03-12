@@ -1,0 +1,46 @@
+<plain clip="#ffffff,1" padding="0,bar,0,0">
+    <header>
+        <text height="144" background="#ffffff" id="input">
+            <input hint="搜索企业,昵称,任务,职业" watch="(text)=>{
+                if(text===''){
+                    document.$('skill').show(false);
+                    document.$('task').show(false);
+                    document.$('recruit').show(false);
+                }else{
+                    document.$('skill').show(true);
+                    document.$('task').show(true);
+                    document.$('recruit').show(true);
+                    ServerAgent.invoke('search-all',{isGetList:false,searchText:text,lat:localStorage.get('latitude',0),lng:localStorage.get('longitude',0)}).then(res=>{
+                        document.$('skill').get('rp').set({p:res.skills.count+'条'});
+                        document.$('task').get('rp').set({p:res.tasks.count+'条'});
+                        document.$('recruit').get('rp').set({p:res.recruits.count+'条'});
+                    });
+                };
+            }"/>
+        </text>
+    </header>
+    <body background="#f2f2f2">
+        <text background="#ffffff" id="skill" height="144" margin="0,2,0,0" click="document.next({searchText:})">
+            <lp font="42,#171718">找旁友</lp>
+            <rp font="36,#cccccc">1850条</rp>
+            <rimg attr="32" margin="10,0,54,0" src="img/home/search.png"/>
+        </text>
+        <text background="#ffffff" id="task" height="144" margin="0,2,0,0">
+            <lp font="42,#171718">帮旁友</lp>
+            <rp font="36,#cccccc">1850条</rp>
+            <rimg attr="32" margin="10,0,54,0" src="img/home/search.png"/>
+        </text>
+        <text background="#ffffff" id="recruit" height="144" margin="0,2,0,0">
+            <lp font="42,#171718">企业招募</lp>
+            <rp font="36,#cccccc">1850条</rp>
+            <rimg attr="32" margin="10,0,54,0" src="img/home/search.png"/>
+        </text>
+    </body>
+    <footer>
+        <script>
+            document.$('skill').show(false);
+            document.$('task').show(false);
+            document.$('recruit').show(false);
+        </script>
+    </footer>
+</plain>

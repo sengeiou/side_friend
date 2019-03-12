@@ -1,0 +1,32 @@
+<plain>
+    <body background="#e5effb">
+        <text height="144">
+            <lp margin="39,0,0,0" font="42,#6f7072">信用评分:</lp>
+            <lp margin="39,0,0,0" font="42,#6f7072">9.1</lp>
+        </text>
+        <ratingbar type="信用等级:" id="ratingbar"/>
+        <text height="144" background="#ffffff">
+            <lp margin="39,0,0,0" font="42,#6f7072">完成任务数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" src="img/normal/right_arrow.png" margin="0,0,42,0"/>
+        </text>
+          <text height="144" background="#ffffff" margin="0,3,0,0">
+            <lp margin="39,0,0,0" font="42,#6f7072">超时次数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" src="img/normal/right_arrow.png" margin="0,0,42,0"/>
+        </text>
+          <text height="144" background="#ffffff" margin="0,3,0,0">
+            <lp margin="39,0,0,0" font="42,#6f7072">爽约次数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" src="img/normal/right_arrow.png" margin="0,0,42,0"/>
+        </text>
+     <text height="144" background="#ffffff" margin="0,3,0,0" >
+            <lp margin="39,0,0,0" font="42,#6f7072">任务信息不匹配次数</lp>
+            <rp font="42,#6f7072">200次</rp>
+            <rimg attr="28,51" src="img/normal/right_arrow.png" margin="0,0,42,0"/>
+        </text>
+        <script>
+            document.$('ratingbar').set({totalnumber:'5',selectednumber:'2'});
+        </script>
+    </body>
+</plain>

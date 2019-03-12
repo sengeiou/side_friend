@@ -1,0 +1,84 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg src="img/normal/left_w_arrow.png" attr="60" margin="42,0,12,0" click="document.finish()"/>
+            <lp font="42,#ffffff" click="document.finish()">返回</lp>
+            <cp font="51,#ffffff">通知管理</cp>
+        </text>
+    </header>
+    <body background="#f2f2f2">
+        <text id="taskPush" height="150" margin="0,30,0,0" click="
+        document.UserSets.taskPush = document.UserSets.taskPush?0:1;
+        document.changeUserSet();
+" background="#ffffff">
+            <lp margin="39,0,0,0" font="48,#171718">系统订单推送</lp>
+            <rimg attr="150" margin="0,0,42,0" src="img/user/开关-关.png"/>
+        </text>
+        <text id="systemPush" height="150" margin="0,3,0,0" click="
+        document.UserSets.systemPush = document.UserSets.systemPush?0:1;
+        document.changeUserSet();
+" background="#ffffff">
+            <lp margin="39,0,0,0" font="48,#171718">系统消息接收</lp>
+            <rimg attr="150" margin="0,0,42,0" src="img/user/开关-关.png"/>
+        </text>
+        <text id="chatPush" height="150" margin="0,3,0,0" click="
+        document.UserSets.chatPush = document.UserSets.chatPush?0:1;
+        document.changeUserSet();
+" background="#ffffff">
+            <lp margin="39,0,0,0" font="48,#171718">好友消息接收</lp>
+            <rimg attr="150" margin="0,0,42,0" src="img/user/开关-关.png"/>
+        </text>
+        <text id="isMute" height="150" margin="0,30,0,0" click="
+        document.UserSets.isMute = document.UserSets.isMute?0:1;
+        if(document.UserSets.isMute){
+            document.UserSets.isVibrate = 0;
+            document.UserSets.isRing = 0;
+            document.UserSets.isVoice = 0;
+        }
+        document.changeUserSet();
+" background="#ffffff">
+            <lp margin="39,0,0,0" font="48,#171718">静音</lp>
+            <rimg attr="150" margin="0,0,42,0" src="img/user/开关-关.png"/>
+        </text>
+        <text id="isVibrate" height="150" margin="0,3,0,0" click="
+        document.UserSets.isVibrate = document.UserSets.isVibrate?0:1;
+        document.UserSets.isMute = 0;
+        document.changeUserSet();
+" background="#ffffff">
+            <lp margin="39,0,0,0" font="48,#171718">震动</lp>
+            <rimg attr="150" margin="0,0,42,0" src="img/user/开关-关.png"/>
+        </text>
+        <text id="isRing" height="150" margin="0,3,0,0" click="
+        document.UserSets.isRing = document.UserSets.isRing?0:1;
+        document.UserSets.isMute = 0;
+        document.changeUserSet();
+" background="#ffffff">
+            <lp margin="39,0,0,0" font="48,#171718">铃声</lp>
+            <rimg attr="150" margin="0,0,42,0" src="img/user/开关-关.png"/>
+        </text>
+        <text id="isVoice" height="150" margin="0,3,0,0" click="
+        document.UserSets.isVoice = document.UserSets.isVoice?0:1;
+        document.UserSets.isMute = 0;
+        document.changeUserSet();
+" background="#ffffff">
+            <lp margin="39,0,0,0" font="48,#171718">语音通知</lp>
+            <rimg attr="150" margin="0,0,42,0" src="img/user/开关-关.png"/>
+        </text>
+        <script>
+            document.UserSets = document.arguments().userSet;
+            document.changeUserSet = ()=>{
+                ServerAgent.invoke('set-changeUserSets',document.UserSets).then(res=>{
+                    document.UserSets = res;
+                    document.changeUI();
+                });
+            };
+            let ids = ['systemPush','chatPush','taskPush','isMute','isVibrate','isRing','isVoice'];
+            document.changeUI = ()=>{
+                for(let id of ids){
+                    document.$(id).get('rimg').set({src:document.UserSets[id]?'img/user/开关-开.png':'img/user/开关-关.png'});
+                }
+            };
+            document.changeUI();
+        </script>
+    </body>
+</plain>

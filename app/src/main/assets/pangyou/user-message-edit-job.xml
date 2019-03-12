@@ -1,0 +1,25 @@
+<listView>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,48">返回</lp>
+            <cp font="48,#ffffff">职业</cp>
+            <rp font="48,#ffffff" click="
+            ServerAgent.invoke('user-changeMessage',{key:'occupation',value:document.$('occupation').val()}).then(res=>{
+                alert('修改成功');
+                document.finish();
+            });" margin="0,0,39,0">保存</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text style="input" id="occupation"  margin="0,48,0,0" height="144">
+            <input hint="请输入您从事的职业，比如：摄影师、美容师" padding="45,0,45,0" />
+        </text>
+        <text height="2" background="#dfdfdf" margin="45,0,45,0"/>
+    </body>
+    <footer>
+        <script>
+            document.$('occupation').get('input').set({p:localStorage.get('occupation','')});
+        </script>
+    </footer>
+</listView>

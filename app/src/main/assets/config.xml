@@ -1,0 +1,19 @@
+<config>
+    <first name="第一次进入页面">hk/index.xml</first>
+    <index name="正常进入页面">pangyou/index.xml</index>
+    <umeng-share name="友盟分享" AppKey="5bdfd2f6b465f5133100038a">
+        <wechat name="微信" appid="wx00757650701cb696" secret="9e2e0026fac242cd704a678687bf6d89"/>
+        <qq name="qq" appid="1107950552" appkey="tZtsORdd6vTJZVjv"/>
+        <alipay name="支付宝" appid="2018102661862237"/>
+    </umeng-share>
+    <!--<umeng-push Appkey="5bdfd2f6b465f5133100038a" Secret="91e8f2236701eeb9d91d9e71874b2c9e"/>-->
+    <weChat name="微信" appid="wx00757650701cb696" secret="9e2e0026fac242cd704a678687bf6d89"/>
+    <qq name="qq" appid="1107950552" appkey="tZtsORdd6vTJZVjv"/>
+    <identity  name="支付宝人脸识别回调">pangyou/authentication-identity-success.xml</identity>
+    <callLive name="互动直播" appId="1400165691" accountType="36862"/>
+    <call  name="实时音视频" sdkappid="1400069362"/>
+    <service>
+        <http>http://api.zankong.com.cn:9998</http>
+        <upLoad>http://api.zankong.com.cn:2223</upLoad>
+    </service>
+</config>

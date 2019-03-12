@@ -1,0 +1,5 @@
+<plain>
+    <body>
+        <web val="document.arguments().htmlUrl"/>
+    </body>
+</plain>

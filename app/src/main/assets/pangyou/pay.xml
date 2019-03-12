@@ -1,0 +1,85 @@
+<plain>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg attr="60" margin="42,0,0,0" click="document.finish()" src="img/normal/left_w_arrow.png"/>
+            <cp font="48,#ffffff" click="document.finish()">支付</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <text background="#dddddd" height="144" margin="0,5,0,0">
+            <lp font="#000000" margin="10,0,10,0">类型:</lp>
+            <lp font="#000000" val="document.arguments().type">type</lp>
+        </text>
+        <text background="#dddddd" height="144">
+            <lp font="#ff0000" margin="10,0,10,0">服务金额</lp>
+            <lp font="#ff0000" val="document.arguments().money+''">money</lp>
+        </text>
+        <text background="#dddddd" height="144" margin="0,100,0,0">
+            <lp margin="10,0,0,0">支付方式:</lp>
+        </text>
+        <switch style="2" background="#ffffff" id="switchPay" margin="0"
+                num="1" off="img/pay/select_off.png"
+                on="img/pay/select_on.png" padding="6,0,6,0" itemClick="(res)=>{
+            console.log(res.position +'');
+            }">
+            <item>
+                <lp>微信支付</lp>
+                <limg attr="40" src="img/login/wechat.png"/>
+            </item>
+            <item>
+                <lp>支付宝支付</lp>
+                <limg attr="40" src="img/pay/alipay.png"/>
+            </item>
+            <item>
+                <lp>旁友支付</lp>
+                <limg attr="40" src="img/logo.png"/>
+            </item>
+        </switch>
+    </body>
+    <footer>
+        <text height="144" click="
+        let payMethod = '';
+        switch(document.$('switchPay').ff()){
+            case 0:
+                alert('微信支付');
+                payMethod = 'weChatPay';
+                break;
+            case 1:
+                alert('支付宝支付');
+                payMethod = 'aliPay';
+                break;
+            case 2:
+                alert('旁友支付');
+                payMethod = 'pangyouPay';
+                break;
+        };
+        if(payMethod.length===0){
+            alert('请选择支付方式');
+            return;
+        }
+        ServerAgent.invoke('Task-pay',{taskId:document.arguments().taskId,payMethod,payFor:document.arguments().payFor}).then(res=>{
+            switch(payMethod){
+                case 'aliPay':
+                    AliPay.pay(document,res).then(res=>{
+                        alert('支付成功');
+                        document.open('pangyou/pay-success.xml').then(res=>{
+                            document.next({pay:true,back:res.back,taskId:document.arguments().taskId});
+                        })
+                    });
+                    break;
+                case 'pangyouPay':
+                    alert('支付成功');
+                    document.finish();
+                    break;
+                case 'weChatPay':
+                    weChatPay.pay(res).then(res=>{
+
+                    });
+                    break;
+            }
+        });
+        ">
+            <cp >支付</cp>
+        </text>
+    </footer>
+</plain>

@@ -1,0 +1,49 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="42,#ffffff">返回</lp>
+            <cp font="42,#ffffff">我的钱包</cp>
+            <rp font="42,#ffffff" margin="0,0,42,0" click="document.open('pangyou/wallet-bill-list.xml')">账单</rp>
+        </text>
+    </header>
+    <body background="#e5effb">
+     
+        <hr height="30"/>
+        <wallet id="wallet" click="(res)=>{
+             
+    }"/>
+        <text height="144" radius="14" background="#ffffff" margin="39,30,39,0" click="document.open('pangyou/wallet-recharge.xml');">
+            <limg attr="54" margin="30,0,18,0" src="img/wallet/earnings.png"/>
+            <lp font="48,#171718">邀请收益</lp>
+            <rp font="48,#fd041b" margin="0,0,12,0">￥100</rp>
+            <rimg attr="28,51" src="img/right_arrow.png" margin="0,0,14,0"/>
+        </text> 
+        
+        <text height="144" radius="14" background="#ffffff" margin="39,3,39,0" click="document.open('pangyou/wallet-recharge.xml');">
+            <limg attr="54" margin="30,0,18,0" src="img/wallet/recharge.png"/>
+            <lp font="48,#171718">充值</lp>
+        </text>
+        <text height="144" radius="14" background="#ffffff" margin="39,3,39,0" click="document.open('pangyou/wallet-reflect.xml').then(res=>{
+            document.open('pangyou/wallet-bill-withdraw-detail.xml',{billId:res.billId});
+        });">
+            <limg attr="54" margin="30,0,18,0" src="img/wallet/withdraw.png"/>
+            <lp font="48,#171718">提现</lp>
+        </text>
+        <text height="144" radius="14" background="#ffffff" margin="39,3,39,0" click="document.open('pangyou/wallet-withdraw_alipay.xml');">
+            <limg attr="54" margin="30,0,18,0" src="img/wallet/withdraw.png"/>
+            <lp font="48,#171718">提现到支付宝账户</lp>
+        </text>
+        <text height="144" radius="24" background="#ffffff" margin="39,3,39,0" click="document.open('pangyou/wallet-help.xml');">
+            <limg attr="54" margin="30,0,18,0" src="img/wallet/question.png"/>
+            <lp font="48,#171718">常见问题</lp>
+        </text>
+        <script>
+            document.onResume = ()=>{
+                ServerAgent.invoke('bill-balance').then(res=>{
+                    document.$('wallet').setData(res);
+                });
+            };
+        </script>
+    </body>
+</plain>

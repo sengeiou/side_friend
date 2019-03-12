@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_radius"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            android:id="@+id/layout5"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="8dp"
+                    android:src="@mipmap/start1"
+                    android:layout_marginRight="6dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="11dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="#6f7072"
+                    android:textSize="11sp"
+                    android:text="始发地距离您约25.5km"
+                    android:id="@+id/start_mine_danc"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="6dp"
+                android:id="@+id/layout10"
+                android:background="#ffffff"
+                android:visibility="gone"
+                android:layout_marginLeft="10dp"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@mipmap/start"
+                    android:layout_height="wrap_content"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@mipmap/line"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@mipmap/end"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/layout2"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:includeFontPadding="false"
+                        android:layout_alignParentTop="true"
+                        android:id="@+id/start_tv"
+                        android:textColor="#8c8c8c"
+                        android:text="始发地:"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:src="@mipmap/start1"
+                            android:layout_marginRight="6dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="#6f7072"
+                            android:textSize="11sp"
+                            android:text=""
+                            android:id="@+id/start_den"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#171718"
+                        android:layout_below="@+id/start_tv"
+                        android:layout_marginTop="8dp"
+                        android:id="@+id/address_start"
+                        android:text=""/>
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/layout2"
+                    android:layout_marginTop="9dp"
+                    android:id="@+id/layout3"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#8c8c8e"
+                        android:textSize="12sp"
+                        android:text="目的地"
+                        />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginRight="10dp"
+                        android:id="@+id/layout_t"
+                        android:layout_alignParentRight="true"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:src="@mipmap/end1"
+                            android:layout_marginRight="6dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="#6f7072"
+                            android:textSize="11sp"
+                            android:text=""
+                            android:id="@+id/end_den"
+
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:layout_below="@+id/layout_t"
+                        android:layout_marginBottom="20dp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text=""
+                            android:textSize="14sp"
+                            android:id="@+id/end_name"
+                            android:textColor="#171718"
+                            android:layout_height="wrap_content"
+                            />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

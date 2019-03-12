@@ -1,0 +1,24 @@
+<resources>
+    <!--启动页背景-->
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- 将splash图片设置在这，这样这张图片取代白屏 -->
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:windowFullscreen">true</item>
+        <!-- 或者是将主题设置成透明，虽然点击图标会有点小小的卡顿，但是用户体验不影响 -->
+        <!--ZKAdapteritem name="android:windowIsTranslucent">trZKAdapteritem> --> <!-- 透明背景不要了 -->
+    </style>
+
+    <!--通知栏-->
+    <style
+        name="NotificationInfo"
+        parent="android:TextAppearance.StatusBar.EventContent" />
+    <style
+        name="NotificationTitle"
+        parent="android:TextAppearance.StatusBar.EventContent.Title" />
+    
+    <!--tabLayout-->
+    <style name="ZKTabLayoutStyle" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">#171718</item>
+    </style>
+</resources>

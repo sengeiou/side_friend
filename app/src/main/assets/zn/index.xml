@@ -1,0 +1,20 @@
+<frame clip="#ff00ff,2">
+    <body>
+        <page src="zn.listview.xml" data="{name:'page1'}">fra1</page>
+        <page src="zn.viewpage.xml" data="{name:'page2'}">fra2</page>
+        <page src="zn.plain.xml" data="{name:'page3'}">welcome</page>
+    </body>
+    <footer>
+        <group num="3">
+            <button ripple="#124578" click="document.showFragment(0)">
+                <p>listView</p>
+            </button>
+            <button ripple="#124578" click="document.showFragment(1)">
+                <p>viewPage</p>
+            </button>
+            <button ripple="#124578" click="document.showFragment(2)">
+                <p>plain</p>
+            </button>
+        </group>
+    </footer>
+</frame>

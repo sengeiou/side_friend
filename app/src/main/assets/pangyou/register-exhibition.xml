@@ -1,0 +1,99 @@
+<plain>
+    <header>
+        <text>
+            <limg src="img/normal/left_w_arrow.png"/>
+            <cp>展示技能、服务</cp>
+            <rp>跳过</rp>
+            <rimg src="img/normal/right_arrow.png"/>
+        </text>
+    </header>
+    <body>
+        <text>
+            <cp>我们为您推荐相关信息，展示您的技能、才艺。或者跳过下次再选择</cp>
+        </text>
+        <group p-background="#ffffff" p-border="1,#ff0000" p-radius="50"  num="3" p-padding="50,20,50,20">
+            <button >
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+
+          <button >
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设发生计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+
+          <button >
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+        </group>
+        <group p-background="#ffffff" p-border="1,#ff0000" p-radius="50"  num="3" p-padding="70,30,70,30">
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+
+            <button >
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设发生计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+            <button>
+                <p>设计</p>
+            </button>
+        </group>
+        <text radius="20" background="#dddddd" margin="20,200,20,0" click="document.open('pangyou/register-interest.xml')">
+            <cp>选好了</cp>
+        </text>
+        <text height="190"/>
+    </body>
+</plain>

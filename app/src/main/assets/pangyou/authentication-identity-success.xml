@@ -1,0 +1,31 @@
+<listview>
+    <header>
+        <text>
+            <limg click="document.finish()" attr="50" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()">返回</lp>
+            <cp>芝麻信用</cp>
+        </text>
+    </header>
+    <body>
+        <text id="status">
+            <cp>等待认证结果...</cp>
+        </text>
+        <script>
+            console.log('芝麻认证回调start');
+            console.log(document.arguments());
+            console.log(document.arguments().goodsId );
+            console.log(document.arguments().biz_content );
+            console.log(document.arguments().sign );
+            console.log('芝麻认证回调end');
+            ServerAgent.invoke('identity-create',{queryString:document.arguments().queryString}).then(res=>{
+                if(res===true){
+                    alert('芝麻认证成功');
+                    document.$('status').get('cp').set('芝麻认证成功');
+                }else{
+                    alert(res);
+                    document.$('status').get('cp').set(res);
+                }
+            });
+        </script>
+    </body>
+</listview>

@@ -1,0 +1,18 @@
+<plain>
+    <header>
+        <text background="#5c9afd" height="144">
+            <limg click="document.finish()" attr="60" margin="42,0,12,0" src="img/normal/left_w_arrow.png"/>
+            <lp click="document.finish()" font="#ffffff,42">返回</lp>
+            <cp font="#ffffff">评价详情</cp>
+        </text>
+    </header>
+    <body background="#e5effb">
+        <creditmanage style="2" id="creditmanage"/>
+        <script>
+            ServerAgent.invoke('credit-evaluate-detail',{taskId:50}).then(res=>{
+            document.$('creditmanage').set(res);
+            });
+        </script>
+    </body>
+
+</plain>

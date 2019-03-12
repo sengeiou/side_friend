@@ -1,0 +1,146 @@
+<coordinator clip="#00000000,2">
+    <appbar  toolbarHeight="144">
+        <banner id="aaa"  size="16:9" collapseMode="parallax">
+            <img click="document.open('pangyou/web.xml',{htmlUrl:document.htmlUrls[0]})" src="img/text.png"/>
+            <img click="document.open('pangyou/web.xml',{htmlUrl:document.htmlUrls[1]})" src="http://static.zankong.com.cn/pangyou/image/KPJ13wjTlTlAhcYRemk7bJNa4wVYY2qR.jpg"/>
+            <img click="document.open('pangyou/web.xml',{htmlUrl:document.htmlUrls[2]})" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1546443070406&amp;di=0cd46e346c796eb8e634e28d9cb1a801&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F04%2F20180204163425_imfgo.jpeg"/>
+            <img click="document.open('pangyou/web.xml',{htmlUrl:document.htmlUrls[3]})" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1546443087491&amp;di=5710de2b762ec2c29074cf71647a0dd9&amp;imgtype=0&amp;src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201802%2F04%2F20180204163424_nvfrc.jpeg"/>
+        </banner>
+        <script>
+            document.htmlUrls = [];
+            ServerAgent.invoke('banner-list').then(res=>{
+            let images = [];
+            for(let one of res){
+            images.push(one.image);
+            document.htmlUrls.push(one.htmlUrl);
+            }
+            document.$('aaa').set(images);
+            });
+        </script>
+        <toolbar collapseMode="pin" style="2"/>
+        <toolbar collapseMode="pin" id="titleAddress">
+            <address click="alert('address')"/>
+            <search click="document.open('pangyou/search.xml').then(res=>{
+                switch(res.type){
+                    case 'skill':
+                        break;
+                    case 'recruit':
+                        break;
+                    case 'task':
+                        break;
+                }
+
+            });"/>
+        </toolbar>
+    </appbar>
+    <body background="#f2f2f2">
+        <hr background="#ffffff" height="60"/>
+        <group background="#ffffff" padding="0,0,0,61" num="5" id="ddd" img-attr="162" img-radius="81" bp-font="#171718,42" bp-margin="0,24,0,0">
+            <button click="document.open('pangyou/task-list.xml')">
+                <img src="img/home/帮旁友.png"/>
+                <bp>帮旁友</bp>
+            </button>
+            <button click="document.open('pangyou/skill-find_friend.xml')">
+                <img src="img/home/找旁友.png"/>
+                <bp>找旁友</bp>
+            </button>
+            <button click="document.open('pangyou/sos.xml')">
+                <img src="img/home/SOS.png"/>
+                <bp>SOS</bp>
+            </button>
+            <button click="document.open('pangyou/recruit-list.xml')">
+                <img src="img/home/企业.png"/>
+                <bp>企业招募</bp>
+            </button>
+            <button click="alert('暂未开放');document.open('pangyou/task-release.xml')">
+                <img src="img/home/公益.png"/>
+                <bp>公益</bp>
+            </button>
+        </group>
+        <text height="144" background="#ffffff" id="demand" margin="0,30,0,3" click="document.open('pangyou/task-list.xml')">
+            <lp font="#171718,48" margin="39,0,0,0">需求推荐</lp>
+            <rp font="42,#8c8c8c">查看更多</rp>
+            <rimg margin="0,0,39,0" src="img/normal/right_arrow.png" attr="42" />
+        </text>
+        <recycle id="homeTaskItem" full="true">
+            <homeTask click="ServerAgent.invoke('Task-detail',{taskId:document.$('homeTaskItem').adapter().getItem().taskId,range:document.searchData.screen.range}).then(res=>{
+                let parent = document.getParent();
+                parent.open('pangyou/task-detail.xml',res).then(res=>{
+                    parent.showFragment(1);
+                    parent.$('buttons').init({item:2,img:{src:'img/home/user_fill.png'},p:{color:'#00BF00'}});
+                    parent.open('pangyou/task-receiver.xml',{});
+                });
+            })" img="document.open('pangyou/credit.xml',{uid:document.$('homeTaskItem').adapter().getItem().uid})"/>
+        </recycle>
+        <text height="144" background="#ffffff" id="demand" margin="0,30,0,3" click="document.open('pangyou/skill-find_friend.xml')">
+            <lp font="#171718,48" margin="39,0,0,0">技能推荐</lp>
+            <rp font="42,#8c8c8c">查看更多</rp>
+            <rimg margin="0,0,39,0" src="img/normal/right_arrow.png" attr="42" />
+        </text>
+        <recycle id="homeSkillItem" full="true">
+            <findFriend click="document.open('pangyou/user-message.xml',{uid:document.$('homeSkillItem').adapter().getItem().uid})"
+                release="alert('发布')"
+                chat="ServerAgent.invoke('findFriend-chat',{uid:document.$('homeSkillItem').adapter().getItem().uid}).then(res=>{
+                        ServerAgent.invoke('chat-openHouse',{houseId:res.houseId}).then(res=>{
+                            document.open(res.openUrl,res);
+                        });
+                    })"
+            />
+        </recycle>
+        <text height="144" background="#ffffff" id="demand" margin="0,30,0,3" click="document.open('pangyou/recruit-list.xml')">
+            <lp font="#171718,48" margin="39,0,0,0">企业招募</lp>
+            <rp font="42,#8c8c8c">查看更多</rp>
+            <rimg margin="0,0,39,0" src="img/normal/right_arrow.png" attr="42" />
+        </text>
+        <recycle id="homeRecruitItem" full="true">
+            <recruit click="document.open('pangyou/recruit-detail.xml',{recruitId:document.$('homeRecruitItem').adapter().getItem().recruitId});"
+                apply="ServerAgent.invoke('enterprise-recruit-enlist',{recruitId:document.$('homeRecruitItem').adapter().getItem().recruitId,bargainingPrice:-1}).then(res=>{
+                    alert('ok');
+                })"
+            />
+        </recycle>
+    </body>
+    <footer>
+        <script>
+            ServerAgent.invoke('enterprise-recruit-list',{limit:5,screen:{range:{r:3000,lat:0,lng:0}},order:1}).then(res=>{
+                document.$('homeRecruitItem').adapter().refresh(res);
+            });
+            document.searchData = {
+                page:0,
+                limit:5,
+                screen:{
+                    type:0,
+                    style:0,
+                    range:{r:3000,lat:0,lng:0},
+                    reward:0,
+                    credit:0,
+                },
+                order:0,
+            };
+            document.getTaskList = ()=>{
+                document.searchData.page = 0;
+                ServerAgent.invoke('Task-search',document.searchData).then(res=>{
+                    document.$('homeTaskItem').adapter().refresh(res);
+                });
+                ServerAgent.invoke('address-findSideFriends',{longitude:localStorage.get('longitude',0),latitude:localStorage.get('latitude',0)}).then(res=>{
+                    document.$('homeSkillItem').adapter().refresh(res);
+                });
+            };
+            if(localStorage.get('longitude','')!=='' &amp;&amp; localStorage.get('latitude','')!==''){
+                document.searchData.screen.range.longitude = localStorage.get('longitude','');
+                document.searchData.screen.range.latitude = localStorage.get('latitude','');
+                document.getTaskList();
+                document.$('titleAddress').setAddress(localStorage.get('name',''));
+                alert('默认地址'+localStorage.get('name',''));
+            }
+            BaiDuMap.startLocation().then(res=>{
+                document.searchData.screen.range.lng = res.longitude;
+                document.searchData.screen.range.lat = res.latitude;
+                localStorage.put({longitude:res.longitude+'',latitude:res.latitude+'',address:res.address,name:res.name,city:res.city,province:res.province});
+                document.getTaskList();
+                document.$('titleAddress').setAddress(res.name);
+                BaiDuMap.stopLocation();
+            });
+        </script>
+    </footer>
+</coordinator>

@@ -1,0 +1,33 @@
+<listview>
+    <header>
+        <text background="#5c9afd" height="150">
+            <limg attr="60" margin="13,0,0,0" src="img/normal/left_w_arrow.png" click="document.finish();"/>
+            <lp font="40,#ffffff" click="document.finish()">返回</lp>
+            <cp font="40,#ffffff">常用地址</cp>
+        </text>
+    </header>
+    <body load="ServerAgent.invoke('address-list',{page:document.currentPage+=1}).then(res=>{
+            document.adapter().load(res);
+            document.stop();
+        })">
+        <item>
+            <oftenAddress click="
+            let item = document.adapter().getItem();
+            item.change = true;
+            document.open('pangyou/address-modify.xml',item)"/>
+        </item>
+    </body>
+    <footer>
+        <text height="144" background="#5c9afd" click="document.open('pangyou/address-modify.xml')">
+            <cp font="48,#e6f7fc">新增常用地址</cp>
+        </text>
+        <script>
+            document.onResume = ()=>{
+                document.currentPage = 0;
+                ServerAgent.invoke('address-list',{page:document.currentPage}).then(res=>{
+                    document.adapter().refresh(res);
+                });
+            };
+        </script>
+    </footer>
+</listview>

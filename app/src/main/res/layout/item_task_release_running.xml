@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="#ffffff"
+        app:cardCornerRadius="5dp"
+
+        app:cardElevation="8dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/layout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/img"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginRight="8dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/splash"
+                    app:riv_oval="true" />
+
+                <com.zankong.tool.side_friend.diy_view.text.TextView1
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_toRightOf="@+id/img"
+                    android:includeFontPadding="false"
+                    android:text="名字"
+                    android:textColor="#171718"
+                    android:textSize="16sp" />
+
+                <com.zankong.tool.side_friend.diy_view.text.TextView1
+                    android:id="@+id/type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/name"
+                    android:layout_marginTop="12dp"
+                    android:layout_toRightOf="@+id/img"
+                    android:includeFontPadding="false"
+                    android:text="取送快递"
+                    android:textColor="#171718"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="61.33dp"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical">
+
+                <com.zankong.tool.side_friend.diy_view.text.TextView1
+                    android:id="@+id/reward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="跑腿费：10元"
+                    android:textColor="#6f7072"
+                    android:textSize="15sp" />
+
+                <com.zankong.tool.side_friend.diy_view.text.TextView1
+                    android:id="@+id/outTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:includeFontPadding="false"
+                    android:text="超时时间：2018-08-25  06：00"
+                    android:textColor="#6f7072"
+                    android:textSize="15sp" />
+
+                <com.zankong.tool.side_friend.diy_view.text.TextView1
+                    android:id="@+id/createTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:includeFontPadding="false"
+                    android:text="接单时间：2018-08-24  11：51"
+                    android:textColor="#6f7072"
+                    android:layout_marginBottom="14dp"
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:background="#f2f2f2"
+                android:layout_marginBottom="14dp"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginBottom="14dp"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:layout_width="60dp"
+                    android:layout_height="32dp"
+                    android:id="@+id/chatLayout"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/task_release_btn1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:includeFontPadding="false"
+                        android:text="聊天"
+                        android:textColor="#ed6f36"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="16dp"
+                    android:id="@+id/backLayout"
+                    android:background="@drawable/task_cancel_btn">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:includeFontPadding="false"
+                        android:text="申请撤单"
+                        android:textColor="#fff4ef"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="90dp"
+                    android:layout_height="32dp"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/handleLayout"
+                    android:background="@drawable/task_cancel_btn">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:includeFontPadding="false"
+                        android:text="完成确认"
+                        android:textColor="#fff4ef"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/chat"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="聊天" />
+
+                <Button
+                    android:id="@+id/back"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="取消任务" />
+
+                <Button
+                    android:id="@+id/handle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="处理退单" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

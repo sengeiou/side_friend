@@ -1,0 +1,134 @@
+<listView>
+    <header>
+        <text background="#5c9afd" height="144" id="header">
+            <limg attr="60" click="document.finish()" margin="42,0,12,0"
+                src="img/normal/left_w_arrow.png" />
+            <lp font="#e5effb,42" click="document.finish()">返回</lp>
+            <cp font="#e5effb,42">求助详情</cp>
+            <rp font="#e5effb,42" margin="0,0,42,0" click="
+            ServerAgent.invoke('sos-care',{sosId:document.arguments().sosId,care:!document.isCare}).then(res=>{
+                document.changeCare(res.isCare);
+            })">关注</rp>
+        </text>
+    </header>
+    <body background="#e5effb"
+        load="ServerAgent.invoke('sos-evaluate-list',{sosId:document.arguments().sosId,page:document.currentPage+=1}).then(res=>{
+        document.adapter().load(res);
+        document.stop();
+    })">
+        <text id="contact" height="144" background="#ffffff" margin="0,2,0,0">
+            <lp margin="42,0,0,0" font="48,#6f7072" val="document.arguments().contact">contact</lp>
+            <rimg margin="0,0,60,0" attr="90" radius="45" val="document.arguments().senderImg"/>
+        </text>
+        <text id="contactPhone" height="144" background="#ffffff" margin="0,2,0,0">
+            <lp margin="42,0,12,0" font="48,#6f7072">联系号码:</lp>
+            <lp val="document.arguments().contactPhone" font="48,#6f7072"/>
+        </text>
+        <text id="createdAt" height="144" background="#ffffff" margin="0,2,0,0">
+            <lp margin="42,0,12,0" font="48,#6f7072">求救时间:</lp>
+            <lp val="document.arguments().createdAt">createdAt</lp>
+        </text>
+        <text id="address" height="144" background="#ffffff" margin="0,2,0,0">
+            <lp margin="42,0,12,0" font="48,#6f7072">事发地点:</lp>
+            <lp val="document.arguments().address" font="39,#6f7072" maxLine="1">address</lp>
+            <rimg attr="40" margin="0,0,60,0" src="img/task/address.png" />
+        </text>
+        <text background="#ffffff" margin="0,2,0,0" id="description">
+            <lp margin="48,42,48,42" font="42,#6f7072" gravity="left" val="document.arguments().description.text||''">事发详情..............................................................................................................................................................</lp>
+        </text>
+        <recycle id="images" background="#ffffff" orientation="horizontal">
+            <editAdd/>
+        </recycle>
+        <hr background="#ffffff" height="42"/>
+        <text height="144" background="#ffffff" margin="0,30,0,2" id="evaluateNum">
+            <lp font="#171718,48" margin="42,0,12,0">评论</lp>
+            <lp font="#171718,48" val="document.arguments().evaluateNum+''">0</lp>
+        </text>
+        <item margin="0,42,0,0">
+            <evaluate/>
+        </item>
+    </body>
+    <footer background="#e5effb">
+        <hr background="#e5effb" height="2"/>
+        <text lw="0" height="144" background="#ffffff" id="input">
+            <input click="document.immClick()" padding="42,0,0,0" hint="写评论"/>
+            <rimg click="document.faceClick()" attr="60" src="img/chat/smile.png"/>
+            <rp margin="42,0,42,0" click="
+            let content = document.$('input').val();
+            if(content.length === 0){
+                alert('评论内容不能为空');
+                return;
+            }
+ServerAgent.invoke('sos-evaluate',{sosId:document.arguments().sosId,content,type:'text'}).then(res=>{
+    alert('评论成功');
+    document.$('input').get('input').set('');
+    document.adapter().upload(res);
+    document.scroll(7);
+    document.$('evaluateNum').get('lp',2).set({p:res.evaluateNum+'',color:'#171718'});
+});
+">发送</rp>
+        </text>
+        <face height="keyword" id="face" show="false" itemClick="(res)=>{
+            document.$('input').get('input').insert(res);
+        }"/>
+        <script>
+            document.changeCare = (isCare)=>{
+                document.isCare = isCare;
+                if(!isCare){
+                    document.$('header').get('rp').set({p:'关注',color:'#ff0000'});
+                }else{
+                    document.$('header').get('rp').set({p:'已关注',color:'#ffffff'});
+                }
+            };
+            document.changeCare(document.arguments().isCare);
+            if(document.arguments().isSelf){
+                document.$('header').get('rp').set('');
+            }
+            let images = [];
+
+            for(let url of document.arguments().description.image){
+                images.push({type:'image',url:url});
+            }
+            document.$('images').adapter().refresh(images);
+            document.currentPage = 0;
+            ServerAgent.invoke('sos-evaluate-list',{sosId:document.arguments().sosId,page:document.currentPage}).then(res=>{
+                document.adapter().refresh(res);
+            });
+        </script>
+        <script>
+            let isFaceShow = false;
+            let isImmShow = false;
+            let face = document.$('face');
+            let smile = document.$('input').get('rimg');
+            document.keyword.showListener = (height)=>{
+                isImmShow = true;
+            };
+            document.keyword.hideListener=(height)=>{
+                isImmShow = false;
+            };
+            document.faceClick = ()=>{
+                if(isFaceShow){
+                    face.show(false);
+                    document.keyword.show();
+                    smile.set({src:'img/chat/smile.png'});
+                    isFaceShow = false;
+                }else{
+                    if(isImmShow){
+                        document.keyword.hide();
+                    }
+                    face.show(true);
+                    isFaceShow = true;
+                    smile.set({src:'img/chat/keyword.png'});
+                }
+            };
+            document.immClick = ()=>{
+                if(isFaceShow){
+                    isFaceShow = false;
+                    smile.set({src:'img/chat/smile.png'});
+                    face.show(false);
+                }
+                isImmShow = true;
+            };
+        </script>
+    </footer>
+</listView>

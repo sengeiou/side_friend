@@ -1,0 +1,29 @@
+<listView>
+    <header>
+        <text height="144" background="#5c9afd">
+            <limg click="document.finish()" attr="60" src="img/normal/left_w_arrow.png" margin="42,0,12,0"/>
+            <lp font="#ffffff,42" click="document.finish()">返回</lp>
+            <cp font="#ffffff,42">评论列表</cp>
+        </text>
+    </header>
+    <body load="ServerAgent.invoke('credit-evaluate-list',{screen:document.arguments().screen,page:document.currentPage+=1,uid:document.arguments().uid}).then(res=>{
+        document.adapter().load(res);
+        document.stop();
+    })" background="#e5effb">
+        <item>
+            <credititem click="document.open('pangyou/credit-evaluate-detail.xml',{taskId:document.adapter().getItem().taskId})"/>
+        </item>
+    </body>
+    <footer>
+        <script>
+            document.onResume = ()=>{
+                document.currentPage = 0;
+                ServerAgent.invoke('credit-evaluate-list',{screen:document.arguments().screen,page:0,uid:document.arguments().uid}).then(res=>{
+                    document.adapter().refresh(res);
+                });
+            };
+
+
+        </script>
+    </footer>
+</listView>
