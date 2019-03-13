@@ -66,7 +66,16 @@ public class FragmentSort extends BaseFragment{
                 listAdapter.notifyDataSetChanged();
                 TextView tv = view.findViewById(R.id.tv_sort);
                 Toast.makeText(getContext(), tv.getText().toString(), Toast.LENGTH_SHORT).show();
+                setPosition(position);
             }
         });
+    }
+    private int returnPosition = 0;
+    private void setPosition(int position){
+        returnPosition = position;
+    }
+
+    public int getPosition(){
+        return returnPosition;
     }
 }

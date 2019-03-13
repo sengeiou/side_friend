@@ -5,12 +5,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
@@ -26,7 +22,6 @@ import com.eclipsesource.v8.V8Array;
 import com.eclipsesource.v8.V8Function;
 import com.eclipsesource.v8.V8Object;
 import com.example.zkapp_map.bean.JSONBean;
-import com.example.zkapp_map.bean.ServiceBean;
 import com.google.gson.Gson;
 import com.zankong.tool.side_friend.R;
 import com.zankong.tool.side_friend.div_item.CityListViewAdapter;
@@ -34,6 +29,7 @@ import com.zankong.tool.side_friend.div_item.OrderListViewAdapter;
 import com.zankong.tool.side_friend.div_item.ProvinceListViewAdapter;
 import com.zankong.tool.side_friend.div_item.SieveItemAdapter;
 import com.zankong.tool.side_friend.div_item.TypeRecyclerAdapter;
+import com.zankong.tool.side_friend.diy_view.popupwindow.MyPopupWindow;
 import com.zankong.tool.side_friend.domain.CityBean;
 import com.zankong.tool.side_friend.domain.ProvinceBean;
 import com.zankong.tool.side_friend.domain.SieveListBean;
@@ -51,17 +47,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
 public class Screen_recruit extends ZKViewAgent implements View.OnClickListener{
     private LinearLayout llBody;
     private RelativeLayout type,city,order,screen;
     private TextView typeName,cityName,orderName,screenName;
     private ImageView typeIv,cityIv,orderIv,screenIv;
-    private PopupWindow popMenu;
+    private MyPopupWindow popMenu;
     private int menuIndex = 0;
     private View buttomView;
     private List<JSONBean> typeList;
@@ -179,7 +172,8 @@ public class Screen_recruit extends ZKViewAgent implements View.OnClickListener{
      * @param contentView
      */
     private void initPopMenu(View contentView) {
-        popMenu = new PopupWindow(contentView,LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+
+        popMenu = new MyPopupWindow(contentView,LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
         popMenu.setOutsideTouchable(true);
         popMenu.setBackgroundDrawable(new BitmapDrawable());
         popMenu.setFocusable(true);
@@ -379,6 +373,8 @@ public class Screen_recruit extends ZKViewAgent implements View.OnClickListener{
         gvPrice.setAdapter(gvAdapter1);
         gvCredit.setAdapter(gvAdapter2);
 
+
+
         gvPrice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -408,6 +404,7 @@ public class Screen_recruit extends ZKViewAgent implements View.OnClickListener{
                 popMenu.dismiss();
             }
         });
+
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -470,6 +467,7 @@ public class Screen_recruit extends ZKViewAgent implements View.OnClickListener{
 
     }
 
+
     @Override
     public void onClick(View v) {
         View contentView;
@@ -509,4 +507,5 @@ public class Screen_recruit extends ZKViewAgent implements View.OnClickListener{
         }
         popMenu.showAsDropDown(llBody, 0, 2);
     }
+
 }

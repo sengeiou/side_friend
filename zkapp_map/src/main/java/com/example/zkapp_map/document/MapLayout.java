@@ -26,6 +26,7 @@ import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.InfoWindow;
+import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
@@ -91,6 +92,7 @@ public class MapLayout extends ZKDocument {
     private BaiduMapLocationUtils instance;
     private MyLocationConfiguration.LocationMode mCurrentMode;
     private BaiduMap.OnMapTouchListener mMapTouchListener;
+    private BaiduMap.OnMapClickListener mMapClickListener;
     private TextView tv_location;
     private GeoCoder mSearch;
     private static BitmapDescriptor bitmap;
@@ -124,6 +126,7 @@ public class MapLayout extends ZKDocument {
                 if (myDialog == null){
                     myDialog = new MyDialog(jsonArray);
                 }
+                behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                 myDialog.show(getFragmentManager(),"tag");
                 myDialog.onClickTileLayout(new MyDialog.OnConfirmAndErr() {
                     @Override
@@ -133,6 +136,15 @@ public class MapLayout extends ZKDocument {
                         }else if (position == 1){
                             myDialog.dismiss();
                         }
+                    }
+                    @Override
+                    public void getData(TaskBaseBean bean) {
+                        int order = bean.getOrder();
+                        int reward = bean.getScreen().getReward();
+                        int credit = bean.getScreen().getCredit();
+                        Log.e("data","order"+order+"--reward"+reward+"--credit"+credit);
+                        TaskBaseBean taskBaseBean = onNewBean(0, order, 0, 0, reward, credit, 3000, 0, 0);
+                        onDataNet(taskBaseBean,0);
                     }
                 });
             }
@@ -193,6 +205,7 @@ public class MapLayout extends ZKDocument {
         super.onDestroy();
         if (mHandler != null) mHandler.removeCallbacksAndMessages(null);
     }
+
     private void onDataNet(TaskBaseBean baseBean, int what) {
         ServerAgent.invoke("Task-search", GsonUtils.toJson(baseBean)).then(res -> {
             Message message = new Message();
@@ -291,6 +304,7 @@ public class MapLayout extends ZKDocument {
         getLocation();
         onMapTouchListener();
         map.setOnMapTouchListener(mMapTouchListener);
+        map.setOnMapClickListener(mMapClickListener);
         mCurrentMode = MyLocationConfiguration.LocationMode.FOLLOWING;
         map.setMyLocationConfigeration(new MyLocationConfiguration(mCurrentMode, true, null));
         getCenterPoint();
@@ -413,6 +427,17 @@ public class MapLayout extends ZKDocument {
                 }
             }
         };
+        mMapClickListener = new BaiduMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                map.hideInfoWindow();
+            }
+            @Override
+            public boolean onMapPoiClick(MapPoi mapPoi) {
+                return false;
+            }
+        };
+
     }
     /**
      * @author Fsnzzz
@@ -624,6 +649,13 @@ public class MapLayout extends ZKDocument {
             }
         }
         View view = LayoutInflater.from(getContext()).inflate(R.layout.show_overlay_info, null);
+        TextView tv = view.findViewById(R.id.tv);
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                map.hideInfoWindow();
+            }
+        });
         double height = onViewHeight(view);
 //
 //        TextView name = view.findViewById(R.id.name);
@@ -634,6 +666,7 @@ public class MapLayout extends ZKDocument {
 //        LatLng ll = marker.getPosition();
 
         InfoWindow infoWin = new InfoWindow(view, marker.getPosition(), (int)height/2);
+
         map.showInfoWindow(infoWin);
       
     }

@@ -53,8 +53,20 @@ public class FragmentSieve extends Fragment {
         return instance;
     }
 
-
-
+    private int mReward = 0;
+    private int mCredit = 0;
+    private void setRewardData(int position){
+        mReward = position;
+    }
+    private void setCreditData(int position){
+        mCredit = position;
+    }
+    public int getRewardData(){
+        return mReward;
+    }
+    public int getCreditData(){
+        return mCredit;
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -86,6 +98,7 @@ public class FragmentSieve extends Fragment {
                 pricePosition = position;
                 adapter1.selectPosition(pricePosition);
                 adapter1.notifyDataSetChanged();
+                setRewardData(position);
                 TextView tv = view.findViewById(R.id.tv_sieve);
                 Toast.makeText(getActivity(), tv.getText().toString(), Toast.LENGTH_SHORT).show();
             }
@@ -108,6 +121,7 @@ public class FragmentSieve extends Fragment {
                 creditPosition = position;
                 adapter3.selectPosition(creditPosition);
                 adapter3.notifyDataSetChanged();
+                setCreditData(position);
                 TextView tv = view.findViewById(R.id.tv_sieve);
                 Toast.makeText(getActivity(), tv.getText().toString(), Toast.LENGTH_SHORT).show();
             }

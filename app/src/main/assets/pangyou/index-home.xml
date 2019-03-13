@@ -16,6 +16,7 @@
             }
             document.$('aaa').set(images);
             });
+
         </script>
         <toolbar collapseMode="pin" style="2"/>
         <toolbar collapseMode="pin" id="titleAddress">

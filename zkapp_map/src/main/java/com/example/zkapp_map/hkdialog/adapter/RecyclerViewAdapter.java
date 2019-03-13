@@ -119,7 +119,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter{
         mView = null;
     }
     public void change(ItemRecyclerViewAdapter.ItemVH holder,View view,int i1,int position,int index){
-
         for (int i = 0; i < adapterList.size(); i++) {
             if(i == index){
                 adapterList.get(i).openedItemVH = adapterList.get(i).keepOne.toggle(holder,view,i1,position,this);
@@ -128,8 +127,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter{
             }
         }
     }
-
-
 
     @Override
     public int getItemCount() {

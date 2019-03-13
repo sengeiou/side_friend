@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.zkapp_map.R;
+import com.example.zkapp_map.bean.TaskBaseBean;
 import com.example.zkapp_map.hkdialog.adapter.FragmentAdapter;
 import com.example.zkapp_map.hkdialog.fragment.FragmentType;
 import com.example.zkapp_map.hkdialog.fragment.FragmentSort;
@@ -28,6 +29,7 @@ import com.example.zkapp_map.hkdialog.fragment.FragmentSieve;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @SuppressLint("ValidFragment")
 public class MyDialog extends DialogFragment implements View.OnClickListener{
@@ -42,6 +44,9 @@ public class MyDialog extends DialogFragment implements View.OnClickListener{
     private OnConfirmAndErr confirmAndErr;
 
     private JSONArray jsonArray;
+    private FragmentType fgType;
+    private FragmentSort fgSort;
+    private FragmentSieve fgSieve;
 
     @SuppressLint("ValidFragment")
     public MyDialog(JSONArray jsonArray) {
@@ -98,15 +103,14 @@ public class MyDialog extends DialogFragment implements View.OnClickListener{
         }
         fragments.clear();
 
-        FragmentType f1 = FragmentType.getInstance();
-        f1.getData(jsonArray);
+        fgType = FragmentType.getInstance();
+        fgType.getData(jsonArray);
+        fgSort = FragmentSort.getInstance();
+        fgSieve = FragmentSieve.getInstance();
 
-        FragmentSort f2 = FragmentSort.getInstance();
-        FragmentSieve f3 = FragmentSieve.getInstance();
-
-        fragments.add(f1);
-        fragments.add(f2);
-        fragments.add(f3);
+        fragments.add(fgType);
+        fragments.add(fgSort);
+        fragments.add(fgSieve);
 
         tabLayout.setupWithViewPager(viewPagerView);
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getChildFragmentManager(), titleName, fragments);
@@ -126,13 +130,22 @@ public class MyDialog extends DialogFragment implements View.OnClickListener{
         });
     }
 
+    private TaskBaseBean taskBaseBean;
+    private TaskBaseBean.ScreenBean screenBean;
+    private TaskBaseBean.ScreenBean.RangeBean rangeBean;
     @Override
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.ll_err) {
             confirmAndErr.onPosition(0);
         }else if (i == R.id.ll_confirm){
+            int position = fgSort.getPosition();
+            int reward = fgSieve.getRewardData();
+            int credit = fgSieve.getCreditData();
+            Log.e("test","position"+position+"--reward"+reward+"--credit"+credit);
+            TaskBaseBean taskBaseBean = onNewBean(0, position, 0, 0, reward, credit);
             confirmAndErr.onPosition(1);
+            confirmAndErr.getData(taskBaseBean);
         }
     }
 
@@ -142,5 +155,25 @@ public class MyDialog extends DialogFragment implements View.OnClickListener{
 
     public interface OnConfirmAndErr{
         void onPosition(int position);
+        void getData(TaskBaseBean bean);
     }
+    private TaskBaseBean onNewBean(int page, int order, int type, int style, int reward, int credit) {
+        if (taskBaseBean == null)
+            taskBaseBean = new TaskBaseBean();
+        taskBaseBean.setPage(page);
+        taskBaseBean.setLimit(40);
+        taskBaseBean.setOrder(order);
+        if (screenBean == null)
+            screenBean = new TaskBaseBean.ScreenBean();
+        screenBean.setReward(reward);
+        screenBean.setCredit(credit);
+        screenBean.setStyle(style);
+        screenBean.setType(type);
+        if (rangeBean == null)
+            rangeBean = new TaskBaseBean.ScreenBean.RangeBean();
+        screenBean.setRange(rangeBean);
+        taskBaseBean.setScreen(screenBean);
+        return taskBaseBean;
+    }
+
 }

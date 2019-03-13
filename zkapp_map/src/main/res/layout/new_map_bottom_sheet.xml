@@ -8,8 +8,6 @@
     app:behavior_hideable="true"
     app:layout_behavior="@string/bottom_sheet_behavior"
     android:layout_height="wrap_content">
-
-    
     
     <RelativeLayout
         android:layout_width="match_parent"
